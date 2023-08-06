@@ -31,7 +31,7 @@ checking_sc() {
 }
 checking_sc
 cd
-rm -rf /root/casper >/dev/null 
+rm -rf /root/rmbl >/dev/null 
 MYIP=$(curl -sS ipv4.icanhazip.com)
 listuser=$(curl -sS https://raw.githubusercontent.com/RMBL-VPN/permission/main/ipmini | grep $MYIP | awk '{print $2}')
 superadmin=$(curl -sS https://raw.githubusercontent.com/RMBL-VPN/permission/main/ipmini | grep $MYIP | awk '{print $7}')
@@ -66,13 +66,13 @@ function gantiip2(){
 author=$(cat /etc/profil)
 superadmin=$(curl -sS https://raw.githubusercontent.com/casper9/permission/main/ipmini | grep $MYIP | awk '{print $7}')
 if [ "$superadmin" = "VIP" ]; then
-mkdir /root/casper
+mkdir /root/rmbl
 cd /root/casper/ &> /dev/null
 rm -rf .git &> /dev/null
 git init &> /dev/null
 wget https://raw.githubusercontent.com/${USERGIT}/permission/main/ipmini &> /dev/null
 
-data=( `cat /root/casper/ipmini | grep '^###' | cut -d ' ' -f 2 | sort | uniq`);
+data=( `cat /root/rmbl/ipmini | grep '^###' | cut -d ' ' -f 2 | sort | uniq`);
 now=`date +"%Y-%m-%d"`
 for user in "${data[@]}"
 do
@@ -122,7 +122,7 @@ echo -e "$COLOR1 ${NC} ${COLBG1}               ${WH}тАв REGISTER IPVPS тАв
 echo -e "$COLOR1тФФтФАтФАтФАтФАтФАтФАтФАтФАтФАтФАтФАтФАтФАтФАтФАтФАтФАтФАтФАтФАтФАтФАтФАтФАтФАтФАтФАтФАтФАтФАтФАтФАтФАтФАтФАтФАтФАтФАтФАтФАтФАтФАтФАтФАтФАтФАтФАтФАтФАтФШ${NC}"
 echo -e "$COLOR1тФМтФАтФАтФАтФАтФАтФАтФАтФАтФАтФАтФАтФАтФАтФАтФАтФАтФАтФАтФАтФАтФАтФАтФАтФАтФАтФАтФАтФАтФАтФАтФАтФАтФАтФАтФАтФАтФАтФАтФАтФАтФАтФАтФАтФАтФАтФАтФАтФАтФАтФР${NC}"
 cd
-rm -rf /root/casper >/dev/null 
+rm -rf /root/rmbl >/dev/null 
 until [[ $daftar =~ ^[0-9.]+$ ]]; do
 read -p "   MASUKKAN IPNYA: " daftar
 echo -e "$COLOR1 ${NC}"
@@ -137,7 +137,7 @@ echo -e "$COLOR1 ${NC}                ${WH}тАв $author тАв${NC}           
 echo -e "$COLOR1тФФтФАтФАтФАтФАтФАтФАтФАтФАтФАтФАтФАтФАтФАтФАтФАтФАтФАтФАтФАтФАтФАтФАтФАтФАтФАтФАтФАтФАтФАтФАтФАтФАтФАтФАтФАтФАтФАтФАтФАтФАтФАтФАтФАтФАтФАтФАтФАтФАтФАтФШ${NC}" 
 echo -e ""
 cd
-rm -rf /root/casper >/dev/null 
+rm -rf /root/rmbl >/dev/null 
 read -n 1 -s -r -p "   Press any key to back on menu"
 m-ip
 else
@@ -218,7 +218,7 @@ exp=$(date -d "$hari days" +"%Y-%m-%d")
 hariini=$(date -d "0 days" +"%Y-%m-%d")
 git config --global user.email "${EMAILGIT}" &> /dev/null
 git config --global user.name "${USERGIT}" &> /dev/null
-mkdir /root/casper
+mkdir /root/rmbl
 cd /root/casper/ &> /dev/null
 rm -rf .git &> /dev/null
 git init &> /dev/null
@@ -272,7 +272,7 @@ TEXT="
 
 curl -s --max-time $TIMES -d "chat_id=$CHATID&disable_web_page_preview=1&text=$TEXT&parse_mode=html" $URL >/dev/null
 cd
-rm -rf /root/casper >/dev/null 
+rm -rf /root/rmbl >/dev/null 
 echo -e "$COLOR1тФФтФАтФАтФАтФАтФАтФАтФАтФАтФАтФАтФАтФАтФАтФАтФАтФАтФАтФАтФАтФАтФАтФАтФАтФАтФАтФАтФАтФАтФАтФАтФАтФАтФШ${NC}" 
 echo -e "$COLOR1тФМтФАтФАтФАтФАтФАтФАтФАтФАтФАтФАтФАтФАтФА ${WH}BY${NC} ${COLOR1}тФАтФАтФАтФАтФАтФАтФАтФАтФАтФАтФАтФАтФАтФАтФАтФР${NC}"
 echo -e "$COLOR1 ${NC}             ${WH}тАв $author тАв${NC}               $COLOR1 $NC"
@@ -383,8 +383,8 @@ exp=$(date -d "$hari days" +"%Y-%m-%d")
 hariini=$(date -d "0 days" +"%Y-%m-%d")
 git config --global user.email "${EMAILGIT}" &> /dev/null
 git config --global user.name "${USERGIT}" &> /dev/null
-mkdir /root/casper
-cd /root/casper/ &> /dev/null
+mkdir /root/rmbl
+cd /root/rmbl/ &> /dev/null
 rm -rf .git &> /dev/null
 git init &> /dev/null
 wget https://raw.githubusercontent.com/${USERGIT}/permission/main/ipmini &> /dev/null
@@ -468,7 +468,7 @@ TEXT="
 fi
 curl -s --max-time $TIMES -d "chat_id=$CHATID&disable_web_page_preview=1&text=$TEXT&parse_mode=html" $URL >/dev/null
 cd
-rm -rf /root/casper >/dev/null 
+rm -rf /root/rmbl >/dev/null 
 echo -e "$COLOR1тФФтФАтФАтФАтФАтФАтФАтФАтФАтФАтФАтФАтФАтФАтФАтФАтФАтФАтФАтФАтФАтФАтФАтФАтФАтФАтФАтФАтФАтФАтФАтФАтФАтФШ${NC}" 
 echo -e "$COLOR1тФМтФАтФАтФАтФАтФАтФАтФАтФАтФАтФАтФАтФАтФА ${WH}BY${NC} ${COLOR1}тФАтФАтФАтФАтФАтФАтФАтФАтФАтФАтФАтФАтФАтФАтФАтФР${NC}"
 echo -e "$COLOR1 ${NC}             ${WH}тАв $author тАв${NC}               $COLOR1 $NC"
@@ -491,11 +491,11 @@ CHATID=$(cat /etc/per/id)
 KEY=$(cat /etc/per/token)
 URL="https://api.telegram.org/bot$KEY/sendMessage"
 cd
-rm -rf /root/casper &> /dev/null
+rm -rf /root/rmbl &> /dev/null
 git config --global user.email "${EMAILGIT}" &> /dev/null
 git config --global user.name "${USERGIT}" &> /dev/null
-mkdir /root/casper
-cd /root/casper/ &> /dev/null
+mkdir /root/rmbl
+cd /root/rmbl/ &> /dev/null
 rm -rf .git &> /dev/null
 wget https://raw.githubusercontent.com/${USERGIT}/permission/main/ipmini &> /dev/null
 git init &> /dev/null
@@ -546,7 +546,7 @@ until [[ ${CLIENT_NUMBER} -ge 1 && ${CLIENT_NUMBER} -le ${NUMBER_OF_CLIENTS} ]];
     read -rp " Select one client or Input [0] to back. [1-${NUMBER_OF_CLIENTS}]: " CLIENT_NUMBER
   if [[ ${CLIENT_NUMBER} == '0' ]]; then
   cd
-    rm -rf /root/casper >/dev/null 
+    rm -rf /root/rmbl >/dev/null 
 	m-ip
 	fi
 	fi
@@ -567,7 +567,7 @@ Name     : $name1
 IPVPS    : $ivps1  
 Status   : Deleted on  $hariini2
 " 
-echo "${TEXTD}" >>/root/casper/delete_log  &> /dev/null
+echo "${TEXTD}" >>/root/rmbl/delete_log  &> /dev/null
 
 git add ipmini
 git commit -m remove &> /dev/null
@@ -599,7 +599,7 @@ TEXT="
 
 curl -s --max-time $TIMES -d "chat_id=$CHATID&disable_web_page_preview=1&text=$TEXT&parse_mode=html" $URL >/dev/null
 cd
-rm -rf /root/casper >/dev/null 
+rm -rf /root/rmbl >/dev/null 
 echo -e "$COLOR1тФФтФАтФАтФАтФАтФАтФАтФАтФАтФАтФАтФАтФАтФАтФАтФАтФАтФАтФАтФАтФАтФАтФАтФАтФАтФАтФАтФАтФАтФАтФАтФАтФАтФАтФАтФАтФАтФАтФШ${NC}" 
 echo -e "$COLOR1тФМтФАтФАтФАтФАтФАтФАтФАтФАтФАтФАтФАтФАтФАтФАтФАтФА ${WH}BY${NC} ${COLOR1}тФАтФАтФАтФАтФАтФАтФАтФАтФАтФАтФАтФАтФАтФАтФАтФАтФАтФР${NC}"
 echo -e "$COLOR1 ${NC}                ${WH}тАв $author тАв${NC}                 $COLOR1 $NC"
@@ -621,10 +621,10 @@ CHATID=$(cat /etc/per/id)
 KEY=$(cat /etc/per/token)
 URL="https://api.telegram.org/bot$KEY/sendMessage"
 cd
-rm -rf /root/casper &> /dev/null
+rm -rf /root/rmbl &> /dev/null
 git config --global user.email "${EMAILGIT}" &> /dev/null
 git config --global user.name "${USERGIT}" &> /dev/null
-mkdir /root/casper
+mkdir /root/rmbl
 cd /root/casper/ &> /dev/null
 rm -rf .git &> /dev/null
 wget https://raw.githubusercontent.com/${USERGIT}/permission/main/ipmini &> /dev/null
@@ -664,7 +664,7 @@ until [[ ${CLIENT_NUMBER} -ge 1 && ${CLIENT_NUMBER} -le ${NUMBER_OF_CLIENTS} ]];
     read -rp " Select one client or Input [0] to back. [1-${NUMBER_OF_CLIENTS}]: " CLIENT_NUMBER
   if [[ ${CLIENT_NUMBER} == '0' ]]; then 
   cd
-    rm -rf /root/casper >/dev/null 
+    rm -rf /root/rmbl >/dev/null 
 	m-ip
 	fi
 	fi
@@ -724,7 +724,7 @@ TEXT="
 " 
 
 cd
-rm -rf /root/casper >/dev/null 
+rm -rf /root/rmbl >/dev/null 
 echo -e "$COLOR1тФФтФАтФАтФАтФАтФАтФАтФАтФАтФАтФАтФАтФАтФАтФАтФАтФАтФАтФАтФАтФАтФАтФАтФАтФАтФАтФАтФАтФАтФАтФАтФАтФАтФАтФАтФАтФАтФАтФШ${NC}" 
 echo -e "$COLOR1тФМтФАтФАтФАтФАтФАтФАтФАтФАтФАтФАтФАтФАтФАтФАтФАтФА ${WH}BY${NC} ${COLOR1}тФАтФАтФАтФАтФАтФАтФАтФАтФАтФАтФАтФАтФАтФАтФАтФАтФАтФР${NC}"
 echo -e "$COLOR1 ${NC}                ${WH}тАв $author тАв${NC}                 $COLOR1 $NC"
@@ -746,10 +746,10 @@ CHATID=$(cat /etc/per/id)
 KEY=$(cat /etc/per/token)
 URL="https://api.telegram.org/bot$KEY/sendMessage"
 cd
-rm -rf /root/casper &> /dev/null
+rm -rf /root/rmbl &> /dev/null
 git config --global user.email "${EMAILGIT}" &> /dev/null
 git config --global user.name "${USERGIT}" &> /dev/null
-mkdir /root/casper
+mkdir /root/rmbl
 cd /root/casper/ &> /dev/null
 rm -rf .git &> /dev/null
 wget https://raw.githubusercontent.com/${USERGIT}/permission/main/ipmini &> /dev/null
@@ -801,7 +801,7 @@ until [[ ${CLIENT_NUMBER} -ge 1 && ${CLIENT_NUMBER} -le ${NUMBER_OF_CLIENTS} ]];
     read -rp " Select one client or Input [0] to back. [1-${NUMBER_OF_CLIENTS}]: " CLIENT_NUMBER
   if [[ ${CLIENT_NUMBER} == '0' ]]; then
   cd 
-    rm -rf /root/casper >/dev/null 
+    rm -rf /root/rmbl >/dev/null 
 	m-ip
 	fi
 	fi
@@ -826,7 +826,7 @@ Name old     : $namabaru
 Name New    : $name1
 Status        : succes change
 " 
-echo "${TEXTD}" >>/root/casper/delete_log  &> /dev/null
+echo "${TEXTD}" >>/root/rmbl/delete_log  &> /dev/null
 
 git add ipmini
 git commit -m remove &> /dev/null
@@ -880,11 +880,11 @@ CHATID=$(cat /etc/per/id)
 KEY=$(cat /etc/per/token)
 URL="https://api.telegram.org/bot$KEY/sendMessage"
 cd
-rm -rf /root/casper &> /dev/null
+rm -rf /root/rmbl &> /dev/null
 git config --global user.email "${EMAILGIT}" &> /dev/null
 git config --global user.name "${USERGIT}" &> /dev/null
-mkdir /root/casper >/dev/null
-cd /root/casper/ &> /dev/null
+mkdir /root/rmbl >/dev/null
+cd /root/rmbl/ &> /dev/null
 rm -rf .git &> /dev/null
 wget https://raw.githubusercontent.com/${USERGIT}/permission/main/ipmini &> /dev/null
 git init &> /dev/null
