@@ -392,7 +392,7 @@ WantedBy=multi-user.target
 EOF
 cat > /etc/systemd/system/runn.service <<EOF
 [Unit]
-Description=casper9
+Description=rmblvpn
 After=network.target
 
 [Service]
