@@ -2,16 +2,16 @@
 # Proxy For Edukasi & Imclass
 
 # Link Hosting Kalian
-CASPER="raw.githubusercontent.com/casper9/perv1/main/install"
+RMBL="raw.githubusercontent.com/RMBL-VPN/v/main/install"
 
-wget -O /usr/local/bin/ws-dropbear https://raw.githubusercontent.com/casper9/perv1/main/sshws/ws-dropbear
+wget -O /usr/local/bin/ws-dropbear https://raw.githubusercontent.com/RMBL-VPN/perv1/main/sshws/ws-dropbear
 chmod +x /usr/local/bin/ws-dropbear
 
 # Installing Service
 cat > /etc/systemd/system/ws-nontls.service << END
 [Unit]
-Description=Python Proxy Mod By C A S P E R
-Documentation=https://t.me/CasperGaming
+Description=Python Proxy Mod By RMBL VPN 
+Documentation=https://t.me/rmblvpn
 After=network.target nss-lookup.target
 
 [Service]
