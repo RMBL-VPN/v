@@ -2,12 +2,12 @@
 dateFromServer=$(curl -v --insecure --silent https://google.com/ 2>&1 | grep Date | sed -e 's/< Date: //')
 biji=`date +"%Y-%m-%d" -d "$dateFromServer"`
 ###########- COLOR CODE -##############
-colornow=$(cat /etc/casper/theme/color.conf)
+colornow=$(cat /etc/rmbl/theme/color.conf)
 export NC="\e[0m"
 export YELLOW='\033[0;33m';
 export RED="\033[0;31m"
-export COLOR1="$(cat /etc/casper/theme/$colornow | grep -w "TEXT" | cut -d: -f2|sed 's/ //g')"
-export COLBG1="$(cat /etc/casper/theme/$colornow | grep -w "BG" | cut -d: -f2|sed 's/ //g')"
+export COLOR1="$(cat /etc/rmbl/theme/$colornow | grep -w "TEXT" | cut -d: -f2|sed 's/ //g')"
+export COLBG1="$(cat /etc/rmbl/theme/$colornow | grep -w "BG" | cut -d: -f2|sed 's/ //g')"
 WH='\033[1;37m'
 ###########- END COLOR CODE -##########
 tram=$( free -h | awk 'NR==2 {print $2}' )
@@ -18,7 +18,7 @@ CITY=$(curl -s ipinfo.io/city )
 ipsaya=$(curl -sS ipinfo.io/ip)
 data_server=$(curl -v --insecure --silent https://google.com/ 2>&1 | grep Date | sed -e 's/< Date: //')
 date_list=$(date +"%Y-%m-%d" -d "$data_server")
-data_ip="https://raw.githubusercontent.com/casper9/permission/main/ipmini"
+data_ip="https://raw.githubusercontent.com/RMBL-VPN/permission/main/ipmini"
 checking_sc() {
     useexp=$(curl -sS $data_ip | grep $ipsaya | awk '{print $3}')
     if [[ $date_list < $useexp ]]; then
@@ -32,7 +32,7 @@ checking_sc() {
         echo -e "   \033[0;33mYour VPS${NC} $ipsaya \033[0;33mHas been Banned${NC}"
         echo -e "     \033[0;33mBuy access permissions for scripts${NC}"
         echo -e "             \033[0;33mContact Admin :${NC}"
-        echo -e "     \033[0;36mTelegram${NC}: https://t.me/CasperGaming"
+        echo -e "     \033[0;36mTelegram${NC}: https://t.me/rmblvpn"
         echo -e "$COLOR1└─────────────────────────────────────────────────┘${NC}"
         exit
     fi
@@ -45,7 +45,7 @@ if [ "$res" = "Expired" ]; then
 Exp="\e[36mExpired\033[0m"
 rm -f /home/needupdate > /dev/null 2>&1
 else
-Exp=$(curl -sS https://raw.githubusercontent.com/casper9/permission/main/ipmini | grep $MYIP | awk '{print $3}')
+Exp=$(curl -sS https://raw.githubusercontent.com/RMBL-VPN/permission/main/ipmini | grep $MYIP | awk '{print $3}')
 fi
 export RED='\033[0;31m'
 export GREEN='\033[0;32m'
@@ -301,7 +301,7 @@ datediff() {
 mai="datediff "$Exp" "$DATE""
 
 today=`date -d "0 days" +"%Y-%m-%d"`
-Exp2=$(curl -sS https://raw.githubusercontent.com/casper9/permission/main/ipmini | grep $MYIP | awk '{print $3}')
+Exp2=$(curl -sS https://raw.githubusercontent.com/RMBL-VPN/permission/main/ipmini | grep $MYIP | awk '{print $3}')
 
 # CERTIFICATE STATUS
 d1=$(date -d "$Exp2" +%s)
@@ -310,7 +310,7 @@ certificate=$(( (d1 - d2) / 86400 ))
 
 # DNS PATCH
 #tipeos2=$(uname -m)
-Name2=$(curl -sS https://raw.githubusercontent.com/casper9/permission/main/ipmini | grep $MYIP | awk '{print $2}')
+Name2=$(curl -sS https://raw.githubusercontent.com/RMBL-VPN/permission/main/ipmini | grep $MYIP | awk '{print $2}')
 # GETTING DOMAIN NAME
 Domen="$(cat /etc/xray/domain)"
 
@@ -426,7 +426,7 @@ echo -e "$COLOR1┌────────────────────�
 echo -e "$COLOR1 ${NC}                ${WH}♧ SCRIPT ♧ ${NC}                    $COLOR1 $NC"
 echo -e "$COLOR1 ${NC}                ${WH}♤ PREMIUM ♤ ${NC}                   $COLOR1 $NC"
 #echo -e "$COLOR1 ${NC}                ${WH}◇   BY   ◇ ${NC}                    $COLOR1 $NC"
-#echo -e "$COLOR1 ${NC}             ${WH}♡ C A S P E R ♡ ${NC}                 $COLOR1 $NC"
+#echo -e "$COLOR1 ${NC}             ${WH}🟢 RMBL VPN 🟢 ${NC}                 $COLOR1 $NC"
 echo -e "$COLOR1└───────────────────────────────────────────────────┘${NC}"
 read -n 1 -s -r -p "Press any key to Restart Service or Ctrl + C to Exit"
 restart
