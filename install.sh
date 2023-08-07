@@ -213,7 +213,7 @@ echo "IP=" >> /var/lib/SIJA/ipvps.conf
 
 #add domen
 echo ""
-wget -q https://raw.githubusercontent.com/YOGZKNTL/scupdate/main/tools.sh;chmod +x tools.sh;./tools.sh
+wget https://raw.githubusercontent.com/RMBL-VPN/v/main/tools.sh &> /dev/null
 rm tools.sh
 clear
 figlet 'AUTOSCRIPT'  | lolcat
@@ -244,74 +244,137 @@ figlet 'AUTOSCRIPT'  | lolcat
     fi
     
 #install ssh ovpn
-echo -e "\e[33m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
-echo -e "$green      Install SSH / WS               $NC"
-echo -e "\e[33m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
-sleep 2
+res2() {
+wget https://raw.githubusercontent.com/RMBL-VPN/v/main/install/ssh-vpn.sh && chmod +x ssh-vpn.sh && ./ssh-vpn.sh
 clear
-wget https://raw.githubusercontent.com/YOGZKNTL/scupdate/main/ssh/ssh-vpn.sh && chmod +x ssh-vpn.sh && ./ssh-vpn.sh
-#Instal Xray
-echo -e "\e[33m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
-echo -e "$green          Install XRAY              $NC"
-echo -e "\e[33m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
-sleep 2
-clear
-wget https://raw.githubusercontent.com/YOGZKNTL/scupdate/main/xray/ins-xray.sh && chmod +x ins-xray.sh && ./ins-xray.sh
-wget https://raw.githubusercontent.com/YOGZKNTL/scupdate/main/sshws/insshws.sh && chmod +x insshws.sh && ./insshws.sh
-clear
+} 
 
-#Instal slowdns
-echo -e "\e[33m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
-echo -e "$green          Install SLDNS              $NC"
-echo -e "\e[33m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
-sleep 2
+res3() {
+wget https://raw.githubusercontent.com/RMBL-VPN/v/main/install/ins-xray.sh && chmod +x ins-xray.sh && ./ins-xray.sh
 clear
-wget https://raw.githubusercontent.com/YOGZKNTL/scupdate/main/wireguard/installsl.sh && chmod +x installsl.sh && ./installsl.sh
-clear
+}
 
-### Pasang OpenVPN
-echo -e "\e[33m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
-echo -e "$green          Install OVPN              $NC"
-echo -e "\e[33m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
-sleep 2
+res4() {
+wget https://raw.githubusercontent.com/RMBL-VPN/v/main/sshws/insshws.sh && chmod +x insshws.sh && ./insshws.sh
 clear
-wget https://raw.githubusercontent.com/YOGZKNTL/scupdate/main/ssh/vpn.sh && chmod +x vpn.sh && ./vpn.sh
-clear
+}
 
-#Install Ohp Service
-echo -e "\e[33m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
-echo -e "$green          Install OHP              $NC"
-echo -e "\e[33m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
-sleep 0.5
+res5() {
+wget https://raw.githubusercontent.com/RMBL-VPN/v/main/install/set-br.sh && chmod +x set-br.sh && ./set-br.sh
 clear
-wget https://raw.githubusercontent.com/YOGZKNTL/scupdate/main/ohp/ohp-dropbear.sh && chmod +x ohp-dropbear.sh && ./ohp-dropbear.sh
-wget https://raw.githubusercontent.com/YOGZKNTL/scupdate/main/ohp/ohp-ssh.sh && chmod +x ohp-ssh.sh && ./ohp-ssh.sh
-wget https://raw.githubusercontent.com/YOGZKNTL/scupdate/main/ohp/ohp.sh && chmod +x ohp.sh && ./ohp.sh
-clear
+}
 
-### Pasang Limit Xray
-echo -e "\e[33m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
-echo -e "$green          Install Limit  Xray           $NC"
-echo -e "\e[33m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
-sleep 2
+res6() {
+wget https://raw.githubusercontent.com/RMBL-VPN/v/main/sshws/ohp.sh && chmod +x ohp.sh && ./ohp.sh
 clear
-wget https://raw.githubusercontent.com/YOGZKNTL/scupdate/main/limit/limit.sh && chmod +x limit.sh && ./limit.sh
+}
+
+res7() {
+wget https://raw.githubusercontent.com/RMBL-VPN/v/main/menu/update.sh && chmod +x update.sh && ./update.sh
 clear
+}
+
+res8() {
+wget https://raw.githubusercontent.com/RMBL-VPN/v/main/slowdns/installsl.sh && chmod +x installsl.sh && bash installsl.sh
+clear
+}
+
+res9() {
+wget https://raw.githubusercontent.com/RMBL-VPN/v/main/install/udp-custom.sh && chmod +x udp-custom.sh && bash udp-custom.sh
+clear
+}
+
+echo -e "${tyblue}┌──────────────────────────────────────────┐${NC}"
+echo -e "${tyblue}│      PROCESS INSTALLED SSH & OPENVPN     │${NC}"
+echo -e "${tyblue}└──────────────────────────────────────────┘${NC}"
+fun_bar 'res2'
+
+echo -e "${tyblue}┌──────────────────────────────────────────┐${NC}"
+echo -e "${tyblue}│           PROCESS INSTALLED XRAY         │${NC}"
+echo -e "${tyblue}└──────────────────────────────────────────┘${NC}"
+fun_bar 'res3'
+
+echo -e "${tyblue}┌──────────────────────────────────────────┐${NC}"
+echo -e "${tyblue}│       PROCESS INSTALLED WEBSOCKET SSH    │${NC}"
+echo -e "${tyblue}└──────────────────────────────────────────┘${NC}"
+fun_bar 'res4'
+
+echo -e "${tyblue}┌──────────────────────────────────────────┐${NC}"
+echo -e "${tyblue}│       PROCESS INSTALLED BACKUP MENU      │${NC}"
+echo -e "${tyblue}└──────────────────────────────────────────┘${NC}"
+fun_bar 'res5'
+
+echo -e "${tyblue}┌──────────────────────────────────────────┐${NC}"
+echo -e "${tyblue}│           PROCESS INSTALLED OHP          │${NC}"
+echo -e "${tyblue}└──────────────────────────────────────────┘${NC}"
+fun_bar 'res6'
+
+
+echo -e "${tyblue}┌──────────────────────────────────────────┐${NC}"
+echo -e "${tyblue}│           DOWNLOAD EXTRA MENU            │${NC}"
+echo -e "${tyblue}└──────────────────────────────────────────┘${NC}"
+fun_bar 'res7'
+
+echo -e "${tyblue}┌──────────────────────────────────────────┐${NC}"
+echo -e "${tyblue}│           DOWNLOAD SLOWDNS               │${NC}"
+echo -e "${tyblue}└──────────────────────────────────────────┘${NC}"
+fun_bar 'res8'
+
+echo -e "${tyblue}┌──────────────────────────────────────────┐${NC}"
+echo -e "${tyblue}│           DOWNLOAD UDP COSTUM            │${NC}"
+echo -e "${tyblue}└──────────────────────────────────────────┘${NC}"
+fun_bar 'res9'
+}
+function iinfo(){
+domain=$(cat /etc/xray/domain)
+TIMES="10"
+CHATID="5557374381"
+KEY="6646071651:AAEFShVjypTh_CMVGlvVi1BppU5zfExuKu0"
+URL="https://api.telegram.org/bot$KEY/sendMessage"
+ISP=$(cat /etc/xray/isp)
+CITY=$(cat /etc/xray/city)
+domain=$(cat /etc/xray/domain) 
+TIME=$(date +'%Y-%m-%d %H:%M:%S')
+RAMMS=$(free -m | awk 'NR==2 {print $2}')
+MODEL2=$(cat /etc/os-release | grep -w PRETTY_NAME | head -n1 | sed 's/=//g' | sed 's/"//g' | sed 's/PRETTY_NAME//g')
+MYIP=$(curl -sS ipv4.icanhazip.com)
+IZIN=$(curl -sS https://raw.githubusercontent.com/RMBL-VPN/permission/main/ipmini | grep $MYIP | awk '{print $3}' )
+d1=$(date -d "$IZIN" +%s)
+d2=$(date -d "$today" +%s)
+EXP=$(( (d1 - d2) / 86400 ))
+
+TEXT="
+<code>◇━━━━━━━━━━━━━━◇</code>
+<code> 🟢 AUTOSCRIPT PREMIUM</code>
+<code>◇━━━━━━━━━━━━━━◇</code>
+<code>NAME : </code><code>${author}</code>
+<code>TIME : </code><code>${TIME} WIB</code>
+<code>DOMAIN : </code><code>${domain}</code>
+<code>IP : </code><code>${MYIP}</code>
+<code>ISP : </code><code>${ISP} $CITY</code>
+<code>OS LINUX : </code><code>${MODEL2}</code>
+<code>RAM : </code><code>${RAMMS} MB</code>
+<code>EXP SCRIPT : </code><code>$EXP Days</code>
+<code>◇━━━━━━━━━━━━━━◇</code>
+<i>Notification Scrip ...</i>
+"'&reply_markup={"inline_keyboard":[[{"text":"🟢ᴏʀᴅᴇʀ","url":"https://t.me/sshrmblvpn"},{"text":"🟢ᴀᴅᴍɪɴ","url":"https://t.me/rmblvpn"}]]}'
+curl -s --max-time $TIMES -d "chat_id=$CHATID&disable_web_page_preview=1&text=$TEXT&parse_mode=html" $URL >/dev/null
+clear
+}
+
+CEKIP
+Casper3
 cat> /root/.profile << END
-# ~/.profile: executed by Bourne-compatible login shells.
-
 if [ "$BASH" ]; then
-  if [ -f ~/.bashrc ]; then
-    . ~/.bashrc
-  fi
+if [ -f ~/.bashrc ]; then
+. ~/.bashrc
 fi
-
+fi
 mesg n || true
 clear
 menu
 END
 chmod 644 /root/.profile
-
 if [ -f "/root/log-install.txt" ]; then
 rm /root/log-install.txt > /dev/null 2>&1
 fi
@@ -322,6 +385,7 @@ if [ ! -f "/etc/log-create-user.log" ]; then
 echo "Log All Account " > /etc/log-create-user.log
 fi
 history -c
+serverV=$( curl -sS https://raw.githubusercontent.com/RMBL-VPN/v/main/versi  )
 echo $serverV > /opt/.ver
 aureb=$(cat /home/re_otm)
 b=11
@@ -331,87 +395,29 @@ gg="PM"
 else
 gg="AM"
 fi
+cd
 curl -sS ifconfig.me > /etc/myipvps
-#install gotop
-gotop_latest="$(curl -s https://api.github.com/repos/xxxserxxx/gotop/releases | grep tag_name | sed -E 's/.*"v(.*)".*/\1/' | head -n 1)"
-    gotop_link="https://github.com/xxxserxxx/gotop/releases/download/v$gotop_latest/gotop_v"$gotop_latest"_linux_amd64.deb"
-    curl -sL "$gotop_link" -o /tmp/gotop.deb
-    dpkg -i /tmp/gotop.deb >/dev/null 2>&1
-    
-    USRSC=$(curl -sS https://raw.githubusercontent.com/YOGZKNTL/regip/main/ip | grep $MYIP | awk '{print $2}')
-    EXPSC=$(curl -sS https://raw.githubusercontent.com/YOGZKNTL/regip/main/ip | grep $MYIP | awk '{print $3}')
-    TIMEZONE=$(printf '%(%H:%M:%S)T')
-    TEXT="
-<code>────────────────────</code>
-<b>⚠️AUTOSCRIPT PREMIUM⚠️</b>
-<code>────────────────────</code>
-<code>Owner  : </code><code>$USRSC</code>
-<code>Domain : </code><code>$(cat /etc/xray/domain)</code>
-<code>Date   : </code><code>$TIME</code>
-<code>Time   : </code><code>$TIMEZONE</code>
-<code>Isp    : </code><code>$ISP</code>
-<code>Ip vps : </code><code>$MYIP</code>
-<code>Exp Sc : </code><code>$EXPSC</code>
-<code>Ram    : </code><code>$RAMMS MB</code>
-<code>Linux  : </code><code>$OS</code>
-<code>────────────────────</code>
-<i>Automatic Notification from</i>
-<i>YogzVPN Bot</i> 
-"'&reply_markup={"inline_keyboard":[[{"text":"ᴏʀᴅᴇʀ🐳","url":"https://t.me/WokszXD"},{"text":"ɪɴꜱᴛᴀʟʟ🐬","url":"https://t.me/WokszXDStore"}]]}'
-    curl -s --max-time $TIMES -d "chat_id=$CHATID&disable_web_page_preview=1&text=$TEXT&parse_mode=html" $URL >/dev/null
-clear
-echo " "
-echo "=====================-[ SCRIPT YOGZ TUNNEL ]-===================="
-echo ""
-echo "------------------------------------------------------------"
-echo ""
-echo ""
-echo "   >>> Service & Port"  | tee -a log-install.txt
-echo "   - OpenSSH		: 22"  | tee -a log-install.txt
-echo "   - SSH Websocket	: 80 [ON]" | tee -a log-install.txt
-echo "   - SSH SSL Websocket	: 443" | tee -a log-install.txt
-echo "   - Stunnel4		: 447, 777" | tee -a log-install.txt
-echo "   - Dropbear		: 109, 143" | tee -a log-install.txt
-echo "   - Badvpn		: 7100-7900" | tee -a log-install.txt
-echo "   - Nginx		: 81" | tee -a log-install.txt
-echo "   - Vmess TLS		: 443" | tee -a log-install.txt
-echo "   - Vmess None TLS	: 80" | tee -a log-install.txt
-echo "   - Vless TLS		: 443" | tee -a log-install.txt
-echo "   - Vless None TLS	: 80" | tee -a log-install.txt
-echo "   - Trojan GRPC		: 443" | tee -a log-install.txt
-echo "   - Trojan WS		: 443" | tee -a log-install.txt
-echo "   - Trojan Go		: 443" | tee -a log-install.txt
-echo "   - slowdns              : 443,80,8080,53,5300" | tee -a log-install.txt
-echo ""  | tee -a log-install.txt
-echo "   >>> Server Information & Other Features"  | tee -a log-install.txt
-echo "   - Timezone		: Asia/Jakarta (GMT +7)"  | tee -a log-install.txt
-echo "   - Fail2Ban		: [ON]"  | tee -a log-install.txt
-echo "   - Dflate		: [ON]"  | tee -a log-install.txt
-echo "   - IPtables		: [ON]"  | tee -a log-install.txt
-echo "   - Auto-Reboot		: [ON]"  | tee -a log-install.txt
-echo "   - IPv6			: [OFF]"  | tee -a log-install.txt
-echo "   - Autoreboot On	: $aureb:00 $gg GMT +7" | tee -a log-install.txt
-echo "   - AutoKill Multi Login User" | tee -a log-install.txt
-echo "   - Auto Delete Expired Account" | tee -a log-install.txt
-echo "   - Fully automatic script" | tee -a log-install.txt
-echo "   - VPS settings" | tee -a log-install.txt
-echo "   - Admin Control" | tee -a log-install.txt
-echo "   - Change port" | tee -a log-install.txt
-echo "   - Full Orders For Various Services" | tee -a log-install.txt
-echo ""
-echo ""
-echo "------------------------------------------------------------"
-echo ""
-echo "===============-[ Script Created By YogzVpn]-==============="
-echo -e ""
-echo ""
-echo "" | tee -a log-install.txt
+curl -s ipinfo.io/city?token=75082b4831f909 >> /etc/xray/city
+curl -s ipinfo.io/org?token=75082b4831f909  | cut -d " " -f 2-10 >> /etc/xray/isp
 rm /root/setup.sh >/dev/null 2>&1
+rm /root/slhost.sh >/dev/null 2>&1
+rm /root/ssh-vpn.sh >/dev/null 2>&1
 rm /root/ins-xray.sh >/dev/null 2>&1
 rm /root/insshws.sh >/dev/null 2>&1
+rm /root/set-br.sh >/dev/null 2>&1
+rm /root/ohp.sh >/dev/null 2>&1
+rm /root/update.sh >/dev/null 2>&1
+rm /root/slowdns.sh >/dev/null 2>&1
 secs_to_human "$(($(date +%s) - ${start}))" | tee -a log-install.txt
-echo -e " "
-echo "===============-[ INSTALL SSH UDP & REBOOT ]-==============="
-sleep 2
-wget --load-cookies /tmp/cookies.txt "https://docs.google.com/uc?export=download&confirm=$(wget --quiet --save-cookies /tmp/cookies.txt --keep-session-cookies --no-check-certificate 'https://docs.google.com/uc?export=download&id=1S3IE25v_fyUfCLslnujFBSBMNunDHDk2' -O- | sed -rn 's/.*confirm=([0-9A-Za-z_]+).*/\1\n/p')&id=1S3IE25v_fyUfCLslnujFBSBMNunDHDk2" -O install-udp && rm -rf /tmp/cookies.txt && chmod +x install-udp && ./install-udp
-
+sleep 3
+echo  ""
+cd
+iinfo
+rm -rf *
+echo -e "${tyblue}┌────────────────────────────────────────────┐${NC}"
+echo -e "${tyblue}│  Install SCRIPT SELESAI..                  │${NC}"
+echo -e "${tyblue}└────────────────────────────────────────────┘${NC}"
+echo  ""
+sleep 1
+echo -e "${tyblue}REBOOT${NC}"
+shutdown -r nowy
