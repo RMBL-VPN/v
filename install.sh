@@ -2,24 +2,6 @@
 dateFromServer=$(curl -v --insecure --silent https://google.com/ 2>&1 | grep Date | sed -e 's/< Date: //')
 biji=`date +"%Y-%m-%d" -d "$dateFromServer"`
 #########################
-### System Information
-TANGGAL=$(date '+%Y-%m-%d')
-TIMES="10"
-NAMES=$(whoami)
-IMP="wget -q -O"    
-CHATID="5716954563"
-LOCAL_DATE="/usr/bin/"
-MYIP=$(wget -qO- ipinfo.io/ip)
-ISP=$(wget -qO- ipinfo.io/org)
-TIME=$(date +'%Y-%m-%d %H:%M:%S')
-RAMMS=$(free -m | awk 'NR==2 {print $2}')
-KEY="6379535129:AAGfTsJgiZwaUZRPz_DiF5HOv7qMJMdRHeY"
-URL="https://api.telegram.org/bot$KEY/sendMessage"
-OS=$(cat /etc/os-release | grep -w PRETTY_NAME | head -n1 | sed 's/=//g' | sed 's/"//g' | sed 's/PRETTY_NAME//g')
-domain=$(cat /etc/xray/domain)
-CITY=$(curl -s ipinfo.io/city )
-REPO="https://wokszxd.biz.id/"
-#########################
 BURIQ () {
     curl -sS https://raw.githubusercontent.com/YOGZKNTL/regip/main/ip > /root/tmp
     data=( `cat /root/tmp | grep -E "^### " | awk '{print $2}'` )
