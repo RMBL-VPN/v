@@ -2,11 +2,11 @@
 dateFromServer=$(curl -v --insecure --silent https://google.com/ 2>&1 | grep Date | sed -e 's/< Date: //')
 biji=`date +"%Y-%m-%d" -d "$dateFromServer"`
 ###########- COLOR CODE -##############
-colornow=$(cat /etc/rmbl/theme/color.conf)
+colornow=$(cat /etc/casper/theme/color.conf)
 NC="\e[0m"
 RED="\033[0;31m"
-COLOR1="$(cat /etc/rmbl/theme/$colornow | grep -w "TEXT" | cut -d: -f2|sed 's/ //g')"
-COLBG1="$(cat /etc/rmbl/theme/$colornow | grep -w "BG" | cut -d: -f2|sed 's/ //g')"
+COLOR1="$(cat /etc/casper/theme/$colornow | grep -w "TEXT" | cut -d: -f2|sed 's/ //g')"
+COLBG1="$(cat /etc/casper/theme/$colornow | grep -w "BG" | cut -d: -f2|sed 's/ //g')"
 WH='\033[1;37m'
 ###########- END COLOR CODE -##########
 ipsaya=$(curl -sS ipinfo.io/ip)
@@ -53,7 +53,7 @@ echo -ne " ${WH}Select menu ${COLOR1}: ${WH}"; read colormenu
 case $colormenu in
 01 | 1)
 clear
-echo "blue" >/etc/rmbl/theme/color.conf
+echo "blue" >/etc/casper/theme/color.conf
 echo -e "$COLOR1┌─────────────────────────────────────────────────┐${NC}"
 echo -e "$COLOR1 ${NC} ${COLBG1}                ${WH}• BLUE THEME •                 ${NC} $COLOR1 $NC"
 echo -e "$COLOR1└─────────────────────────────────────────────────┘${NC}"
@@ -68,7 +68,7 @@ echo -e "$COLOR1└────────────────────�
 ;;
 02 | 2)
 clear
-echo "red" >/etc/rmbl/theme/color.conf
+echo "red" >/etc/casper/theme/color.conf
 echo -e "$COLOR1┌─────────────────────────────────────────────────┐${NC}"
 echo -e "$COLOR1 ${NC} ${COLBG1}                ${WH}• RED THEME •                  ${NC} $COLOR1 $NC"
 echo -e "$COLOR1└─────────────────────────────────────────────────┘${NC}"
@@ -83,7 +83,7 @@ echo -e "$COLOR1└────────────────────�
 ;;
 03 | 3)
 clear
-echo "yellow" >/etc/rmbl/theme/color.conf
+echo "yellow" >/etc/casper/theme/color.conf
 echo -e "$COLOR1┌─────────────────────────────────────────────────┐${NC}"
 echo -e "$COLOR1 ${NC} ${COLBG1}               ${WH}• YELLOW THEME •                ${NC} $COLOR1 $NC"
 echo -e "$COLOR1└─────────────────────────────────────────────────┘${NC}"
@@ -98,7 +98,7 @@ echo -e "$COLOR1└────────────────────�
 ;;
 04 | 4)
 clear
-echo "cyan" >/etc/rmbl/theme/color.conf
+echo "cyan" >/etc/casper/theme/color.conf
 echo -e "$COLOR1┌─────────────────────────────────────────────────┐${NC}"
 echo -e "$COLOR1 ${NC} ${COLBG1}                ${WH}• CYAN THEME •                 ${NC} $COLOR1 $NC"
 echo -e "$COLOR1└─────────────────────────────────────────────────┘${NC}"
@@ -113,7 +113,7 @@ echo -e "$COLOR1└────────────────────�
 ;;
 05 | 5)
 clear
-echo "green" >/etc/rmbl/theme/color.conf
+echo "green" >/etc/casper/theme/color.conf
 echo -e "$COLOR1┌─────────────────────────────────────────────────┐${NC}"
 echo -e "$COLOR1 ${NC} ${COLBG1}               ${WH}• GREEN THEME •                 ${NC} $COLOR1 $NC"
 echo -e "$COLOR1└─────────────────────────────────────────────────┘${NC}"
@@ -128,7 +128,7 @@ echo -e "$COLOR1└────────────────────�
 ;;
 06 | 6)
 clear
-echo "magenta" >/etc/rmbl/theme/color.conf
+echo "magenta" >/etc/casper/theme/color.conf
 echo -e "$COLOR1┌─────────────────────────────────────────────────┐${NC}"
 echo -e "$COLOR1 ${NC} ${COLBG1}               ${WH}• MAGENTA THEME •               ${NC} $COLOR1 $NC"
 echo -e "$COLOR1└─────────────────────────────────────────────────┘${NC}"
