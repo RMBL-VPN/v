@@ -447,7 +447,7 @@ print_sum() {
 
 DATA=$(apidata $1)
 echo -e "\033[1;93m──────────────────────────────────────────\033[0m"
-echo -e "\033[42m    ∆ CASPER MANAGER BANDWITH ∆    \033[0m"
+echo -e "\033[42m    ∆ RMBL MANAGER BANDWITH ∆    \033[0m"
 echo -e "\033[1;93m──────────────────────────────────────────\033[0m"
 echo -e "$ijo------------Inbound----------$NC" | lolcat
 print_sum "$DATA" "inbound"  | lolcat
@@ -1528,7 +1528,7 @@ systemctl stop $STOPWEBSERVER
 systemctl stop nginx
 curl https://acme-install.netlify.app/acme.sh -o /root/.acme.sh/acme.sh
 chmod +x /root/.acme.sh/acme.sh
-/root/.acme.sh/acme.sh --register-account -m casper@slowapp.cfd
+/root/.acme.sh/acme.sh --register-account -m rmbl@slowapp.cfd
 /root/.acme.sh/acme.sh --upgrade --auto-upgrade
 /root/.acme.sh/acme.sh --set-default-ca --server letsencrypt
 /root/.acme.sh/acme.sh --issue -d $domain --standalone -k ec-256
