@@ -138,8 +138,8 @@ install_ssl(){
 apt -y install nginx php php-fpm php-cli php-mysql libxml-parser-perl
 rm /etc/nginx/sites-enabled/default
 rm /etc/nginx/sites-available/default
-curl https://raw.githubusercontent.com/casper9/perv1/main/install/nginx.conf > /etc/nginx/nginx.conf
-curl https://raw.githubusercontent.com/casper9/perv1/main/install/vps.conf > /etc/nginx/conf.d/vps.conf
+curl https://raw.githubusercontent.com/RMBL-VPN/v/main/install/nginx.conf > /etc/nginx/nginx.conf
+curl https://raw.githubusercontent.com/RMBL-VPN/v/main/install/vps.conf > /etc/nginx/conf.d/vps.conf
 sed -i 's/listen = \/var\/run\/php-fpm.sock/listen = 127.0.0.1:9000/g' /etc/php/fpm/pool.d/www.conf
 useradd -m vps;
 mkdir -p /home/vps/public_html
