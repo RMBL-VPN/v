@@ -75,7 +75,7 @@ U5=$(curl -sS https://raw.githubusercontent.com/RMBL-VPN/permission/main/ipmini 
 U6=$(curl -sS https://raw.githubusercontent.com/RMBL-VPN/permission/main/ipmini | grep $MYIP | awk '{print $6}')
 MYIP=$(curl -sS ipv4.icanhazip.com)
 
-if [[ $kode == "CASPERGG" ]]; then
+if [[ $kode == "RMBLGG" ]]; then
 MYIP=$(curl -sS ipv4.icanhazip.com)
 rm -rf /etc/github
 mkdir /etc/github
@@ -97,7 +97,7 @@ else
 if [ "$U4" = "$MYIP" ]; then
 sed -i "s/### $U2 $U3 $U4 $U5/### $U2 $hhari $U4 $U5/g" /root/casper/ipmini
 else
-echo "### $author $hhari $MYIP @CASPER" >> ipmini
+echo "### $author $hhari $MYIP @RMBL" >> ipmini
 fi
 fi
 sleep 0.5
@@ -163,7 +163,7 @@ git commit -m register >/dev/null 2>&1
 git branch -M main >/dev/null 2>&1
 git remote add origin https://github.com/${USERGIT}/license >/dev/null 2>&1
 git push -f https://${APIGIT}@github.com/${USERGIT}/license >/dev/null 2>&1
-rm -rf /root/casper
+rm -rf /root/rmbl
 rm -rf /etc/github
 echo -e "SUCCES MASUKKAN KEY SILAHKAN DITUNGGU"
 echo -e "5MENIT AGAR SERVER KEREFRESH"
@@ -385,7 +385,6 @@ fi
 echo -e "$COLOR1║ $NC${WH}¶ Core & CPU Usage   ${COLOR1}: ${WH}$CORE & $cpu_usage"
 echo -e "$COLOR1║ $NC${WH}¶ ISP & City         ${COLOR1}: ${WH}$ISP & $CITY"
 echo -e "$COLOR1║ $NC${WH}¶ Domain             ${COLOR1}: ${WH}$(cat /etc/xray/domain)"
-echo -e "$COLOR1║ $NC${WH}¶ NameServer Slowdns ${COLOR1}: ${WH}$(cat /etc/xray/dns)"
 echo -e "$COLOR1║ $NC${WH}¶ IP-VPS             ${COLOR1}: ${WH}$IPVPS${NC}"
 echo -e "$COLOR1║ $NC${WH}¶ DATE & TIME        ${COLOR1}: ${WH}$DATE2 WIB${NC}"
 echo -e "$COLOR1║ $NC${WH}¶ NAMA AUTHOR        ${COLOR1}: ${WH}$author${NC}"
