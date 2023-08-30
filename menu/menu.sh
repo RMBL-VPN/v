@@ -411,7 +411,7 @@ echo -e "$COLOR1║ ${WH}[${COLOR1}01${WH}]${NC} ${COLOR1}• ${WH}SSH-WS   ${WH
 echo -e "$COLOR1║                                                 $COLOR1║ $NC"
 echo -e "$COLOR1║ ${WH}[${COLOR1}02${WH}]${NC} ${COLOR1}• ${WH}VMESS    ${WH}[${COLOR1}Menu${WH}]   ${WH}[${COLOR1}07${WH}]${NC} ${COLOR1}• ${WH}REBOOT VPS      $COLOR1║ $NC"
 echo -e "$COLOR1║                                                 $COLOR1║ $NC"
-echo -e "$COLOR1║ ${WH}[${COLOR1}03${WH}]${NC} ${COLOR1}• ${WH}VLESS    ${WH}[${COLOR1}Menu${WH}]   ${WH}[${COLOR1}08${WH}]${NC} ${COLOR1}• ${WH}UPDATE    ${WH}[${COLOR1}Menu${WH}]$COLOR1║ $NC"
+echo -e "$COLOR1║ ${WH}[${COLOR1}03${WH}]${NC} ${COLOR1}• ${WH}VLESS    ${WH}[${COLOR1}Menu${WH}]   ${WH}[${COLOR1}08${WH}]${NC} ${COLOR1}• ${WH}TRIAL    ${WH}[${COLOR1}Menu${WH}]$COLOR1║ $NC"
 echo -e "$COLOR1║                                                 $COLOR1║ $NC"
 echo -e "$COLOR1║ ${WH}[${COLOR1}04${WH}]${NC} ${COLOR1}• ${WH}TROJAN   ${WH}[${COLOR1}Menu${WH}]   ${WH}[${COLOR1}09${WH}]${NC} ${COLOR1}• ${WH}SETTING   ${WH}[${COLOR1}Menu${WH}]$COLOR1║ $NC"
 echo -e "$COLOR1║                                                 $COLOR1║ $NC"
@@ -500,7 +500,7 @@ case $opt in
 05 | 5) clear ; m-vmess ;;
 06 | 6) clear ; running ;;
 07 | 7) clear ; reboot ;;
-08 | 8) clear ; m-update ;;
+08 | 8) clear ; trial ;;
 19 | 9) clear ; m-system ;;
 10 | 10) clear ; m-backup;;
 11 | 11) clear ; $ressee ;;
