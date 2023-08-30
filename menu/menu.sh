@@ -502,7 +502,7 @@ case $opt in
 07 | 7) clear ; reboot ;;
 08 | 8) clear ; m-backup ;;
 19 | 9) clear ; m-system ;;
-10 | 10) clear ; clear;;
+10 | 10) clear ; clearcache;;
 11 | 11) clear ; $ressee ;;
 12 | 12) clear ; key ;;
 89 | 89) clear ; bannner ;;
