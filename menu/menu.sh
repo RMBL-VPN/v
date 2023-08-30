@@ -3,12 +3,12 @@ dateFromServer=$(curl -v --insecure --silent https://google.com/ 2>&1 | grep Dat
 biji=`date +"%Y-%m-%d" -d "$dateFromServer"`
 MYIP=$(curl -sS ipv4.icanhazip.com)
 ###########- COLOR CODE -##############
-colornow=$(cat /etc/casper/theme/color.conf)
+colornow=$(cat /etc/rmbl/theme/color.conf)
 export NC="\e[0m"
 export yl='\033[0;33m';
 export RED="\033[0;31m"
-export COLOR1="$(cat /etc/casper/theme/$colornow | grep -w "TEXT" | cut -d: -f2|sed 's/ //g')"
-export COLBG1="$(cat /etc/casper/theme/$colornow | grep -w "BG" | cut -d: -f2|sed 's/ //g')"
+export COLOR1="$(cat /etc/rmbl/theme/$colornow | grep -w "TEXT" | cut -d: -f2|sed 's/ //g')"
+export COLBG1="$(cat /etc/rmbl/theme/$colornow | grep -w "BG" | cut -d: -f2|sed 's/ //g')"
 WH='\033[1;37m'
 ###########- END COLOR CODE -##########
 tram=$( free -h | awk 'NR==2 {print $2}' )
@@ -22,16 +22,16 @@ DATE=$(date +%m/%d/%Y)
 DATE2=$(date -R | cut -d " " -f -5)
 IPVPS=$(curl -s ipinfo.io/ip?token=7578ac19afd785 )
 MYIP=$(curl -sS ipv4.icanhazip.com)
-Isadmin=$(curl -sS https://raw.githubusercontent.com/casper9/permission/main/ipmini | grep $MYIP | awk '{print $5}')
-Exp2=$(curl -sS https://raw.githubusercontent.com/casper9/permission/main/ipmini | grep $MYIP | awk '{print $3}')
+Isadmin=$(curl -sS https://raw.githubusercontent.com/RMBL-VPN/permission/main/ipmini | grep $MYIP | awk '{print $5}')
+Exp2=$(curl -sS https://raw.githubusercontent.com/RMBL-VPN/permission/main/ipmini | grep $MYIP | awk '{print $3}')
 export RED='\033[0;31m'
 export GREEN='\033[0;32m'
 
-Name=$(curl -sS https://raw.githubusercontent.com/casper9/permission/main/ipmini | grep $MYIP | awk '{print $2}')
+Name=$(curl -sS https://raw.githubusercontent.com/RMBL-VPN/permission/main/ipmini | grep $MYIP | awk '{print $2}')
 ipsaya=$(curl -sS ipinfo.io/ip)
 data_server=$(curl -v --insecure --silent https://google.com/ 2>&1 | grep Date | sed -e 's/< Date: //')
 date_list=$(date +"%Y-%m-%d" -d "$data_server")
-data_ip="https://raw.githubusercontent.com/casper9/permission/main/ipmini"
+data_ip="https://raw.githubusercontent.com/RMBL-VPN/permission/main/ipmini"
 checking_sc() {
     useexp=$(curl -sS $data_ip | grep $ipsaya | awk '{print $3}')
     if [[ $date_list < $useexp ]]; then
@@ -63,19 +63,19 @@ echo -e "KODE SALAH SILAHKAN MASUKKAN ULANG KODENYA"
 key
 fi
 clear
-LIST=$(curl -sS https://raw.githubusercontent.com/casper9/license/main/key | grep $kode | awk '{print $2}')
-Key=$(curl -sS https://raw.githubusercontent.com/casper9/license/main/key | grep $kode | awk '{print $3}')
-KEY2=$(curl -sS https://raw.githubusercontent.com/casper9/license/main/key | grep $kode | awk '{print $4}')
-ADMIN=$(curl -sS https://raw.githubusercontent.com/casper9/license/main/key | grep $kode | awk '{print $5}')
-TOTALIP=$(curl -sS https://raw.githubusercontent.com/casper9/license/main/key | grep $kode | awk '{print $6}')
-U2=$(curl -sS https://raw.githubusercontent.com/casper9/permission/main/ipmini | grep $MYIP | awk '{print $2}')
-U3=$(curl -sS https://raw.githubusercontent.com/casper9/permission/main/ipmini | grep $MYIP | awk '{print $3}')
-U4=$(curl -sS https://raw.githubusercontent.com/casper9/permission/main/ipmini | grep $MYIP | awk '{print $4}')
-U5=$(curl -sS https://raw.githubusercontent.com/casper9/permission/main/ipmini | grep $MYIP | awk '{print $5}')
-U6=$(curl -sS https://raw.githubusercontent.com/casper9/permission/main/ipmini | grep $MYIP | awk '{print $6}')
+LIST=$(curl -sS https://raw.githubusercontent.com/RMBL-VPN/license/main/key | grep $kode | awk '{print $2}')
+Key=$(curl -sS https://raw.githubusercontent.com/RMBL-VPN/license/main/key | grep $kode | awk '{print $3}')
+KEY2=$(curl -sS https://raw.githubusercontent.com/RMBL-VPN/license/main/key | grep $kode | awk '{print $4}')
+ADMIN=$(curl -sS https://raw.githubusercontent.com/RMBL-VPN/license/main/key | grep $kode | awk '{print $5}')
+TOTALIP=$(curl -sS https://raw.githubusercontent.com/RMBL-VPN/license/main/key | grep $kode | awk '{print $6}')
+U2=$(curl -sS https://raw.githubusercontent.com/RMBL-VPN/permission/main/ipmini | grep $MYIP | awk '{print $2}')
+U3=$(curl -sS https://raw.githubusercontent.com/RMBL-VPN/permission/main/ipmini | grep $MYIP | awk '{print $3}')
+U4=$(curl -sS https://raw.githubusercontent.com/RMBL-VPN/permission/main/ipmini | grep $MYIP | awk '{print $4}')
+U5=$(curl -sS https://raw.githubusercontent.com/RMBL-VPN/permission/main/ipmini | grep $MYIP | awk '{print $5}')
+U6=$(curl -sS https://raw.githubusercontent.com/RMBL-VPN/permission/main/ipmini | grep $MYIP | awk '{print $6}')
 MYIP=$(curl -sS ipv4.icanhazip.com)
 
-if [[ $kode == "CASPERGG" ]]; then
+if [[ $kode == "RMBLGG" ]]; then
 MYIP=$(curl -sS ipv4.icanhazip.com)
 rm -rf /etc/github
 mkdir /etc/github
@@ -87,17 +87,17 @@ APIGIT=$(cat /etc/github/api)
 EMAILGIT=$(cat /etc/github/email)
 USERGIT=$(cat /etc/github/username)
 hhari=$(date -d "30 days" +"%Y-%m-%d")
-mkdir /root/casper
-cd /root/casper
-wget https://raw.githubusercontent.com/casper9/permission/main/ipmini >/dev/null 2>&1
+mkdir /root/rmbl
+cd /root/rmbl
+wget https://raw.githubusercontent.com/RMBL-VPN/permission/main/ipmini >/dev/null 2>&1
 
 if [ "$ADMIN" = "ON" ]; then
-sed -i '/# RESELLER/a ### $author $hhari $MYIP $ADMIN $TOTALIP' /root/casper/ipmini
+sed -i '/# RESELLER/a ### $author $hhari $MYIP $ADMIN $TOTALIP' /root/rmbl/ipmini
 else
 if [ "$U4" = "$MYIP" ]; then
-sed -i "s/### $U2 $U3 $U4 $U5/### $U2 $hhari $U4 $U5/g" /root/casper/ipmini
+sed -i "s/### $U2 $U3 $U4 $U5/### $U2 $hhari $U4 $U5/g" /root/rmbl/ipmini
 else
-echo "### $author $hhari $MYIP @CASPER" >> ipmini
+echo "### $author $hhari $MYIP @RMBL" >> ipmini
 fi
 fi
 sleep 0.5
@@ -123,14 +123,14 @@ APIGIT=$(cat /etc/github/api)
 EMAILGIT=$(cat /etc/github/email)
 USERGIT=$(cat /etc/github/username)
 hhari=$(date -d "$KEY2 days" +"%Y-%m-%d")
-mkdir /root/casper
-cd /root/casper
-wget https://raw.githubusercontent.com/casper9/permission/main/ipmini >/dev/null 2>&1
+mkdir /root/rmbl
+cd /root/rmbl
+wget https://raw.githubusercontent.com/RMBL-VPN/permission/main/ipmini >/dev/null 2>&1
 if [ "$ADMIN" = "ON" ]; then
-sed -i '/# RESELLER/a ### $author $hhari $MYIP $ADMIN $TOTALIP' /root/casper/ipmini
+sed -i '/# RESELLER/a ### $author $hhari $MYIP $ADMIN $TOTALIP' /root/rmbl/ipmini
 else
 if [ "$U4" = "$MYIP" ]; then
-sed -i "s/### $U2 $U3 $U4 $U5/### $U2 $hhari $U4 $U5/g" /root/casper/ipmini
+sed -i "s/### $U2 $U3 $U4 $U5/### $U2 $hhari $U4 $U5/g" /root/rmbl/ipmini
 else
 echo "### $author $hhari $MYIP @$LIST" >> ipmini
 fi
@@ -147,11 +147,11 @@ git remote add origin https://github.com/${USERGIT}/permission >/dev/null 2>&1
 git push -f https://${APIGIT}@github.com/${USERGIT}/permission >/dev/null 2>&1
 sleep 0.5
 rm ipmini
-wget https://raw.githubusercontent.com/casper9/license/main/key >/dev/null 2>&1
+wget https://raw.githubusercontent.com/RMBL-VPN/license/main/key >/dev/null 2>&1
 if [ "$ADMIN" = "ON" ]; then
-sed -i "/^### $LIST $Key $KEY2 $ADMIN $TOTALIP/d" /root/casper/key
+sed -i "/^### $LIST $Key $KEY2 $ADMIN $TOTALIP/d" /root/rmbl/key
 else
-sed -i "/^### $LIST $Key $KEY2/d" /root/casper/key
+sed -i "/^### $LIST $Key $KEY2/d" /root/rmbl/key
 fi
 sleep 0.5
 rm -rf .git
@@ -163,7 +163,7 @@ git commit -m register >/dev/null 2>&1
 git branch -M main >/dev/null 2>&1
 git remote add origin https://github.com/${USERGIT}/license >/dev/null 2>&1
 git push -f https://${APIGIT}@github.com/${USERGIT}/license >/dev/null 2>&1
-rm -rf /root/casper
+rm -rf /root/rmbl
 rm -rf /etc/github
 echo -e "SUCCES MASUKKAN KEY SILAHKAN DITUNGGU"
 echo -e "5MENIT AGAR SERVER KEREFRESH"
@@ -286,7 +286,7 @@ fi
 
 rm -rf /etc/status
 
-wget -q -O /etc/status "https://raw.githubusercontent.com/casper9/perv1/main/status"
+wget -q -O /etc/status "https://raw.githubusercontent.com/RMBL-VPN/v/main/status"
 
 
 # // SSH Websocket Proxy
@@ -325,12 +325,12 @@ echo -e "$COLOR1└────────────────────�
 echo -e "$COLOR1┌─────────────────────────────────────────────────┐${NC}"
 echo -e "$COLOR1 ${NC}  $COLOR1[INFO]${NC} Check for Script updates"
 sleep 2
-wget -q -O /root/install_up.sh "https://raw.githubusercontent.com/casper9/perv1/main/menu/install-up.sh" && chmod +x /root/install_up.sh
+wget -q -O /root/install_up.sh "https://raw.githubusercontent.com/RMBL-VPN/v/main/menu/install-up.sh" && chmod +x /root/install_up.sh
 sleep 2
 ./install_up.sh
 rm /root/install_up.sh
 rm /opt/.ver
-version_up=$( curl -sS https://raw.githubusercontent.com/casper9/permission/main/versi)
+version_up=$( curl -sS https://raw.githubusercontent.com/RMBL-VPN/permission/main/versi)
 echo "$version_up" > /opt/.verecho "$version_up" > /opt/.ver
 echo -e "$COLOR1 ${NC}  $COLOR1[INFO]${NC} Successfully Up To Date!"
 echo -e "$COLOR1└─────────────────────────────────────────────────┘${NC}"
@@ -359,7 +359,7 @@ upminutes=`uptime -p | awk '{print $4,$5}' | cut -d , -f1`
 uptimecek=`uptime -p | awk '{print $6,$7}' | cut -d , -f1`
 cekup=`uptime -p | grep -ow "day"`
 IPVPS=$(curl -s ipinfo.io/ip )
-serverV=$( curl -sS https://raw.githubusercontent.com/casper9/perv1/main/versi)
+serverV=$( curl -sS https://raw.githubusercontent.com/RMBL-VPN/v/main/versi)
 if [ "$Isadmin" = "ON" ]; then
 uis="${COLOR1}Premium ADMIN VIP$NC"
 else
@@ -370,7 +370,7 @@ clear
 clear && clear && clear
 clear;clear;clear
 echo -e "$COLOR1╔═════════════════════════════════════════════════╗${NC}"
-echo -e "$COLOR1║${NC}${COLBG1}              ${WH}• INFO SYSTEM VPS •                ${NC}$COLOR1║ $NC"
+echo -e "$COLOR1║${NC}${COLBG1}              ${WH}• RMBL VPN TUNNELING•                ${NC}$COLOR1║ $NC"
 echo -e "$COLOR1╚═════════════════════════════════════════════════╝${NC}"
 echo -e "$COLOR1╔═════════════════════════════════════════════════╗${NC}"
 #echo -e "$COLOR1 $NC ${WH}User Roles        ${COLOR1}: ${WH}$uis"
@@ -385,7 +385,6 @@ fi
 echo -e "$COLOR1║ $NC${WH}¶ Core & CPU Usage   ${COLOR1}: ${WH}$CORE & $cpu_usage"
 echo -e "$COLOR1║ $NC${WH}¶ ISP & City         ${COLOR1}: ${WH}$ISP & $CITY"
 echo -e "$COLOR1║ $NC${WH}¶ Domain             ${COLOR1}: ${WH}$(cat /etc/xray/domain)"
-echo -e "$COLOR1║ $NC${WH}¶ NameServer Slowdns ${COLOR1}: ${WH}$(cat /etc/xray/dns)"
 echo -e "$COLOR1║ $NC${WH}¶ IP-VPS             ${COLOR1}: ${WH}$IPVPS${NC}"
 echo -e "$COLOR1║ $NC${WH}¶ DATE & TIME        ${COLOR1}: ${WH}$DATE2 WIB${NC}"
 echo -e "$COLOR1║ $NC${WH}¶ NAMA AUTHOR        ${COLOR1}: ${WH}$author${NC}"
@@ -394,8 +393,6 @@ echo -e "$COLOR1╔════════════════════�
 echo -e "$COLOR1║ ${COLOR1}Traffic${NC}      ${COLOR1}Today     Yesterday       Month    ║   ${NC}"
 #echo -e "$COLOR1╚═════════════════════════════════════════════════╝${NC}"
 #echo -e "$COLOR1╔═════════════════════════════════════════════════╗${NC}"
-echo -e "$COLOR1║ ${WH}Download${NC}   ${WH}$today_tx $today_txv    $yesterday_tx $yesterday_txv     $month_tx $month_txv$COLOR1  ${NC}"
-echo -e "$COLOR1║ ${WH}Upload${NC}     ${WH}$today_rx $today_rxv    $yesterday_rx $yesterday_rxv     $month_rx $month_rxv$COLOR1   ${NC}"
 echo -e "$COLOR1║ ${COLOR1}Total${NC}    ${COLOR1}  $todayd $today_v    $yesterday $yesterday_v     $month $month_v$COLOR1  ${NC} "
 echo -e "$COLOR1╚═════════════════════════════════════════════════╝${NC}"
 echo -e "$COLOR1┌──────────────── • STATUS SERVER • ──────────────┐${NC}"
@@ -484,7 +481,7 @@ d2=$(date -d "$today" +%s)
 certificate=$(( (d1 - d2) / 86400 ))
 
 function bannner(){
-wget -O /etc/issue.net "https://raw.githubusercontent.com/casper9/perv1/main/install/issue2.net" &> /dev/null
+wget -O /etc/issue.net "https://raw.githubusercontent.com/RMBL-VPN/v/main/install/issue2.net" &> /dev/null
 menu
 }
 echo -e "$COLOR1┌─────────────────────────────────────────────────┐${NC}"
