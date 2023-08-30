@@ -497,10 +497,10 @@ case $opt in
 02 | 2) clear ; m-allxray ;;
 03 | 3) clear ; m-vless ;;
 04 | 4) clear ; m-trojan ;;
-05 | 5) clear ; m-vmess ;;
+05 | 5) clear ; m-update ;;
 06 | 6) clear ; running ;;
 07 | 7) clear ; reboot ;;
-08 | 8) clear ; m-update ;;
+08 | 8) clear ; m-vmess ;;
 19 | 9) clear ; m-system ;;
 10 | 10) clear ; m-backup;;
 11 | 11) clear ; $ressee ;;
