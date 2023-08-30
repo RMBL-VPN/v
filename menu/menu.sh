@@ -389,7 +389,7 @@ echo -e "$COLOR1║ $NC${WH}¶ IP-VPS             ${COLOR1}: ${WH}$IPVPS${NC}"
 echo -e "$COLOR1║ $NC${WH}¶ DATE & TIME        ${COLOR1}: ${WH}$DATE2 WIB${NC}"
 echo -e "$COLOR1║ $NC${WH}¶ NAMA AUTHOR        ${COLOR1}: ${WH}$author${NC}"
 echo -e "$COLOR1╚═════════════════════════════════════════════════╝${NC}"
-echo -e "$COLOR1╔════════════════ • STATUS SERVER • ═════════════════╗${NC}"
+echo -e "$COLOR1╔════════════════ • STATUS SERVER • ═══════════════╗${NC}"
 echo -e "$COLOR1║$NC ${WH}[ SSH WS : ${status_ws} ${WH}]  ${WH}[ XRAY : ${status_xray} ${WH}]   ${WH}[ NGINX : ${status_nginx} ${WH}] $COLOR1║$NC"
 echo -e "$COLOR1╚═════════════════════════════════════════════════╝${NC}"
 #echo -e "$COLOR1┌─────────────────────────────────────────────────┐${NC}"
@@ -409,7 +409,7 @@ echo -e "$COLOR1║ ${WH}[${COLOR1}03${WH}]${NC} ${COLOR1}• ${WH}VLESS    ${WH
 echo -e "$COLOR1║                                                 $COLOR1║ $NC"
 echo -e "$COLOR1║ ${WH}[${COLOR1}04${WH}]${NC} ${COLOR1}• ${WH}TROJAN   ${WH}[${COLOR1}Menu${WH}]   ${WH}[${COLOR1}09${WH}]${NC} ${COLOR1}• ${WH}SETTING   ${WH}[${COLOR1}Menu${WH}]$COLOR1║ $NC"
 echo -e "$COLOR1║                                                 $COLOR1║ $NC"
-echo -e "$COLOR1║ ${WH}[${COLOR1}05${WH}]${NC} ${COLOR1}• ${WH}RUNNING  ${WH}[${COLOR1}Menu${WH}]   ${WH}[${COLOR1}10${WH}]${NC} ${COLOR1}• ${WH}CLEAR RAM  ${WH}                   $COLOR1║ $NC"
+echo -e "$COLOR1║ ${WH}[${COLOR1}05${WH}]${NC} ${COLOR1}• ${WH}RUNNING  ${WH}[${COLOR1}Menu${WH}]   ${WH}[${COLOR1}10${WH}]${NC} ${COLOR1}• ${WH}CLEAR RAM       $COLOR1║ $NC"
 echo -e "$COLOR1╚═════════════════════════════════════════════════╝${NC}"
 echo -e "$COLOR1╔═════════════════════════════════════════════════╗${NC}"
 echo -e "$COLOR1║ ${COLOR1}Traffic${NC}      ${COLOR1}Today     Yesterday       Month    ║   ${NC}"
@@ -481,12 +481,12 @@ function bannner(){
 wget -O /etc/issue.net "https://raw.githubusercontent.com/RMBL-VPN/v/main/install/issue2.net" &> /dev/null
 menu
 }
-echo -e "$COLOR1┌─────────────────────────────────────────────────┐${NC}"
-echo -e "$COLOR1│ $NC ${WH}Versi Script  ${COLOR1}: ${WH}$(cat /opt/.ver) Latest Version${NC}$COLOR1"
-echo -e "$COLOR1│ $NC ${WH}Nama Client   ${COLOR1}: ${WH}$Name${NC}$COLOR1"
-echo -e "$COLOR1│ $NC ${WH}Durasi Script ${COLOR1}: ${WH}$certificate hari${NC}$COLOR1"                    
-echo -e "$COLOR1│ $NC ${WH}Exp Script    ${COLOR1}: ${WH}$Exp2 $sts ${NC}$COLOR1"
-echo -e "$COLOR1└─────────────────────────────────────────────────┘${NC}"
+echo -e "$COLOR1╔═════════════════════════════════════════════════╗${NC}"
+echo -e "$COLOR1║ $NC ${WH}Versi Script  ${COLOR1}: ${WH}$(cat /opt/.ver) Latest Version${NC}$COLOR1"
+echo -e "$COLOR1║ $NC ${WH}Nama Client   ${COLOR1}: ${WH}$Name${NC}$COLOR1"
+echo -e "$COLOR1║ $NC ${WH}Durasi Script ${COLOR1}: ${WH}$certificate hari${NC}$COLOR1"                    
+echo -e "$COLOR1║ $NC ${WH}Exp Script    ${COLOR1}: ${WH}$Exp2 $sts ${NC}$COLOR1"
+echo -e "$COLOR1╚═════════════════════════════════════════════════╝${NC}"
 echo -e ""
 echo -ne " ${WH}Select menu ${COLOR1}: ${WH}"; read opt
 case $opt in
