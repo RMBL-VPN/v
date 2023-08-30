@@ -1,417 +1,500 @@
-#!/bin/bash 
-# COLOR VALIDATION
-clear
-L1="\e[0m\e[1;77m"
-y='\033[1;33m' #yellow
-BGX="\033[42m"
-CYAN="\033[96m"
-z="\033[96m"
-RED='\033[0;31m'
-NC='\033[0m'
-gray="\e[1;30m"
-blue="\033[0;34m"
-green='\033[0;32m'
-grenbo="\e[92;1m"
-purple="\033[1;95m"
-YELL='\033[0;33m'
- # ========================================= 
- vlx=$(grep -c -E "^#vl# " "/etc/xray/config.json") 
- let vla=$vlx/2 
- vmc=$(grep -c -E "^#vm# " "/etc/xray/config.json") 
- let vma=$vmc/2 
- ssh1="$(awk -F: '$3 >= 1000 && $1 != "nobody" {print $1}' /etc/passwd | wc -l)" 
-  
- trx=$(grep -c -E "^#tr# " "/etc/xray/config.json") 
- let tra=$trx/2 
- ssx=$(grep -c -E "^#ss# " "/etc/xray/config.json") 
- let ssa=$ssx/2 
- COLOR1='\033[0;35m' 
- COLOR2='\033[0;39m' 
- clear
-
-BURIQ () {
-    curl -sS https://raw.githubusercontent.com/RMBL-VPN/permission/main/ipmini > /root/tmp
-    data=( `cat /root/tmp | grep -E "^### " | awk '{print $2}'` )
-    for user in "${data[@]}"
-    do
-    exp=( `grep -E "^### $user" "/root/tmp" | awk '{print $3}'` )
-    d1=(`date -d "$exp" +%s`)
-    d2=(`date -d "$biji" +%s`)
-    exp2=$(( (d1 - d2) / 86400 ))
-    if [[ "$exp2" -le "0" ]]; then
-    echo $user > /etc/.$user.ini
-    else
-    rm -f /etc/.$user.ini > /dev/null 2>&1
-    fi
-    done
-    rm -f /root/tmp
-}
-
+#!/bin/bash
+dateFromServer=$(curl -v --insecure --silent https://google.com/ 2>&1 | grep Date | sed -e 's/< Date: //')
+biji=`date +"%Y-%m-%d" -d "$dateFromServer"`
 MYIP=$(curl -sS ipv4.icanhazip.com)
-Name=$(curl -sS https://raw.githubusercontent.com/RMBL-VPN/permission/main/ipmini | grep $MYIP | awk '{print $2}')
-echo $Name > /usr/local/etc/.$Name.ini
-CekOne=$(cat /usr/local/etc/.$Name.ini)
-
-Bloman () {
-if [ -f "/etc/.$Name.ini" ]; then
-CekTwo=$(cat /etc/.$Name.ini)
-    if [ "$CekOne" = "$CekTwo" ]; then
-        res="Expired"
-    fi
-else
-res="Permission Accepted..."
-fi
-}
-
-PERMISSION () {
-    MYIP=$(curl -sS ipv4.icanhazip.com)
-    IZIN=$(curl -sS https://raw.githubusercontent.com/RMBL-VPN/permission/main/ipmini | awk '{print $4}' | grep $MYIP)
-    if [ "$MYIP" = "$IZIN" ]; then
-    Bloman
-    else
-    res="Permission Denied!"
-    fi
-    BURIQ
-}
-red='\e[1;31m'
-green='\e[1;32m'
-NC='\e[0m'
-green() { echo -e "\\033[32;1m${*}\\033[0m"; }
-red() { echo -e "\\033[31;1m${*}\\033[0m"; }
-PERMISSION
-
-if [ "$res" = "Expired" ]; then
-Exp="\e[36mExpired\033[0m"
-else
-Exp=$(curl -sS https://raw.githubusercontent.com/RMBL-VPN/permission/main/ipmini | grep $MYIP | awk '{print $3}')
-fi
-
-BIBlack='\033[1;90m'      # Black
-BIRed='\033[1;91m'        # Red
-BIGreen='\033[1;92m'      # Green
-BIYellow='\033[1;93m'     # Yellow
-BIRU='\033[1;94m'       # Blue
-BAYS='\033[1;95m'     # Purple
-AYG='\033[1;96m'       # Cyan
-PUTIH='\033[1;97m'      # White
-UWhite='\033[4;37m'       # White
-On_IPurple='\033[0;105m'  #
-On_IRed='\033[0;101m'
-IBlack='\033[0;90m'       # Black
-IRed='\033[0;91m'         # Red
-IGreen='\033[0;92m'       # Green
-IYellow='\033[0;93m'      # Yellow
-IBlue='\033[0;94m'        # Blue
-NILA='\033[0;95m'      # Purple
-ZIL='\033[0;96m'        # Cyan
-IWhite='\033[0;97m'       # White
-NC='\e[0m'
-MYIP=$(wget -qO- ipinfo.io/ip)
-ISP=$(cat /etc/xray/isp)
-CITY=$(cat /etc/xray/city)
-domain=$(cat /etc/xray/domain)
-uptime="$(uptime -p | cut -d " " -f 2-10)"
-RAM=$(free -m | awk 'NR==2 {print $2}')
-USAGERAM=$(free -m | awk 'NR==2 {print $3}')
-MEMOFREE=$(printf '%-1s' "$(free -m | awk 'NR==2{printf "%.2f%%", $3*100/$2 }')")
-LOADCPU=$(printf '%-0.00001s' "$(top -bn1 | awk '/Cpu/ { cpu = "" 100 - $8 "%" }; END { print cpu }')")
-MODEL=$(cat /etc/os-release | grep -w PRETTY_NAME | head -n1 | sed 's/=//g' | sed 's/"//g' | sed 's/PRETTY_NAME//g')
-CORE=$(printf '%-1s' "$(grep -c cpu[0-9] /proc/stat)")
-DATEVPS=$(date +'%d/%m/%Y')
-TIMEZONE=$(printf '%(%H:%M:%S)T')
-SERONLINE=$(uptime -p | cut -d " " -f 2-10000)
-clear
-#Download/Upload today
-dtoday="$(vnstat -i eth0 | grep "today" | awk '{print $2" "substr ($3, 1, 1)}')"
-utoday="$(vnstat -i eth0 | grep "today" | awk '{print $5" "substr ($6, 1, 1)}')"
-ttoday="$(vnstat -i eth0 | grep "today" | awk '{print $8" "substr ($9, 1, 1)}')"
-#Download/Upload yesterday
-dyest="$(vnstat -i eth0 | grep "yesterday" | awk '{print $2" "substr ($3, 1, 1)}')"
-uyest="$(vnstat -i eth0 | grep "yesterday" | awk '{print $5" "substr ($6, 1, 1)}')"
-tyest="$(vnstat -i eth0 | grep "yesterday" | awk '{print $8" "substr ($9, 1, 1)}')"
-#Download/Upload current month
-dmon="$(vnstat -i eth0 -m | grep "`date +"%b '%y"`" | awk '{print $3" "substr ($4, 1, 1)}')"
-umon="$(vnstat -i eth0 -m | grep "`date +"%b '%y"`" | awk '{print $6" "substr ($7, 1, 1)}')"
-tmon="$(vnstat -i eth0 -m | grep "`date +"%b '%y"`" | awk '{print $9" "substr ($10, 1, 1)}')"
-clear
-
-# // Exporting Language to UTF-8
-
-export LANG='en_US.UTF-8'
-export LANGUAGE='en_US.UTF-8'
-
-
-# // Export Color & Information
-export RED='\033[0;31m'
-export GREEN='\033[0;32m'
-export YELLOW='\033[0;33m'
-export BLUE='\033[0;34m'
-export PURPLE='\033[0;35m'
-export CYAN='\033[0;36m'
-export LIGHT='\033[0;37m'
-export NC='\033[0m'
-
+###########- COLOR CODE -##############
+colornow=$(cat /etc/casper/theme/color.conf)
+export NC="\e[0m"
+export yl='\033[0;33m';
+export RED="\033[0;31m"
+export COLOR1="$(cat /etc/casper/theme/$colornow | grep -w "TEXT" | cut -d: -f2|sed 's/ //g')"
+export COLBG1="$(cat /etc/casper/theme/$colornow | grep -w "BG" | cut -d: -f2|sed 's/ //g')"
+WH='\033[1;37m'
 ###########- END COLOR CODE -##########
 tram=$( free -h | awk 'NR==2 {print $2}' )
 uram=$( free -h | awk 'NR==2 {print $3}' )
-ISP=$(curl -s ipinfo.io/org | cut -d " " -f 2-10 )
-CITY=$(curl -s ipinfo.io/city )
+ISP=$(cat /etc/xray/isp)
+CITY=$(cat /etc/xray/city)
+author=$(cat /etc/profil)
+WKT=$(curl -s ipinfo.io/timezone?token=$ipn )
+DAY=$(date +%A)
+DATE=$(date +%m/%d/%Y)
+DATE2=$(date -R | cut -d " " -f -5)
+IPVPS=$(curl -s ipinfo.io/ip?token=7578ac19afd785 )
+MYIP=$(curl -sS ipv4.icanhazip.com)
+Isadmin=$(curl -sS https://raw.githubusercontent.com/casper9/permission/main/ipmini | grep $MYIP | awk '{print $5}')
+Exp2=$(curl -sS https://raw.githubusercontent.com/casper9/permission/main/ipmini | grep $MYIP | awk '{print $3}')
+export RED='\033[0;31m'
+export GREEN='\033[0;32m'
 
-# // Export Banner Status Information
-export EROR="[${RED} EROR ${NC}]"
-export INFO="[${YELLOW} INFO ${NC}]"
-export OKEY="[${GREEN} OKEY ${NC}]"
-export PENDING="[${YELLOW} PENDING ${NC}]"
-export SEND="[${YELLOW} SEND ${NC}]"
-export RECEIVE="[${YELLOW} RECEIVE ${NC}]"
+Name=$(curl -sS https://raw.githubusercontent.com/casper9/permission/main/ipmini | grep $MYIP | awk '{print $2}')
+ipsaya=$(curl -sS ipinfo.io/ip)
+data_server=$(curl -v --insecure --silent https://google.com/ 2>&1 | grep Date | sed -e 's/< Date: //')
+date_list=$(date +"%Y-%m-%d" -d "$data_server")
+data_ip="https://raw.githubusercontent.com/casper9/permission/main/ipmini"
+checking_sc() {
+    useexp=$(curl -sS $data_ip | grep $ipsaya | awk '{print $3}')
+    if [[ $date_list < $useexp ]]; then
+        echo -ne
+    else
+        systemctl stop nginx
+        echo -e "$COLOR1┌─────────────────────────────────────────────────┐${NC}"
+        echo -e "$COLOR1│${NC}${COLBG1}          ${WH}• AUTOSCRIPT PREMIUM •                 ${NC}$COLOR1│ $NC"
+        echo -e "$COLOR1└─────────────────────────────────────────────────┘${NC}"
+        echo -e "$COLOR1┌─────────────────────────────────────────────────┐${NC}"
+        echo -e "$COLOR1│            ${RED}PERMISSION DENIED !${NC}                  $COLOR1│"
+        echo -e "$COLOR1│   ${yl}Your VPS${NC} $ipsaya \033[0;36mHas been Banned${NC}      $COLOR1│"        
+        echo -e "$COLOR1│     ${yl}Buy access permissions for scripts${NC}          $COLOR1│"
+        echo -e "$COLOR1│             \033[0;32mContact Your Admin ${NC}                 $COLOR1│"
+        echo -e "$COLOR1└─────────────────────────────────────────────────┘${NC}"
+        key
+    fi
+}
 
-# // Export Align
-export BOLD="\e[1m"
-export WARNING="${RED}\e[5m"
-export UNDERLINE="\e[4m"
-
-# TOTAL RAM
-total_ram=` grep "MemTotal: " /proc/meminfo | awk '{ print $2}'`
-totalram=$(($total_ram/1024))
-USAGERAM=$(free -m | awk 'NR==2 {print $3}')
-
-# Status ExpiRED Active | WokszXD
-Info="(${c2}Active${NC})"
-Error="(${red}Expired${NC})"
-today=`date -d "0 days" +"%Y-%m-%d"`
-Exp1=$(curl https://raw.githubusercontent.com/RMBL-VPN/permission/main/ipmini | grep $MYIP | awk '{print $4}')
-if [[ $today < $Exp1 ]]; then
-sts="${Info}"
-else
-sts="${Error}"
+function key(){
+echo -e  "${COLOR1}┌──────────────────────────────────────────┐${NC}"
+echo -e  "${COLOR1}│              MASUKKAN LICENSE KEY        │${NC}"
+echo -e  "${COLOR1}└──────────────────────────────────────────┘${NC}"
+echo " "
+read -rp "Masukan Key Kamu Disini ctrl + c Exit : " -e kode
+cd
+if [ -z $kode ]; then
+echo -e "KODE SALAH SILAHKAN MASUKKAN ULANG KODENYA"
+key
 fi
-echo -e "\e[32mloading...\e[0m"
+clear
+LIST=$(curl -sS https://raw.githubusercontent.com/casper9/license/main/key | grep $kode | awk '{print $2}')
+Key=$(curl -sS https://raw.githubusercontent.com/casper9/license/main/key | grep $kode | awk '{print $3}')
+KEY2=$(curl -sS https://raw.githubusercontent.com/casper9/license/main/key | grep $kode | awk '{print $4}')
+ADMIN=$(curl -sS https://raw.githubusercontent.com/casper9/license/main/key | grep $kode | awk '{print $5}')
+TOTALIP=$(curl -sS https://raw.githubusercontent.com/casper9/license/main/key | grep $kode | awk '{print $6}')
+U2=$(curl -sS https://raw.githubusercontent.com/casper9/permission/main/ipmini | grep $MYIP | awk '{print $2}')
+U3=$(curl -sS https://raw.githubusercontent.com/casper9/permission/main/ipmini | grep $MYIP | awk '{print $3}')
+U4=$(curl -sS https://raw.githubusercontent.com/casper9/permission/main/ipmini | grep $MYIP | awk '{print $4}')
+U5=$(curl -sS https://raw.githubusercontent.com/casper9/permission/main/ipmini | grep $MYIP | awk '{print $5}')
+U6=$(curl -sS https://raw.githubusercontent.com/casper9/permission/main/ipmini | grep $MYIP | awk '{print $6}')
+MYIP=$(curl -sS ipv4.icanhazip.com)
+
+if [[ $kode == "CASPERGG" ]]; then
+MYIP=$(curl -sS ipv4.icanhazip.com)
+rm -rf /etc/github
+mkdir /etc/github
+curl -s https://pastebin.com/raw/t3aaqcej > /etc/github/api
+curl -s https://pastebin.com/raw/cfivDKk2 > /etc/github/email
+curl -s https://pastebin.com/raw/bSskAgjw > /etc/github/username
+clear
+APIGIT=$(cat /etc/github/api)
+EMAILGIT=$(cat /etc/github/email)
+USERGIT=$(cat /etc/github/username)
+hhari=$(date -d "30 days" +"%Y-%m-%d")
+mkdir /root/casper
+cd /root/casper
+wget https://raw.githubusercontent.com/casper9/permission/main/ipmini >/dev/null 2>&1
+
+if [ "$ADMIN" = "ON" ]; then
+sed -i '/# RESELLER/a ### $author $hhari $MYIP $ADMIN $TOTALIP' /root/casper/ipmini
+else
+if [ "$U4" = "$MYIP" ]; then
+sed -i "s/### $U2 $U3 $U4 $U5/### $U2 $hhari $U4 $U5/g" /root/casper/ipmini
+else
+echo "### $author $hhari $MYIP @CASPER" >> ipmini
+fi
+fi
+sleep 0.5
+rm -rf .git
+git config --global user.email "${EMAILGIT}" >/dev/null 2>&1
+git config --global user.name "${USERGIT}" >/dev/null 2>&1
+git init >/dev/null 2>&1
+git add ipmini 
+git commit -m register >/dev/null 2>&1
+git branch -M main >/dev/null 2>&1
+git remote add origin https://github.com/${USERGIT}/permission >/dev/null 2>&1
+git push -f https://${APIGIT}@github.com/${USERGIT}/permission >/dev/null 2>&1
+sleep 0.5
+rm ipmini
+elif [[ $kode == $Key ]]; then
+rm -rf /etc/github
+mkdir /etc/github
+curl -s https://pastebin.com/raw/t3aaqcej > /etc/github/api
+curl -s https://pastebin.com/raw/cfivDKk2 > /etc/github/email
+curl -s https://pastebin.com/raw/bSskAgjw > /etc/github/username
+clear
+APIGIT=$(cat /etc/github/api)
+EMAILGIT=$(cat /etc/github/email)
+USERGIT=$(cat /etc/github/username)
+hhari=$(date -d "$KEY2 days" +"%Y-%m-%d")
+mkdir /root/casper
+cd /root/casper
+wget https://raw.githubusercontent.com/casper9/permission/main/ipmini >/dev/null 2>&1
+if [ "$ADMIN" = "ON" ]; then
+sed -i '/# RESELLER/a ### $author $hhari $MYIP $ADMIN $TOTALIP' /root/casper/ipmini
+else
+if [ "$U4" = "$MYIP" ]; then
+sed -i "s/### $U2 $U3 $U4 $U5/### $U2 $hhari $U4 $U5/g" /root/casper/ipmini
+else
+echo "### $author $hhari $MYIP @$LIST" >> ipmini
+fi
+fi
+sleep 0.5
+rm -rf .git
+git config --global user.email "${EMAILGIT}" >/dev/null 2>&1
+git config --global user.name "${USERGIT}" >/dev/null 2>&1
+git init >/dev/null 2>&1
+git add ipmini 
+git commit -m register >/dev/null 2>&1
+git branch -M main >/dev/null 2>&1
+git remote add origin https://github.com/${USERGIT}/permission >/dev/null 2>&1
+git push -f https://${APIGIT}@github.com/${USERGIT}/permission >/dev/null 2>&1
+sleep 0.5
+rm ipmini
+wget https://raw.githubusercontent.com/casper9/license/main/key >/dev/null 2>&1
+if [ "$ADMIN" = "ON" ]; then
+sed -i "/^### $LIST $Key $KEY2 $ADMIN $TOTALIP/d" /root/casper/key
+else
+sed -i "/^### $LIST $Key $KEY2/d" /root/casper/key
+fi
+sleep 0.5
+rm -rf .git
+git config --global user.email "${EMAILGIT}" >/dev/null 2>&1
+git config --global user.name "${USERGIT}" >/dev/null 2>&1
+git init >/dev/null 2>&1
+git add key
+git commit -m register >/dev/null 2>&1
+git branch -M main >/dev/null 2>&1
+git remote add origin https://github.com/${USERGIT}/license >/dev/null 2>&1
+git push -f https://${APIGIT}@github.com/${USERGIT}/license >/dev/null 2>&1
+rm -rf /root/casper
+rm -rf /etc/github
+echo -e "SUCCES MASUKKAN KEY SILAHKAN DITUNGGU"
+echo -e "5MENIT AGAR SERVER KEREFRESH"
+read -n 1 -s -r -p "  Press any key to Exit"
+exit
+clear
+else
+echo -e "KODE SALAH SILAHKAN MASUKKAN ULANG KODENYA"
+sleep 1
+key
+fi
+}
+
+checking_sc
+#check folder
+cd
+if [ ! -e /etc/per/id ]; then
+  mkdir -p /etc/per
+  echo "" > /etc/per/id
+  echo "" > /etc/per/token
+elif [ ! -e /etc/perlogin/id ]; then
+  mkdir -p /etc/perlogin
+  echo "" > /etc/perlogin/id
+  echo "" > /etc/perlogin/token
+elif [ ! -e /usr/bin/id ]; then
+  echo "" > /usr/bin/idchat
+  echo "" > /usr/bin/token
+fi
+
+if [ ! -e /etc/xray/ssh ]; then
+  echo "" > /etc/xray/ssh
+elif [ ! -e /etc/xray/sshx ]; then
+  mkdir -p /etc/xray/sshx
+elif [ ! -e /etc/xray/sshx/listlock ]; then
+  echo "" > /etc/xray/sshx/listlock
+elif [ ! -e /etc/vmess ]; then
+  mkdir -p /etc/vmess
+elif [ ! -e /etc/vmess/listlock ]; then
+  echo "" > /etc/vmess/listlock
+elif [ ! -e /etc/vless ]; then
+  mkdir -p /etc/vless
+elif [ ! -e /etc/vless/listlock ]; then
+  echo "" > /etc/vless/listlock
+elif [ ! -e /etc/trojan ]; then
+  mkdir -p /etc/trojan
+elif [ ! -e /etc/trojan/listlock ]; then
+  echo "" > /etc/trojan/listlock
+fi
+clear
+MODEL2=$(cat /etc/os-release | grep -w PRETTY_NAME | head -n1 | sed 's/=//g' | sed 's/"//g' | sed 's/PRETTY_NAME//g')
+LOADCPU=$(printf '%-0.00001s' "$(top -bn1 | awk '/Cpu/ { cpu = "" 100 - $8 "%" }; END { print cpu }')")
+CORE=$(printf '%-1s' "$(grep -c cpu[0-9] /proc/stat)")
+cpu_usage1="$(ps aux | awk 'BEGIN {sum=0} {sum+=$3}; END {print sum}')"
+cpu_usage="$((${cpu_usage1/\.*} / ${corediilik:-1}))"
+cpu_usage+=" %"
+# usage
+vnstat_profile=$(vnstat | sed -n '3p' | awk '{print $1}' | grep -o '[^:]*')
+vnstat -i ${vnstat_profile} >/etc/t1
+bulan=$(date +%b)
+tahun=$(date +%y)
+ba=$(curl -s https://pastebin.com/raw/0gWiX6hE)
+today=$(vnstat -i ${vnstat_profile} | grep today | awk '{print $8}')
+todayd=$(vnstat -i ${vnstat_profile} | grep today | awk '{print $8}')
+today_v=$(vnstat -i ${vnstat_profile} | grep today | awk '{print $9}')
+today_rx=$(vnstat -i ${vnstat_profile} | grep today | awk '{print $2}')
+today_rxv=$(vnstat -i ${vnstat_profile} | grep today | awk '{print $3}')
+today_tx=$(vnstat -i ${vnstat_profile} | grep today | awk '{print $5}')
+today_txv=$(vnstat -i ${vnstat_profile} | grep today | awk '{print $6}')
+if [ "$(grep -wc ${bulan} /etc/t1)" != '0' ]; then
+    bulan=$(date +%b)
+    month=$(vnstat -i ${vnstat_profile} | grep "$bulan $ba$tahun" | awk '{print $9}')
+    month_v=$(vnstat -i ${vnstat_profile} | grep "$bulan $ba$tahun" | awk '{print $10}')
+    month_rx=$(vnstat -i ${vnstat_profile} | grep "$bulan $ba$tahun" | awk '{print $3}')
+    month_rxv=$(vnstat -i ${vnstat_profile} | grep "$bulan $ba$tahun" | awk '{print $4}')
+    month_tx=$(vnstat -i ${vnstat_profile} | grep "$bulan $ba$tahun" | awk '{print $6}')
+    month_txv=$(vnstat -i ${vnstat_profile} | grep "$bulan $ba$tahun" | awk '{print $7}')
+else
+    bulan2=$(date +%Y-%m)
+    month=$(vnstat -i ${vnstat_profile} | grep "$bulan2 " | awk '{print $8}')
+    month_v=$(vnstat -i ${vnstat_profile} | grep "$bulan2 " | awk '{print $9}')
+    month_rx=$(vnstat -i ${vnstat_profile} | grep "$bulan2 " | awk '{print $2}')
+    month_rxv=$(vnstat -i ${vnstat_profile} | grep "$bulan2 " | awk '{print $3}')
+    month_tx=$(vnstat -i ${vnstat_profile} | grep "$bulan2 " | awk '{print $5}')
+    month_txv=$(vnstat -i ${vnstat_profile} | grep "$bulan2 " | awk '{print $6}')
+fi
+if [ "$(grep -wc yesterday /etc/t1)" != '0' ]; then
+    yesterday=$(vnstat -i ${vnstat_profile} | grep yesterday | awk '{print $8}')
+    yesterday_v=$(vnstat -i ${vnstat_profile} | grep yesterday | awk '{print $9}')
+    yesterday_rx=$(vnstat -i ${vnstat_profile} | grep yesterday | awk '{print $2}')
+    yesterday_rxv=$(vnstat -i ${vnstat_profile} | grep yesterday | awk '{print $3}')
+    yesterday_tx=$(vnstat -i ${vnstat_profile} | grep yesterday | awk '{print $5}')
+    yesterday_txv=$(vnstat -i ${vnstat_profile} | grep yesterday | awk '{print $6}')
+else
+    yesterday=NULL
+    yesterday_v=NULL
+    yesterday_rx=NULL
+    yesterday_rxv=NULL
+    yesterday_tx=NULL
+    yesterday_txv=NULL
+fi
+
+# // SSH Websocket Proxy
+ssh_ws=$( systemctl status ws-stunnel | grep Active | awk '{print $3}' | sed 's/(//g' | sed 's/)//g' )
+if [[ $ssh_ws == "running" ]]; then
+    status_ws="${COLOR1}ON${NC}"
+else
+    status_ws="${RED}OFF${NC}"
+fi
+
+# // nginx
+nginx=$( systemctl status nginx | grep Active | awk '{print $3}' | sed 's/(//g' | sed 's/)//g' )
+if [[ $nginx == "running" ]]; then
+    status_nginx="${COLOR1}ON${NC}"
+else
+    status_nginx="${RED}OFF${NC}"
+    systemctl start nginx
+fi
+
+# status
+
+rm -rf /etc/status
+
+wget -q -O /etc/status "https://raw.githubusercontent.com/casper9/perv1/main/status"
+
+
+# // SSH Websocket Proxy
+xray=$(systemctl status xray | grep Active | awk '{print $3}' | cut -d "(" -f2 | cut -d ")" -f1)
+if [[ $xray == "running" ]]; then
+    status_xray="${COLOR1}ON${NC}"
+else
+    status_xray="${RED}OFF${NC}"
+fi
+# STATUS EXPIRED ACTIVE
+Green_font_prefix="\033[32m" && Red_font_prefix="\033[31m" && Green_background_prefix="\033[42;37m" && Red_background_prefix="\033[4$below" && Font_color_suffix="\033[0m"
+Info="${Green_font_prefix}(Registered)${Font_color_suffix}"
+Error="${Green_font_prefix}${Font_color_suffix}${Red_font_prefix}[EXPIRED]${Font_color_suffix}"
+
+today=$(date -d "0 days" +"%Y-%m-%d")
+if [[ $today < $Exp2 ]]; then
+    sts="${Info}"
+else
+    sts="${Error}"
+fi
+# TOTAL ACC CREATE VMESS WS
+vmess=$(grep -c -E "^#vmg " "/etc/xray/config.json")
+# TOTAL ACC CREATE  VLESS WS
+vless=$(grep -c -E "^#vlg " "/etc/xray/config.json")
+# TOTAL ACC CREATE  TROJAN
+trtls=$(grep -c -E "^#trg " "/etc/xray/config.json")
+# TOTAL ACC CREATE OVPN SSH
+total_ssh=$(grep -c -E "^### " "/etc/xray/ssh")
+#total_ssh="$(awk -F: '$3 >= 1000 && $1 != "nobody" {print $1}' /etc/passwd | wc -l)"
+function updatews(){
 clear
 
-persenmemori="$(echo "scale=2; $usmem*100/$tomem" | bc)"
-#persencpu=
-persencpu="$(echo "scale=2; $cpu1+$cpu2" | bc)"
+echo -e "$COLOR1┌─────────────────────────────────────────────────┐${NC}"
+echo -e "$COLOR1 ${NC} ${COLBG1}            ${WH}• UPDATE SCRIPT VPS •              ${NC} $COLOR1 $NC"
+echo -e "$COLOR1└─────────────────────────────────────────────────┘${NC}"
+echo -e "$COLOR1┌─────────────────────────────────────────────────┐${NC}"
+echo -e "$COLOR1 ${NC}  $COLOR1[INFO]${NC} Check for Script updates"
+sleep 2
+wget -q -O /root/install_up.sh "https://raw.githubusercontent.com/casper9/perv1/main/menu/install-up.sh" && chmod +x /root/install_up.sh
+sleep 2
+./install_up.sh
+rm /root/install_up.sh
+rm /opt/.ver
+version_up=$( curl -sS https://raw.githubusercontent.com/casper9/permission/main/versi)
+echo "$version_up" > /opt/.verecho "$version_up" > /opt/.ver
+echo -e "$COLOR1 ${NC}  $COLOR1[INFO]${NC} Successfully Up To Date!"
+echo -e "$COLOR1└─────────────────────────────────────────────────┘${NC}"
+echo -e "$COLOR1┌────────────────────── BY ───────────────────────┐${NC}"
+echo -e "$COLOR1 ${NC}             ${WH}• $author •${NC}                $COLOR1 $NC"
+echo -e "$COLOR1└─────────────────────────────────────────────────┘${NC}"
+echo ""
+read -n 1 -s -r -p "  Press any key to back on menu"
+menu
+}
+function m-ip2(){   
+clear
+cd
+if [[ -e /etc/github/api ]]; then
+bash m-ip
+else
+mkdir /etc/github
+curl -s https://pastebin.com/raw/t3aaqcej >> /etc/github/api
+curl -s https://pastebin.com/raw/cfivDKk2 >> /etc/github/email
+curl -s https://pastebin.com/raw/bSskAgjw >> /etc/github/username
+m-ip
+fi
+}
+uphours=`uptime -p | awk '{print $2,$3}' | cut -d , -f1`
+upminutes=`uptime -p | awk '{print $4,$5}' | cut -d , -f1`
+uptimecek=`uptime -p | awk '{print $6,$7}' | cut -d , -f1`
+cekup=`uptime -p | grep -ow "day"`
+IPVPS=$(curl -s ipinfo.io/ip )
+serverV=$( curl -sS https://raw.githubusercontent.com/casper9/perv1/main/versi)
+if [ "$Isadmin" = "ON" ]; then
+uis="${COLOR1}Premium ADMIN VIP$NC"
+else
+uis="${COLOR1}Premium Version$NC"
+fi
 
-###########
-KANAN="\033[1;32m<\033[1;33m<\033[1;31m<\033[1;31m$NC"
-KIRI="\033[1;32m>\033[1;33m>\033[1;31m>\033[1;31m$NC"
-########
-# CERTIFICATE STATUS
-d1=$(date -d "$valid" +%s)
-d2=$(date -d "$today" +%s)
-certifacate=$(((d1 - d2) / 86400))
-# // Clear
 clear
 clear && clear && clear
 clear;clear;clear
-cek=$(service ssh status | grep active | cut -d ' ' -f5)
-if [ "$cek" = "active" ]; then
-stat=-f5
+echo -e "$COLOR1╔═════════════════════════════════════════════════╗${NC}"
+echo -e "$COLOR1║${NC}${COLBG1}              ${WH}• INFO SYSTEM VPS •                ${NC}$COLOR1║ $NC"
+echo -e "$COLOR1╚═════════════════════════════════════════════════╝${NC}"
+echo -e "$COLOR1╔═════════════════════════════════════════════════╗${NC}"
+#echo -e "$COLOR1 $NC ${WH}User Roles        ${COLOR1}: ${WH}$uis"
+echo -e "$COLOR1║ $NC${WH}¶ System OS          ${COLOR1}: ${WH}$MODEL2"
+echo -e "$COLOR1║ $NC${WH}¶ Memory Usage       ${COLOR1}: ${WH}$uram - $tram"
+if [ "$cekup" = "day" ]; then
+echo -e "$COLOR1║ $NC${WH}¶ System Uptime      ${COLOR1}: ${WH}$uphours $upminutes $uptimecek"
 else
-stat=-f7
+echo -e "$COLOR1║ $NC${WH}¶ System Uptime      ${COLOR1}: ${WH}$uphours $upminutes"
 fi
-ssh=$(service ssh status | grep active | cut -d ' ' $stat)
-if [[ "$ssh" == "active" ]]; then 
-resssh="${green}ON✓${NC}"
+#echo -e "$COLOR1 $NC ${WH}LOAD CPU           ${COLOR1}: ${WH}$LOADCPU"
+echo -e "$COLOR1║ $NC${WH}¶ Core & CPU Usage   ${COLOR1}: ${WH}$CORE & $cpu_usage"
+echo -e "$COLOR1║ $NC${WH}¶ ISP & City         ${COLOR1}: ${WH}$ISP & $CITY"
+echo -e "$COLOR1║ $NC${WH}¶ Domain             ${COLOR1}: ${WH}$(cat /etc/xray/domain)"
+echo -e "$COLOR1║ $NC${WH}¶ NameServer Slowdns ${COLOR1}: ${WH}$(cat /etc/xray/dns)"
+echo -e "$COLOR1║ $NC${WH}¶ IP-VPS             ${COLOR1}: ${WH}$IPVPS${NC}"
+echo -e "$COLOR1║ $NC${WH}¶ DATE & TIME        ${COLOR1}: ${WH}$DATE2 WIB${NC}"
+echo -e "$COLOR1║ $NC${WH}¶ NAMA AUTHOR        ${COLOR1}: ${WH}$author${NC}"
+echo -e "$COLOR1╚═════════════════════════════════════════════════╝${NC}"
+echo -e "$COLOR1╔═════════════════════════════════════════════════╗${NC}"
+echo -e "$COLOR1║ ${COLOR1}Traffic${NC}      ${COLOR1}Today     Yesterday       Month    ║   ${NC}"
+#echo -e "$COLOR1╚═════════════════════════════════════════════════╝${NC}"
+#echo -e "$COLOR1╔═════════════════════════════════════════════════╗${NC}"
+echo -e "$COLOR1║ ${WH}Download${NC}   ${WH}$today_tx $today_txv    $yesterday_tx $yesterday_txv     $month_tx $month_txv$COLOR1  ${NC}"
+echo -e "$COLOR1║ ${WH}Upload${NC}     ${WH}$today_rx $today_rxv    $yesterday_rx $yesterday_rxv     $month_rx $month_rxv$COLOR1   ${NC}"
+echo -e "$COLOR1║ ${COLOR1}Total${NC}    ${COLOR1}  $todayd $today_v    $yesterday $yesterday_v     $month $month_v$COLOR1  ${NC} "
+echo -e "$COLOR1╚═════════════════════════════════════════════════╝${NC}"
+echo -e "$COLOR1┌──────────────── • STATUS SERVER • ──────────────┐${NC}"
+echo -e "$COLOR1│$NC ${WH}[ SSH WS : ${status_ws} ${WH}]  ${WH}[ XRAY : ${status_xray} ${WH}]   ${WH}[ NGINX : ${status_nginx} ${WH}] $COLOR1│$NC"
+echo -e "$COLOR1└─────────────────────────────────────────────────┘${NC}"
+#echo -e "$COLOR1┌─────────────────────────────────────────────────┐${NC}"
+echo -e "   $COLOR1$NC${WH} [ SSH Account =  ${COLOR1}$total_ssh${WH}]${WH}    [ VMESS Account = ${COLOR1}$vmess${WH}]$COLOR1 $NC"
+echo -e ""
+echo -e "   $COLOR1$NC${WH} [ VLESS Account = ${COLOR1}$vless${WH}]${WH}   [ TROJAN Account = ${COLOR1}${trtls}${WH}] $COLOR1 $NC"
+#echo -e "$COLOR1└─────────────────────────────────────────────────┘${NC}"
+echo -e "$COLOR1╔═════════════════════════════════════════════════╗${NC}"
+echo -e "$COLOR1║${NC} ${COLBG1}                  ${WH}• LIST MENU •                ${NC}$COLOR1 ║ $NC"
+echo -e "$COLOR1╚═════════════════════════════════════════════════╝${NC}"
+echo -e "$COLOR1╔═════════════════════════════════════════════════╗${NC}"
+echo -e "$COLOR1║ ${WH}[${COLOR1}01${WH}]${NC} ${COLOR1}• ${WH}SSH-WS   ${WH}[${COLOR1}Menu${WH}]   ${WH}[${COLOR1}06${WH}]${NC} ${COLOR1}• ${WH}STATUS SERVICE  $COLOR1║ $NC"
+echo -e "$COLOR1║                                                 $COLOR1║ $NC"
+echo -e "$COLOR1║ ${WH}[${COLOR1}02${WH}]${NC} ${COLOR1}• ${WH}VMESS    ${WH}[${COLOR1}Menu${WH}]   ${WH}[${COLOR1}07${WH}]${NC} ${COLOR1}• ${WH}REBOOT VPS      $COLOR1║ $NC"
+echo -e "$COLOR1║                                                 $COLOR1║ $NC"
+echo -e "$COLOR1║ ${WH}[${COLOR1}03${WH}]${NC} ${COLOR1}• ${WH}VLESS    ${WH}[${COLOR1}Menu${WH}]   ${WH}[${COLOR1}08${WH}]${NC} ${COLOR1}• ${WH}UPDATE    ${WH}[${COLOR1}Menu${WH}]$COLOR1║ $NC"
+echo -e "$COLOR1║                                                 $COLOR1║ $NC"
+echo -e "$COLOR1║ ${WH}[${COLOR1}04${WH}]${NC} ${COLOR1}• ${WH}TROJAN   ${WH}[${COLOR1}Menu${WH}]   ${WH}[${COLOR1}09${WH}]${NC} ${COLOR1}• ${WH}SETTING   ${WH}[${COLOR1}Menu${WH}]$COLOR1║ $NC"
+echo -e "$COLOR1║                                                 $COLOR1║ $NC"
+echo -e "$COLOR1║ ${WH}[${COLOR1}05${WH}]${NC} ${COLOR1}• ${WH}ALL XRAY ${WH}[${COLOR1}Menu${WH}]   ${WH}[${COLOR1}10${WH}]${NC} ${COLOR1}• ${WH}BACKUP    ${WH}[${COLOR1}Menu${WH}]$COLOR1║ $NC"
+echo -e "$COLOR1╚═════════════════════════════════════════════════╝${NC}"
+echo -e "$COLOR1┌───────────────── • INFO HARI INI • ─────────────┐${NC}"
+echo -e "$COLOR1│ ${NC}${WH}•  $(cat /etc/status)  •${NC}  $COLOR1 $NC"
+echo -e "$COLOR1└─────────────────────────────────────────────────┘${NC}"
+if [ "$Isadmin" = "ON" ]; then
+echo -e "$COLOR1┌──────────────── • PANEL ADMIN VIP • ────────────┐${NC}"
+echo -e "$COLOR1│  ${WH}[${COLOR1}11${WH}]${NC} ${COLOR1}• ${WH}RESELLER IP ${WH}[${COLOR1}MENU${WH}] $COLOR1 $NC"
+ressee="m-ip2"
+bottt="m-bot"
+echo -e "$COLOR1└─────────────────────────────────────────────────┘${NC}"
 else
-status_ssh="${RED}🔴${NC} "
+ressee="menu"
+bottt="menu"
 fi
-sshstunel=$(service stunnel4 status | grep active | cut -d ' ' $stat)
-if [ "$sshstunel" = "active" ]; then
-resst="${green}ON✓${NC}"
+myver="$(cat /opt/.ver)"
+
+if [[ $serverV > $myver ]]; then
+echo -e "$COLOR1┌─────────────────────────────────────────────────┐${NC}"
+echo -e "$COLOR1│ $NC ${WH}[${COLOR1}100${WH}]${NC} ${COLOR1}• ${WH}UPDATE TO V$serverV${NC}"
+echo -e "$COLOR1└─────────────────────────────────────────────────┘${NC}"
+up2u="updatews"
 else
-resst="${red}🔴${NC}"
-fi
-sshws=$(service ws-stunnel status | grep active | cut -d ' ' $stat)
-if [ "$sshws" = "active" ]; then
-ressshws="${green}ON✓${NC}"
-else
-ressshws="${red}🔴${NC}"
-fi
-ngx=$(service nginx status | grep active | cut -d ' ' $stat)
-if [ "$ngx" = "active" ]; then
-resngx="${green}ON✓${NC}"
-else
-resngx="${red}🔴${NC}"
-fi
-dbr=$(service dropbear status | grep active | cut -d ' ' $stat)
-if [ "$dbr" = "active" ]; then
-resdbr="${green}ON✓${NC}"
-else
-resdbr="${red}🔴${NC}"
-fi
-v2r=$(service xray status | grep active | cut -d ' ' $stat)
-if [ "$v2r" = "active" ]; then
-resv2r="${green}ON✓${NC}"
-else
-resv2r="${red}🔴${NC}"
-fi
-function addhost(){
-clear
-echo -e "\033[0;34m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
-echo ""
-read -rp "Domain/Host: " -e host
-echo ""
-if [ -z $host ]; then
-echo "????"
-echo -e "\033[0;34m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
-read -n 1 -s -r -p "Press any key to back on menu"
-setting-menu
-else
-echo "IP=$host" > /var/lib/scrz-prem/ipvps.conf
-echo -e "\033[0;34m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
-echo "Dont forget to renew cert"
-echo ""
-read -n 1 -s -r -p "Press any key to back on menu"
-menu
-fi
-}
-function genssl(){
-clear
-systemctl stop nginx
-domain=$(cat /var/lib/scrz-prem/ipvps.conf | cut -d'=' -f2)
-Cek=$(lsof -i:80 | cut -d' ' -f1 | awk 'NR==2 {print $1}')
-if [[ ! -z "$Cek" ]]; then
-sleep 1
-echo -e "[ ${red}WARNING${NC} ] Detected port 80 used by $Cek " 
-systemctl stop $Cek
-sleep 2
-echo -e "[ ${green}INFO${NC} ] Processing to stop $Cek " 
-sleep 1
-fi
-echo -e "[ ${green}INFO${NC} ] Starting renew cert... " 
-sleep 2
-/root/.acme.sh/acme.sh --set-default-ca --server letsencrypt
-/root/.acme.sh/acme.sh --issue -d $domain --standalone -k ec-256
-~/.acme.sh/acme.sh --installcert -d $domain --fullchainpath /etc/xray/xray.crt --keypath /etc/xray/xray.key --ecc
-echo -e "[ ${green}INFO${NC} ] Renew cert done... " 
-sleep 2
-echo -e "[ ${green}INFO${NC} ] Starting service $Cek " 
-sleep 2
-echo $domain > /etc/xray/domain
-systemctl restart xray
-systemctl restart nginx
-echo -e "[ ${green}INFO${NC} ] All finished... " 
-sleep 0.5
-echo ""
-read -n 1 -s -r -p "Press any key to back on menu"
-menu
-}
-export sem=$( curl -s https://raw.githubusercontent.com/RMBL-VPN/v/main/versions)
-export pak=$( cat /home/.ver)
-IPVPS=$(curl -s ipinfo.io/ip )
-#################
-r="\033[1;31m"  #REDTERANG
-a=" ${CYAN}ACCOUNT PREMIUM" 
-################
-if [ ! -e /etc/vmess ]; then
-    mkdir -p /etc/vmess
-    touch /etc/vmess/.vmess.db
-fi
-vms=$(cat /etc/vmess/.vmess.db)
-if [[ $vms = "" ]]; then
-    vm="0"
-else
-    vm=$(cat /etc/vmess/.vmess.db | grep "#vm#" | wc -l)
+up2u="menu"
 fi
 
-if [ ! -e /etc/vless ]; then
-    mkdir -p /etc/vless
-    touch /etc/vless/.vless.db
-fi
-vms=$(cat /etc/vless/.vless.db)
-if [[ $vms = "" ]]; then
-    vl="0"
-else
-    vl=$(cat /etc/vless/.vless.db | grep "#vl#" | wc -l)
-fi
-echo ""
-if [ ! -e /etc/trojan ]; then
-    mkdir -p /etc/trojan
-    touch /etc/trojan/.trojan.db
-fi
-vms=$(cat /etc/trojan/.trojan.db)
-if [[ $vms = "" ]]; then
-    tr="0"
-else
-    tr=$(cat /etc/trojan/.trojan.db | grep "#tr#" | wc -l)
-fi
-if [ ! -e /etc/shadowsocks ]; then
-    mkdir -p /etc/shadowsocks
-    touch /etc/shadowsocks/.shadowsocks.db
-fi
-vms=$(cat /etc/shadowsocks/.shadowsocks.db)
-if [[ $vms = "" ]]; then
-    ss="0"
-else
-    ss=$(cat /etc/shadowsocks/.shadowsocks.db | grep "#ss#" | wc -l)
-fi
-if [ ! -e /etc/ssh ]; then
-    mkdir -p /etc/ssh
-    touch /etc/ssh/.ssh.db
-fi
-vms=$(cat /etc/ssh/.ssh.db)
-if [[ $vms = "" ]]; then
-    ssh="0"
-else
-    ssh=$(cat /etc/ssh/.ssh.db | grep "#ssh1#" | wc -l)
-fi
-clear
-echo -e " ${z}╭══════════════════════════════════════════════════════════╮${NC}"
-echo -e " ${z}│$NC\033[41m          Welcome To Script Premium RMBL VPN              $NC${z}│$NC"
-echo -e " ${z}╰══════════════════════════════════════════════════════════╯${NC}"
-echo -e " ${z}╭══════════════════════════════════════════════════════════╮${NC}"
-echo -e " ${z}│$NC$r ⇲ $NC${z} SYSTEM OS     $blue=$NC $MODEL${NC}"
-echo -e " ${z}│$NC$r ⇲ $NC${z} ISP           $blue=$NC $ISP${NC}"
-echo -e " ${z}│$NC$r ⇲ $NC${z} SERVER RAM    $blue=$NC $RAM MB / $USAGERAM MB ${NC}"
-echo -e " ${z}│$NC$r ⇲ $NC${z} UPTIME SERVER $blue=$NC $uptime${NC}"
-echo -e " ${z}│$NC$r ⇲ $NC${z} DATE          $blue=$NC $DATEVPS${NC}"
-echo -e " ${z}│$NC$r ⇲ $NC${z} TIME          $blue=$NC $TIMEZONE${NC}"
-echo -e " ${z}│$NC$r ⇲ $NC${z} IP VPS        $blue=$NC $MYIP${NC}"
-echo -e " ${z}│$NC$r ⇲ $NC${z} DOMAIN        $blue=$NC $domain${NC}"
-echo -e " ${z}╰══════════════════════════════════════════════════════════╯${NC}"
-echo -e "                ${KIRI} ${CYAN}INFORMATION ACCOUNT${NC} ${KANAN}"
-echo -e " ${z}╭══════════════════════════════════════════════════════════╮${NC}"
-echo -e " ${z}│  \033[0m ${BOLD}${GREEN}XXX${BIYellow} SSH${GREEN}  XXX  ${BIYellow}VMESS  ${GREEN}XXX  ${BIYellow}VLESS  ${GREEN}XXX  ${BIYellow}TROJAN${GREEN} XXX $NC "
-echo -e " ${z}│  \033[0m ${Blue}     $ssh1         $vma           $vla           $tra              $NC"
-echo -e " ${z}╰══════════════════════════════════════════════════════════╯${NC}"
-echo -e " ${z}╭══════════════════════════════════════════════════════════╮${NC}"
-echo -e "${z} │$NC ${BIYellow}HARI ini${NC}: ${red}$ttoday$NC ${BIYellow}KEMARIN${NC}: ${red}$tyest$NC ${BIYellow}BULAN${NC}: ${red}$tmon$NC $NC"
-echo -e " ${z}╰══════════════════════════════════════════════════════════╯${NC}"
-echo -e " ${z}╭════════════════╮╭══════════════════╮╭════════════════════╮${NC}"
-echo -e " ${z}│ ${NC}${z} SSH$NC : $resssh" "        ${z} NGINX$NC : $resngx" "        ${z} XRAY$NC : $resv2r      $NC${z}│$NC" 
-echo -e " ${z}╰════════════════╯╰══════════════════╯╰════════════════════╯${NC}"
-echo -e "${z}╔═════════════════════════════════════════════════╗${NC}"
-echo -e "${z}║${NC} ${COLBG1}                  ${WH}• LIST MENU •                ${NC}$COLOR1 ║ $NC"
-echo -e "${z}╚═════════════════════════════════════════════════╝${NC}"
-echo -e "\033[0;32m╔═════════════════════════════════════════════════════════════════╗\033[0m"
-echo -e "\033[0;32m║${BICyan}[${BIWhite}01${BICyan}] ☞ SSH     ${BICyan}${NC}"    "     ${BICyan}[${BIWhite}06${BICyan}] ☞ RUNNING    ${BICyan}${NC}║" 
-echo -e "\033[0;32m║${BICyan}[${BIWhite}02${BICyan}] ☞ VMESS   ${BICyan}${NC}" "     ${BICyan}[${BIWhite}07${BICyan}] ☞ REBOOT    ${BICyan}${NC}" "${BICyan}   ║"
-echo -e "\033[0;32m║${BICyan}[${BIWhite}03${BICyan}] ☞ VLESS   ${BICyan}${NC}"  "     ${BICyan}[${BIWhite}08${BICyan}] ☞ UPDATE      ${NC}" "${BICyan}     ║"
-echo -e "\033[0;32m║${BICyan}[${BIWhite}04${BICyan}] ☞ TROJAN  ${BICyan}${NC}" "     ${BICyan}[${BIWhite}09${BICyan}] ☞ PENGATURAN             ║"
-echo -e "\033[0;32m║${BICyan}[${BIWhite}05${BICyan}] ☞ ALL XRAY${BICyan}${NC}"  "     ${BICyan}[${BIWhite}10${BICyan}] ☞ BACKUP  ${BICyan}${NC}║"   
-echo -e "\033[0;32m╚═════════════════════════════════════════════════════════════════╝\033[0m"  
-DATE=$(date +'%d %B %Y')
+DATE=$(date +'%Y-%m-%d')
 datediff() {
     d1=$(date -d "$1" +%s)
     d2=$(date -d "$2" +%s)
-    echo -e " ${z}│${NC}${z}Expiry Script $blue=${NC} ${green}$exp ${NC}( ${r}$(( (d1 - d2) / 86400 )) ${NC}Days ) $NC"
+    echo -e "$COLOR1 $NC Expiry In   : $(( (d1 - d2) / 86400 )) Days"
+}
+function new(){
+cat> /etc/cron.d/autocpu << END
+SHELL=/bin/sh
+PATH=/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin
+*/3 * * * * root /usr/bin/autocpu
+END
+echo "Auto-Reboot CPU 100% TURN ON."
+sleep 1
+menu
+}
+
+function newx(){
+clear
+until [[ $usagee =~ ^[0-9]+$ ]]; do
+read -p "kuota user format angka 1, 2 atau 3 (TERA): " usagee
+done
+echo "$usagee" > /etc/usagee
+cat> /etc/cron.d/bantwidth << END
+SHELL=/bin/sh
+PATH=/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin
+*/10 * * * * root /usr/bin/bantwidth
+END
+echo "Auto-Shutdown $usagee TERA TURN ON."
+sleep 1
+menu
 }
 mai="datediff "$Exp" "$DATE""
-echo -e " ${z}╭══════════════════════════════════════════════════════════╮${NC}"
-echo -e " ${z}│${NC}${z}Version       $blue=${NC} V1.0 ${NC}"
-echo -e " ${z}│${NC}${z}User          $blue=${NC}\033[1;36m $Name \e[0m"
-echo -e " ${z}│${NC}${z}Script Status $blue=${NC} (${green}Aktive${NC}) ${NC}"
-if [ $exp \< 1000 ];
-then
-echo -e "   $z│$NC License      : ${GREEN}$sisa_hari$NC Days Tersisa $NC"
-else
-    datediff "$Exp" "$DATE"
-fi;
-echo -e " ${z}╰══════════════════════════════════════════════════════════╯${NC}"
-echo " "
-read -p " Select menu : " opt
+
+# CERTIFICATE STATUS
+d1=$(date -d "$Exp2" +%s)
+d2=$(date -d "$today" +%s)
+certificate=$(( (d1 - d2) / 86400 ))
+
+function bannner(){
+wget -O /etc/issue.net "https://raw.githubusercontent.com/casper9/perv1/main/install/issue2.net" &> /dev/null
+menu
+}
+echo -e "$COLOR1┌─────────────────────────────────────────────────┐${NC}"
+echo -e "$COLOR1│ $NC ${WH}Versi Script  ${COLOR1}: ${WH}$(cat /opt/.ver) Latest Version${NC}$COLOR1"
+echo -e "$COLOR1│ $NC ${WH}Nama Client   ${COLOR1}: ${WH}$Name${NC}$COLOR1"
+echo -e "$COLOR1│ $NC ${WH}Durasi Script ${COLOR1}: ${WH}$certificate hari${NC}$COLOR1"                    
+echo -e "$COLOR1│ $NC ${WH}Exp Script    ${COLOR1}: ${WH}$Exp2 $sts ${NC}$COLOR1"
+echo -e "$COLOR1└─────────────────────────────────────────────────┘${NC}"
 echo -e ""
+echo -ne " ${WH}Select menu ${COLOR1}: ${WH}"; read opt
 case $opt in
 01 | 1) clear ; m-sshovpn ;;
 02 | 2) clear ; m-vmess ;;
@@ -431,4 +514,4 @@ case $opt in
 100) clear ; $up2u ;;
 00 | 0) clear ; menu ;;
 *) clear ; menu ;;
-esac
+esac 
