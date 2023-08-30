@@ -417,6 +417,8 @@ echo -e "$COLOR1 $NC  ${WH}🔱 Websocket TLS           ${COLOR1}: ${WH}$swstls$
 echo -e "$COLOR1 $NC  ${WH}🔱 Websocket None TLS      ${COLOR1}: ${WH}$swstls${NC}"
 echo -e "$COLOR1 $NC  ${WH}🔱 Websocket None TLS      ${COLOR1}: ${WH}$swstls${NC}"
 echo -e "$COLOR1 $NC  ${WH}🔱 SSH UDP COSTUM          ${COLOR1}: ${WH}$udp${NC}"
+echo -e "$COLOR1 $NC  ${WH}🔱 SlowDNS CLIENT          ${COLOR1}: ${WH}$slc${NC}"
+echo -e "$COLOR1 $NC  ${WH}🔱 SlowDNS SERVER          ${COLOR1}: ${WH}$sls${NC}"
 #echo -e "🔱 SSL / SSH Multiplexer   :$sosslh"
 echo -e "$COLOR1└───────────────────────────────────────────────────┘${NC}"
 #echo -e " $COLOR1 $NC                                              ${NC} $COLOR1 $NC"
