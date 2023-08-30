@@ -428,5 +428,5 @@ echo -e "$COLOR1 ${NC}                ${WH}♤ PREMIUM ♤ ${NC}                
 #echo -e "$COLOR1 ${NC}                ${WH}◇   BY   ◇ ${NC}                    $COLOR1 $NC"
 #echo -e "$COLOR1 ${NC}             ${WH}♡ RMBL VPN ♡ ${NC}                 $COLOR1 $NC"
 echo -e "$COLOR1└───────────────────────────────────────────────────┘${NC}"
-read -n 1 -s -r -p "Press [ Enter ] to back on menu"
-menu
+read -n 1 -s -r -p "Press any key to Restart Service or Ctrl + C to Exit"
+restart
