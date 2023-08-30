@@ -397,7 +397,7 @@ echo -e "   $COLOR1$NC${WH} [ SSH  =  ${COLOR1}$total_ssh${WH}]${WH}    [ VMESS 
 echo -e ""
 echo -e "   $COLOR1$NC${WH} [ VLESS  = ${COLOR1}$vless${WH}]${WH}   [ TROJAN  = ${COLOR1}${trtls}${WH}] $COLOR1 $NC"
 #echo -e "$COLOR1└─────────────────────────────────────────────────┘${NC}"
-echo -e "$COLOR1╔═══════════════════ • LIST MENU • ═════════════════╗${NC}"
+echo -e "$COLOR1╔══════════════════ • LIST MENU • ════════════════╗${NC}"
 echo -e "$COLOR1║                                                 $COLOR1║ $NC"
 echo -e "$COLOR1║ ${WH}[${COLOR1}01${WH}]${NC} ${COLOR1}• ${WH}SSH-WS   ${WH}[${COLOR1}Menu${WH}]   ${WH}[${COLOR1}06${WH}]${NC} ${COLOR1}• ${WH}RESTART SERVICE $COLOR1║ $NC"
 echo -e "$COLOR1║                                                 $COLOR1║ $NC"
