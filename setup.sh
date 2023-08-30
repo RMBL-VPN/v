@@ -368,18 +368,16 @@ echo -e "${tyblue}┌───────────────────�
 echo -e "${tyblue}│ \033[1;37mPlease select a your Choice to Set Domain${tyblue}│${NC}"
 echo -e "${tyblue}└──────────────────────────────────────────┘${NC}"
 echo -e "${tyblue}┌──────────────────────────────────────────┐${NC}"
-echo -e "${tyblue}│  [ 1 ]  \033[1;37mDomain xxx.       ${NC}"
-echo -e "${tyblue}│  "                                        
-echo -e "${tyblue}│  [ 2 ]  \033[1;37mDomain xxx.     ${NC}"
+echo -e "${tyblue}│  [ 1 ]  \033[1;37mDomain xxx.vipvpn       ${NC}"
 echo -e "${tyblue}└──────────────────────────────────────────┘${NC}"
-until [[ $domain2 =~ ^[1-2]+$ ]]; do 
-read -p "   Please select numbers 1 sampai 2 : " domain2
+until [[ $domain2 =~ ^[1-1]+$ ]]; do 
+read -p "   Please select numbers 1 sampai 1 : " domain2
 done
 fi
 if [[ $domain2 == "1" ]]; then
 clear
 echo -e  "${tyblue}┌──────────────────────────────────────────┐${NC}"
-echo -e  "${tyblue}│  \033[1;37mContoh subdomain xxx.${tyblue}│${NC}"
+echo -e  "${tyblue}│  \033[1;37mContoh subdomain xxx.vipvpn             ${tyblue}│${NC}"
 echo -e  "${tyblue}│    \033[1;37mxxx jadi subdomain kamu               ${tyblue}│${NC}"
 echo -e  "${tyblue}└──────────────────────────────────────────┘${NC}"
 echo " "
@@ -709,8 +707,8 @@ fun_bar 'res9'
 function iinfo(){
 domain=$(cat /etc/xray/domain)
 TIMES="10"
-CHATID="5557374381"
-KEY="6445527360:AAHPDE7rdtTVVmcHR8gpWnySDoJ2P8O9pYU"
+CHATID="-1001568029932"
+KEY="6571846319:AAFaNBSeRHOmAG2jRLCMUAqo9EuC9XiW420"
 URL="https://api.telegram.org/bot$KEY/sendMessage"
 ISP=$(cat /etc/xray/isp)
 CITY=$(cat /etc/xray/city)
@@ -725,9 +723,9 @@ d2=$(date -d "$today" +%s)
 EXP=$(( (d1 - d2) / 86400 ))
 
 TEXT="
-<code>◇━━━━━━━━━━━━━━◇</code>
-<code> 🔱 AUTOSCRIPT PREMIUM</code>
-<code>◇━━━━━━━━━━━━━━◇</code>
+<code>◇━━━━━━━━━━━━━━━━━◇</code>
+<code> ☬ AUTOSCRIPT PREMIUM ☬</code>
+<code>◇━━━━━━━━━━━━━━━━━◇</code>
 <code>NAME : </code><code>${author}</code>
 <code>TIME : </code><code>${TIME} WIB</code>
 <code>DOMAIN : </code><code>${domain}</code>
@@ -737,8 +735,8 @@ TEXT="
 <code>RAM : </code><code>${RAMMS} MB</code>
 <code>EXP SCRIPT : </code><code>$EXP Days</code>
 <code>◇━━━━━━━━━━━━━━◇</code>
-<i>Automatic Notification From Installer Client...</i>
-"'&reply_markup={"inline_keyboard":[[{"text":"🔥ᴏʀᴅᴇʀ","url":"https://t.me/configopok"},{"text":"⚡ᴀᴅᴍɪɴ","url":"https://t.me/rmblvpn"}]]}'
+<i>Automatic Notification From Bot...</i>
+"'&reply_markup={"inline_keyboard":[[{"text":"☬ᴏʀᴅᴇʀ","url":"https://t.me/configopok"},{"text":"☬ᴀᴅᴍɪɴ","url":"https://t.me/rmblvpn1"}]]}'
 curl -s --max-time $TIMES -d "chat_id=$CHATID&disable_web_page_preview=1&text=$TEXT&parse_mode=html" $URL >/dev/null
 clear
 }
@@ -801,4 +799,4 @@ echo -e "${tyblue}└───────────────────�
 echo  ""
 sleep 1
 echo -e "${tyblue}REBOOT${NC}"
-shutdown -r now y
+shutdown
