@@ -798,5 +798,5 @@ echo -e "${tyblue}│  Install SCRIPT SELESAI..                  │${NC}"
 echo -e "${tyblue}└────────────────────────────────────────────┘${NC}"
 echo  ""
 sleep 1
-echo -e "${tyblue}REBOOT${NC}"
-shutdown
+echo -e read -p "$( echo -e "Press ${YELLOW}[ ${NC}${YELLOW}Enter${NC} ${YELLOW}]${NC} For Reboot") "
+reboot
