@@ -3,8 +3,8 @@
 apt update && apt upgrade
 apt install python3 python3-pip git
 git clone https://github.com/RMBL-VPN/bot_panel.git
-unzip bot_panel/xolpanel.zip
-pip3 install -r xolpanel/requirements.txt
+unzip bot_panel/botmin.zip
+pip3 install -r requirements.txt
 apt install zlib1g-dev libjpeg-dev libpng-dev
 pip3 install pillow
 
@@ -13,9 +13,9 @@ echo ""
 read -e -p "[*] Input your Bot Token : " bottoken
 read -e -p "[*] Input Your Id Telegram :" admin
 read -e -p "[*] Input Your Domain :" domain
-echo -e BOT_TOKEN='"'$bottoken'"' >> /root/xolpanel/var.txt
-echo -e ADMIN='"'$admin'"' >> /root/xolpanel/var.txt
-echo -e DOMAIN='"'$domain'"' >> /root/xolpanel/var.txt
+echo -e BOT_TOKEN='"'$bottoken'"' >> /root/var.txt
+echo -e ADMIN='"'$admin'"' >> /root/var.txt
+echo -e DOMAIN='"'$domain'"' >> /root/var.txt
 clear
 echo "Done"
 echo "Your Data Bot"
