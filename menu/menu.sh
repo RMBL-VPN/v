@@ -230,7 +230,7 @@ echo -e "$COLOR1║ $NC${WH}Sever Uptime        ${NC}= $( uptime -p  | cut -d " 
 echo -e "$COLOR1║ $NC${WH}Current Time        ${NC}= $( date -d "0 days" +"%d-%m-%Y | %X" )"
 echo -e "$COLOR1║ $NC${WH}Operating System    ${NC}= $( cat /etc/os-release | grep -w PRETTY_NAME | sed 's/PRETTY_NAME//g' | sed 's/=//g' | sed 's/"//g')( $(uname -m))"
 echo -e "$COLOR1║ $NC${WH}Current Domain      ${NC}= $( cat /etc/xray/domain )"
-echo -e "$COLOR1║ $NC${WH}SLOWDNS Domain      ${NC}= $NS"
+#echo -e "$COLOR1║ $NC${WH}SLOWDNS Domain      ${NC}= $NS"
 echo -e "$COLOR1║ $NC${WH}Server IP           ${NC}= $IPVPS"
 echo -e "$COLOR1║ $NC${WH}ISP-VPS             ${NC}= $ISP"
 echo -e "$COLOR1║ $NC${WH}City                ${NC}= $CITY"
@@ -334,4 +334,4 @@ case $opt in
 100) clear ; $up2u ;;
 00 | 0) clear ; menu ;;
 *) clear ; menu ;;
-esac�
+esac
