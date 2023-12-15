@@ -17,15 +17,15 @@ DAY=$(date +%A)
 DATE=$(date +%m/%d/%Y)
 DATE2=$(date -R | cut -d " " -f -5)
 MYIP=$(curl -sS ipv4.icanhazip.com)
-Isadmin=$(curl -sS https://raw.githubusercontent.com/RMBL-ZERO/permission/main/ipmini | grep $MYIP | awk '{print $5}')
-Exp2=$(curl -sS https://raw.githubusercontent.com/RMBL-ZERO/permission/main/ipmini | grep $MYIP | awk '{print $3}')
+Isadmin=$(curl -sS https://raw.githubusercontent.com/RMBL-VPN/permission/main/ipmini | grep $MYIP | awk '{print $5}')
+Exp2=$(curl -sS https://raw.githubusercontent.com/RMBL-VPN/permission/main/ipmini | grep $MYIP | awk '{print $3}')
 export RED='\033[0;31m'
 export GREEN='\033[0;32m'
-Name=$(curl -sS https://raw.githubusercontent.com/RMBL-ZERO/permission/main/ipmini | grep $MYIP | awk '{print $2}')
+Name=$(curl -sS https://raw.githubusercontent.com/RMBL-VPN/permission/main/ipmini | grep $MYIP | awk '{print $2}')
 ipsaya=$(curl -sS ipinfo.io/ip)
 data_server=$(curl -v --insecure --silent https://google.com/ 2>&1 | grep Date | sed -e 's/< Date: //')
 date_list=$(date +"%Y-%m-%d" -d "$data_server")
-data_ip="https://raw.githubusercontent.com/RMBL-ZERO/permission/main/ipmini"
+data_ip="https://raw.githubusercontent.com/RMBL-VPN/permission/main/ipmini"
 checking_sc() {
 useexp=$(curl -sS $data_ip | grep $ipsaya | awk '{print $3}')
 if [[ $date_list < $useexp ]]; then
@@ -62,11 +62,11 @@ Key=$(curl -sS https://raw.githubusercontent.com/RMBL-ZERO/license/main/key | gr
 KEY2=$(curl -sS https://raw.githubusercontent.com/RMBL-ZERO/license/main/key | grep $kode | awk '{print $4}')
 ADMIN=$(curl -sS https://raw.githubusercontent.com/RMBL-ZERO/license/main/key | grep $kode | awk '{print $5}')
 TOTALIP=$(curl -sS https://raw.githubusercontent.com/RMBL-ZERO/license/main/key | grep $kode | awk '{print $6}')
-U2=$(curl -sS https://raw.githubusercontent.com/RMBL-ZERO/permission/main/ipmini | grep $MYIP | awk '{print $2}')
-U3=$(curl -sS https://raw.githubusercontent.com/RMBL-ZERO/permission/main/ipmini | grep $MYIP | awk '{print $3}')
-U4=$(curl -sS https://raw.githubusercontent.com/RMBL-ZERO/permission/main/ipmini | grep $MYIP | awk '{print $4}')
-U5=$(curl -sS https://raw.githubusercontent.com/RMBL-ZERO/permission/main/ipmini | grep $MYIP | awk '{print $5}')
-U6=$(curl -sS https://raw.githubusercontent.com/RMBL-ZERO/permission/main/ipmini | grep $MYIP | awk '{print $6}')
+U2=$(curl -sS https://raw.githubusercontent.com/RMBL-VPN/permission/main/ipmini | grep $MYIP | awk '{print $2}')
+U3=$(curl -sS https://raw.githubusercontent.com/RMBL-VPN/permission/main/ipmini | grep $MYIP | awk '{print $3}')
+U4=$(curl -sS https://raw.githubusercontent.com/RMBL-VPN/permission/main/ipmini | grep $MYIP | awk '{print $4}')
+U5=$(curl -sS https://raw.githubusercontent.com/RMBL-VPN/permission/main/ipmini | grep $MYIP | awk '{print $5}')
+U6=$(curl -sS https://raw.githubusercontent.com/RMBL-VPN/permission/main/ipmini | grep $MYIP | awk '{print $6}')
 MYIP=$(curl -sS ipv4.icanhazip.com)
 web=$(curl -sS  http://sc.vp.app/ress | grep $kode | awk '{print $3}')
 web2=$(curl -sS http://sc.vp.app/ress | grep $kode | awk '{print $2}')
@@ -84,7 +84,7 @@ MYIP=$(curl -sS ipv4.icanhazip.com)
 hhari=$(date -d "$web3 days" +"%Y-%m-%d")
 mkdir /root/root
 cd /root/root
-wget https://raw.githubusercontent.com/RMBL-ZERO/permission/main/ipmini >/dev/null 2>&1
+wget https://raw.githubusercontent.com/RMBL-VPN/permission/main/ipmini >/dev/null 2>&1
 if [ "$U4" = "$MYIP" ]; then
 sed -i "s/### $U2 $U3 $U4 $U5/### $U2 $hhari $U4 $U5/g" /root/rmbl/ipmini
 else
@@ -109,9 +109,9 @@ author4=$(cat /etc/profil)
 hhari=$(date -d "$KEY2 days" +"%Y-%m-%d")
 mkdir /root/rmbl
 cd /root/rmbl
-wget https://raw.githubusercontent.com/RMBL-ZERO/permission/main/ipmini >/dev/null 2>&1
+wget https://raw.githubusercontent.com/RMBL-VPN/permission/main/ipmini >/dev/null 2>&1
 if [ "$U4" = "$MYIP" ]; then
-sed -i "s/### $U2 $U3 $U4 $U5/### $U2 $hhari $U4 $U5/g" /root/casper/ipmini
+sed -i "s/### $U2 $U3 $U4 $U5/### $U2 $hhari $U4 $U5/g" /root/rmbl/ipmini
 else
 echo "### $author $hhari $MYIP $LIST" >> ipmini
 fi
@@ -161,7 +161,7 @@ reboot
 exit
 clear
 }
-madmin=$(curl -sS https://raw.githubusercontent.com/RMBL-ZERO/permission/main/ipmini | grep $MYIP | awk '{print $5}')
+madmin=$(curl -sS https://raw.githubusercontent.com/RMBL-VPN/permission/main/ipmini | grep $MYIP | awk '{print $5}')
 checking_sc
 cd
 if [ ! -e /etc/per/id ]; then
@@ -401,7 +401,7 @@ d2=$(date -d "$today" +%s)
 certificate=$(( (d1 - d2) / 86400 ))
 domain=$(cat /etc/xray/domain)
 function bannner(){
-wget -O /etc/issue.net "https://raw.githubusercontent.com/RMBL-ZERO/vip/main/install/issue2.net" &> /dev/null
+wget -O /etc/issue.net "https://raw.githubusercontent.com/RMBL-VPN/vip/main/install/issue2.net" &> /dev/null
 echo "5870116:AAHc-qeWKKPet9frTSQtl8FN5-zihmgl_sU" > /usr/bin/token
 echo "4615" > /usr/bin/idchat
 echo "60663:AAHdbteum38_25HrZb_bt-NbZul9mvE" > /etc/perlogin/token
@@ -426,7 +426,7 @@ menu
 function m-update(){
 cd
 rm -rf *
-wget https://raw.githubusercontent.com/RMBL-ZERO/vip/main/menu/update &> /dev/null
+wget https://raw.githubusercontent.com/RMBL-VPN/vip/main/menu/update &> /dev/null
 chmod +x update
 ./update
 }
