@@ -41,12 +41,12 @@ echo ""
 #########################
 # // USERNAME IZIN IPP
 rm -f /usr/bin/user
-username=$(curl -sS https://raw.githubusercontent.com/bimaVPN/Apex/ZX/REGISTRASI | grep $MYIP | awk '{print $2}')
+username=$(curl -sS https://raw.githubusercontent.com/RMBL-VPN/permission/main/ipmini | grep $MYIP | awk '{print $2}')
 echo "$username" >/usr/bin/user
 
 # // VALIDITY
 rm -f /usr/bin/e
-valid=$(curl -sS https://raw.githubusercontent.com/bimaVPN/Apex/ZX/REGISTRASI | grep $MYIP | awk '{print $3}')
+valid=$(curl -sS https://raw.githubusercontent.com/RMBL-VPN/permission/main/ipmini | grep $MYIP | awk '{print $3}')
 echo "$valid" > /usr/bin/e
 
 # // DETAIL ORDER IZIN IP
@@ -76,7 +76,7 @@ Info="${green}Activated${NC}"
 Error="${RED}Expired ${NC}"
 #//
 today=`date -d "0 days" +"%Y-%m-%d"`
-Exp1=$(curl -sS https://raw.githubusercontent.com/bimaVPN/Apex/ZX/REGISTRASI | grep $MYIP | awk '{print $3}')
+Exp1=$(curl -sS https://raw.githubusercontent.com/RMBL-VPN/permission/main/ipmini | grep $MYIP | awk '{print $3}')
 if [[ $today < $Exp1 ]]; then
 sts="${Info}"
 else
@@ -157,7 +157,7 @@ else
    status_dropbear="${z}[OFF]${NC} "
 fi
 # // UPDATE / REVISI all menu
-REVISI="https://raw.githubusercontent.com/bimaVPN/Apex/ZX/"
+REVISI="https://raw.githubusercontent.com/RMBL-VPN/vip/main/"
 
 # // INFO CREATE ACCOUNT
 # \\ Vless account //
@@ -192,91 +192,46 @@ echo -e " ${z}│$NC •  ${W}IP VPS ${NC}     : ${cyan}$MYIP${NC}"
 echo -e " ${z}│$NC •  ${W}DOMAIN ${NC}     : ${cyan}$domain${NC}"
 echo -e " ${z}└──────────────────────────────────────────────────────────┘${NC}"
 echo -e " ${z}┌──────────────────────────────────────────────────────────┐${NC}"
-echo -e " ${k}│ SSH $status_ssh NGINX $status_nginx WS $status_ws_epro PROXY $status_haproxy XRAY $status_xray DROP $status_dropbear"
+echo -e " ${k}│ SSH $status_ssh NGINX $status_nginx  XRAY $status_xray DROP $status_dropbear"
 echo -e " ${z}└──────────────────────────────────────────────────────────┘${NC}"
-echo -e "       ───────────────────────────────────────────────${NC}" | lolcat 
+echo -e "       ───────────────────────────────────────────────${NC}"
 echo -e "               SSH/OPENVPN/UDP :$NC $ssh1" "$a"
 echo -e "               VMESS/WS/GRPC   :$NC $vma" "$a"
 echo -e "               VLESS/WS/GRPC   :$NC $vla" "$a"
-echo -e "               TROJAN/WS/GRPC  :$NC $trb" "$a"
-echo -e "               SHADOW/WS/GRPC  :$NC $ssa" "$a"
-echo -e "       ───────────────────────────────────────────────${NC}" | lolcat 
+echo -e "               TROJAN/WS/GRPC  :$NC $trb" "$a"               
+echo -e "       ───────────────────────────────────────────────${NC}" 
 echo -e "         ${z}┌─────────────────────────────────────────┐${NC}"
 echo -e "         ${z}│$NC Status  : $sts"
 echo -e "         ${z}│$NC Client  : $username "
 echo -e "         ${z}│$NC Expiry  : $exp ${NC} / $green $certifacate ${NC}Days"
 echo -e "         ${z}└─────────────────────────────────────────┘${NC}"
 echo -e " ${z}┌────────────────────────────────────────────────────────┐${NC}"
-echo -e " ${z}│$NC ${G}01.)${NC} ssh OPENVPN ${NC}         ${G}07.)${NC} Backup / Restore       ${NC} ${z}│${NC}"
-echo -e " ${z}│$NC ${G}02.)${NC} Xray / Vmess ${NC}        ${G}08.)${NC} Gotop x Ram            ${NC} ${z}│${NC}"    
-echo -e " ${z}│$NC ${G}03.)${NC} xray / Vless ${NC}        ${G}09.)${NC} Restart All Service    ${NC} ${z}│${NC}"   
-echo -e " ${z}│$NC ${G}04.)${NC} Tr / Trojan ${NC}         ${G}10.)${NC} Tele Bot               ${NC} ${z}│${NC}" 
-echo -e " ${z}│$NC ${G}05.)${NC} ss - LIBEV ${NC}          ${G}11.)${NC} Update Version.Sc      ${NC} ${z}│${NC}"
-echo -e " ${z}│$NC ${G}06.)${NC} Triall Acc ${NC}          ${G}12.)${NC} Extra Menu             ${NC} ${z}│${NC}"
+echo -e " ${z}│$NC ${G}01.)${NC} ssh OPENVPN ${NC}         ${G}06.)${NC} Restart       ${NC} ${z}│${NC}"
+echo -e " ${z}│$NC ${G}02.)${NC} Vmess ${NC}               ${G}07.)${NC} Reboot        ${NC} ${z}│${NC}"    
+echo -e " ${z}│$NC ${G}03.)${NC} Vless ${NC}               ${G}08.)${NC} Update        ${NC} ${z}│${NC}"   
+echo -e " ${z}│$NC ${G}04.)${NC} Trojan ${NC}              ${G}09.)${NC} Setting       ${NC} ${z}│${NC}" 
+echo -e " ${z}│$NC ${G}05.)${NC} Runing ${NC}              ${G}10.)${NC} Backup        ${NC} ${z}│${NC}" 
 echo -e " ${z}└────────────────────────────────────────────────────────┘${NC}"
-echo -e "         ────────────────────────────────────────────${NC}" | lolcat 
-echo -e " "
 echo -e " "
 read -p " options [ 1 / 12 ] >  " opt
 echo -e ""
 case $opt in
-1 | 01)
-clear
-m-sshws
-;;
-2 | 02)
-clear
-m-vmess
-;;
-3 | 03)
-clear
-m-vless
-;;
-4 | 04)
-clear
-m-trojan
-;;
-5 | 05)
-clear
-m-ssws
-;;
-6 | 06)
-clear
-m-trial
-;;
-7 | 07)
-clear
-menu-backup
-;;
-8 | 08)
-clear
-gotop
-;;
-9 | 09)
-clear
-restart
-;;
-10)
-clear
-m-bot
-;;
-11)
-clear
-wget -q https://raw.githubusercontent.com/bimaVPN/Apex/ZX/update.sh
-chmod +x update.sh
-./update.sh
-;;
-12)
-clear
-m-system
-;;
-0 | 00)
-exit
-;;
-x)
-menu
-;;
-*) clear ;
-menu
-;;
+01 | 1) clear ; m-sshovpn ;;
+02 | 2) clear ; m-vmess ;;
+03 | 3) clear ; m-vless ;;
+04 | 4) clear ; m-trojan ;;
+05 | 5) clear ; m-allxray ;;
+06 | 6) clear ; running ;;
+07 | 7) clear ; reboot ;;
+08 | 8) clear ; m-update ;;
+19 | 9) clear ; m-system ;;
+10 | 10) clear ; m-backup;;
+11 | 11) clear ; $ressee ;;
+12 | 12) clear ; key ;;
+89 | 89) clear ; bannner ;;
+88 | 88) clear ; new ;;
+77 | 77) clear ; newx ;;
+100) clear ; $up2u ;;
+00 | 0) clear ; menu ;;
+*) clear ; menu ;;
 esac
