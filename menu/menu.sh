@@ -255,11 +255,11 @@ echo -e "         ${z}│$NC Client  : $username "
 echo -e "         ${z}│$NC Expiry  : $exp ${NC} / $green $certifacate ${NC}Days"
 echo -e "         ${z}└─────────────────────────────────────────┘${NC}"
 echo -e " ${z}┌────────────────────────────────────────────────────────┐${NC}"
-echo -e " ${z}│$NC ${G}01.)${NC} ssh OPENVPN ${NC}    ${NC} ${z}│${NC}     ${G}06.)${NC} Restart           ${NC} ${z}│${NC}"
-echo -e " ${z}│$NC ${G}02.)${NC} Vmess ${NC}          ${NC} ${z}│${NC}     ${G}07.)${NC} Reboot            ${NC} ${z}│${NC}"    
-echo -e " ${z}│$NC ${G}03.)${NC} Vless ${NC}          ${NC} ${z}│${NC}     ${G}08.)${NC} Update            ${NC} ${z}│${NC}"   
-echo -e " ${z}│$NC ${G}04.)${NC} Trojan ${NC}         ${NC} ${z}│${NC}     ${G}09.)${NC} Setting           ${NC} ${z}│${NC}" 
-echo -e " ${z}│$NC ${G}05.)${NC} Runing ${NC}         ${NC} ${z}│${NC}     ${G}10.)${NC} Backup            ${NC} ${z}│${NC}" 
+echo -e " ${z}│$NC ${G}01.)${NC} SSH VPN ${NC}          ${NC} ${z}│${NC}     ${G}06.)${NC} Restart           ${NC} ${z}│${NC}"
+echo -e " ${z}│$NC ${G}02.)${NC} VMESS ${NC}            ${NC} ${z}│${NC}     ${G}07.)${NC} Reboot            ${NC} ${z}│${NC}"    
+echo -e " ${z}│$NC ${G}03.)${NC} VLESS ${NC}            ${NC} ${z}│${NC}     ${G}08.)${NC} Update            ${NC} ${z}│${NC}"   
+echo -e " ${z}│$NC ${G}04.)${NC} TROJAN ${NC}           ${NC} ${z}│${NC}     ${G}09.)${NC} Setting           ${NC} ${z}│${NC}" 
+echo -e " ${z}│$NC ${G}05.)${NC} RUNNING ${NC}          ${NC} ${z}│${NC}     ${G}10.)${NC} Backup            ${NC} ${z}│${NC}" 
 echo -e " ${z}└────────────────────────────────────────────────────────┘${NC}"
 echo -e "${z}╔═══════════╗╔════════════════════════════════════╗${NC}"
 echo -e "${z}║   Total   ║║   Today     Yesterday      Month         ${NC}"
@@ -270,11 +270,11 @@ read -p " options [ 1 / 12 ] >  " opt
 echo -e ""
 case $opt in
 01 | 1) clear ; m-sshovpn ;;
-02 | 2) clear ; m-vmess ;;
+02 | 2) clear ; running ;;
 03 | 3) clear ; m-vless ;;
 04 | 4) clear ; m-trojan ;;
 05 | 5) clear ; m-allxray ;;
-06 | 6) clear ; running ;;
+06 | 2) clear ; m-vmess ;;
 07 | 7) clear ; reboot ;;
 08 | 8) clear ; m-update ;;
 19 | 9) clear ; m-system ;;
