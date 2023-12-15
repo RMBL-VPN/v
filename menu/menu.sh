@@ -191,7 +191,6 @@ vnstat_profile=$(vnstat | sed -n '3p' | awk '{print $1}' | grep -o '[^:]*')
 vnstat -i ${vnstat_profile} >/etc/t1
 bulan=$(date +%b)
 tahun=$(date +%y)
-ba=$(curl -s https://pastebin.com/raw/0gWiX6hE)
 today=$(vnstat -i ${vnstat_profile} | grep today | awk '{print $8}')
 todayd=$(vnstat -i ${vnstat_profile} | grep today | awk '{print $8}')
 today_v=$(vnstat -i ${vnstat_profile} | grep today | awk '{print $9}')
@@ -256,11 +255,11 @@ echo -e "         ${z}│$NC Client  : $username "
 echo -e "         ${z}│$NC Expiry  : $exp ${NC} / $green $certifacate ${NC}Days"
 echo -e "         ${z}└─────────────────────────────────────────┘${NC}"
 echo -e " ${z}┌────────────────────────────────────────────────────────┐${NC}"
-echo -e " ${z}│$NC ${G}01.)${NC} ssh OPENVPN ${NC}         ${G}06.)${NC} Restart           ${NC} ${z}│${NC}"
-echo -e " ${z}│$NC ${G}02.)${NC} Vmess ${NC}               ${G}07.)${NC} Reboot            ${NC} ${z}│${NC}"    
-echo -e " ${z}│$NC ${G}03.)${NC} Vless ${NC}               ${G}08.)${NC} Update            ${NC} ${z}│${NC}"   
-echo -e " ${z}│$NC ${G}04.)${NC} Trojan ${NC}              ${G}09.)${NC} Setting           ${NC} ${z}│${NC}" 
-echo -e " ${z}│$NC ${G}05.)${NC} Runing ${NC}              ${G}10.)${NC} Backup            ${NC} ${z}│${NC}" 
+echo -e " ${z}│$NC ${G}01.)${NC} ssh OPENVPN ${NC}    ${NC} ${z}│${NC}     ${G}06.)${NC} Restart           ${NC} ${z}│${NC}"
+echo -e " ${z}│$NC ${G}02.)${NC} Vmess ${NC}          ${NC} ${z}│${NC}     ${G}07.)${NC} Reboot            ${NC} ${z}│${NC}"    
+echo -e " ${z}│$NC ${G}03.)${NC} Vless ${NC}          ${NC} ${z}│${NC}     ${G}08.)${NC} Update            ${NC} ${z}│${NC}"   
+echo -e " ${z}│$NC ${G}04.)${NC} Trojan ${NC}         ${NC} ${z}│${NC}     ${G}09.)${NC} Setting           ${NC} ${z}│${NC}" 
+echo -e " ${z}│$NC ${G}05.)${NC} Runing ${NC}         ${NC} ${z}│${NC}     ${G}10.)${NC} Backup            ${NC} ${z}│${NC}" 
 echo -e " ${z}└────────────────────────────────────────────────────────┘${NC}"
 echo -e "${z}╔═══════════╗╔════════════════════════════════════╗${NC}"
 echo -e "${z}║   Total   ║║   Today     Yesterday      Month         ${NC}"
