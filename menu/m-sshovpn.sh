@@ -6,24 +6,7 @@ RED="\033[0;31m"
 COLOR1="$(cat /etc/rmbl/theme/$colornow | grep -w "TEXT" | cut -d: -f2|sed 's/ //g')"
 COLBG1="$(cat /etc/rmbl/theme/$colornow | grep -w "BG" | cut -d: -f2|sed 's/ //g')"
 WH='\033[1;37m'
-fi
 }
-checking_sc
-ISP=$(cat /etc/xray/isp)
-CITY=$(cat /etc/xray/city)
-author=$(cat /etc/profil)
-TIMES="10"
-CHATID=$(cat /etc/per/id)
-KEY=$(cat /etc/per/token)
-URL="https://api.telegram.org/bot$KEY/sendMessage"
-domain=`cat /etc/xray/domain`
-CHATID2=$(cat /etc/perlogin/id)
-KEY2=$(cat /etc/perlogin/token)
-URL2="https://api.telegram.org/bot$KEY2/sendMessage"
-cd
-if [ ! -e /etc/xray/sshx/akun ]; then
-mkdir -p /etc/xray/sshx/akun
-fi
 function usernew(){
 clear
 domen=`cat /etc/xray/domain`
