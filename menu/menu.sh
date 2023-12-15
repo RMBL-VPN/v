@@ -181,6 +181,56 @@ r="\033[1;31m"  #REDTERANG
 a=" ${z}ACCOUNT${NC}" 
 BG_RED="\033[45;1m"
 G='\033[35;1m'
+MODEL2=$(cat /etc/os-release | grep -w PRETTY_NAME | head -n1 | sed 's/=//g' | sed 's/"//g' | sed 's/PRETTY_NAME//g')
+LOADCPU=$(printf '%-0.00001s' "$(top -bn1 | awk '/Cpu/ { cpu = "" 100 - $8 "%" }; END { print cpu }')")
+CORE=$(printf '%-1s' "$(grep -c cpu[0-9] /proc/stat)")
+cpu_usage1="$(ps aux | awk 'BEGIN {sum=0} {sum+=$3}; END {print sum}')"
+cpu_usage="$((${cpu_usage1/\.*} / ${corediilik:-1}))"
+cpu_usage+=" %"
+vnstat_profile=$(vnstat | sed -n '3p' | awk '{print $1}' | grep -o '[^:]*')
+vnstat -i ${vnstat_profile} >/etc/t1
+bulan=$(date +%b)
+tahun=$(date +%y)
+ba=$(curl -s https://pastebin.com/raw/0gWiX6hE)
+today=$(vnstat -i ${vnstat_profile} | grep today | awk '{print $8}')
+todayd=$(vnstat -i ${vnstat_profile} | grep today | awk '{print $8}')
+today_v=$(vnstat -i ${vnstat_profile} | grep today | awk '{print $9}')
+today_rx=$(vnstat -i ${vnstat_profile} | grep today | awk '{print $2}')
+today_rxv=$(vnstat -i ${vnstat_profile} | grep today | awk '{print $3}')
+today_tx=$(vnstat -i ${vnstat_profile} | grep today | awk '{print $5}')
+today_txv=$(vnstat -i ${vnstat_profile} | grep today | awk '{print $6}')
+if [ "$(grep -wc ${bulan} /etc/t1)" != '0' ]; then
+bulan=$(date +%b)
+month=$(vnstat -i ${vnstat_profile} | grep "$bulan $ba$tahun" | awk '{print $9}')
+month_v=$(vnstat -i ${vnstat_profile} | grep "$bulan $ba$tahun" | awk '{print $10}')
+month_rx=$(vnstat -i ${vnstat_profile} | grep "$bulan $ba$tahun" | awk '{print $3}')
+month_rxv=$(vnstat -i ${vnstat_profile} | grep "$bulan $ba$tahun" | awk '{print $4}')
+month_tx=$(vnstat -i ${vnstat_profile} | grep "$bulan $ba$tahun" | awk '{print $6}')
+month_txv=$(vnstat -i ${vnstat_profile} | grep "$bulan $ba$tahun" | awk '{print $7}')
+else
+bulan2=$(date +%Y-%m)
+month=$(vnstat -i ${vnstat_profile} | grep "$bulan2 " | awk '{print $8}')
+month_v=$(vnstat -i ${vnstat_profile} | grep "$bulan2 " | awk '{print $9}')
+month_rx=$(vnstat -i ${vnstat_profile} | grep "$bulan2 " | awk '{print $2}')
+month_rxv=$(vnstat -i ${vnstat_profile} | grep "$bulan2 " | awk '{print $3}')
+month_tx=$(vnstat -i ${vnstat_profile} | grep "$bulan2 " | awk '{print $5}')
+month_txv=$(vnstat -i ${vnstat_profile} | grep "$bulan2 " | awk '{print $6}')
+fi
+if [ "$(grep -wc yesterday /etc/t1)" != '0' ]; then
+yesterday=$(vnstat -i ${vnstat_profile} | grep yesterday | awk '{print $8}')
+yesterday_v=$(vnstat -i ${vnstat_profile} | grep yesterday | awk '{print $9}')
+yesterday_rx=$(vnstat -i ${vnstat_profile} | grep yesterday | awk '{print $2}')
+yesterday_rxv=$(vnstat -i ${vnstat_profile} | grep yesterday | awk '{print $3}')
+yesterday_tx=$(vnstat -i ${vnstat_profile} | grep yesterday | awk '{print $5}')
+yesterday_txv=$(vnstat -i ${vnstat_profile} | grep yesterday | awk '{print $6}')
+else
+yesterday=NULL
+yesterday_v=NULL
+yesterday_rx=NULL
+yesterday_rxv=NULL
+yesterday_tx=NULL
+yesterday_txv=NULL
+fi
 clear
 echo -e " ${z}┌──────────────────────────────────────────────────────────┐${NC}"
 echo -e " ${z}│$NC •  ${W}OS ${NC}         : $MODEL${NC}"
@@ -212,6 +262,10 @@ echo -e " ${z}│$NC ${G}03.)${NC} Vless ${NC}               ${G}08.)${NC} Updat
 echo -e " ${z}│$NC ${G}04.)${NC} Trojan ${NC}              ${G}09.)${NC} Setting           ${NC} ${z}│${NC}" 
 echo -e " ${z}│$NC ${G}05.)${NC} Runing ${NC}              ${G}10.)${NC} Backup            ${NC} ${z}│${NC}" 
 echo -e " ${z}└────────────────────────────────────────────────────────┘${NC}"
+echo -e "${z}╔═══════════╗╔════════════════════════════════════╗${NC}"
+echo -e "${z}║   Total   ║║   Today     Yesterday      Month         ${NC}"
+echo -e "${z}║ Bantwidth ║║ ${WH}$today_tx $today_txv   ${WH}$yesterday_tx $yesterday_txv   ${WH}$month_tx $month_txv$COLOR1${NC}"
+echo -e "${z}╚═══════════╝╚════════════════════════════════════╝${NC}"
 echo -e " "
 read -p " options [ 1 / 12 ] >  " opt
 echo -e ""
