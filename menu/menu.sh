@@ -232,7 +232,7 @@ yesterday_txv=NULL
 fi
 clear
 echo -e " $COLOR1┌──────────────────────────────────────────────────────────┐${NC}"
-echo -e " $COLOR1│${NC}${COLBG1}              ${WH} • RMBL VPN TUNNELING •                 ${NC}$COLOR1│ $NC"
+echo -e " $COLOR1│${NC}${COLBG1}                 ${WH} • RMBL VPN TUNNELING •                  ${NC}$COLOR1│ $NC"
 echo -e " $COLOR1└──────────────────────────────────────────────────────────┘${NC}"
 echo -e " $COLOR1┌──────────────────────────────────────────────────────────┐${NC}"
 echo -e " $COLOR1│$NC${WH}• OS            ${COLOR1}: ${WH}$MODEL${NC}"
