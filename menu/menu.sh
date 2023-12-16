@@ -161,18 +161,10 @@ REVISI="https://raw.githubusercontent.com/RMBL-VPN/vip/main/"
 
 # // INFO CREATE ACCOUNT
 # \\ Vless account //
-vlx=$(grep -c -E "^#& " "/etc/xray/config.json")
-let vla=$vlx/2
-# \\ Vmess account //
-vmc=$(grep -c -E "^### " "/etc/xray/config.json")
-let vma=$vmc/2
-# \\ Trojan account //
-ssh1="$(awk -F: '$3 >= 1000 && $1 != "nobody" {print $1}' /etc/passwd | wc -l)"
-trx=$(grep -c -E "^#! " "/etc/xray/config.json")
-let trb=$trx/2
-# \\ shadowsocks account //
-ssx=$(grep -c -E "^#!# " "/etc/xray/config.json")
-let ssa=$ssx/2
+vmess=$(grep -c -E "^#vmg " "/etc/xray/config.json")
+vless=$(grep -c -E "^#vlg " "/etc/xray/config.json")
+trtls=$(grep -c -E "^#trg " "/etc/xray/config.json")
+total_ssh=$(grep -c -E "^### " "/etc/xray/ssh")
 # // ---- >>>
 TZ="\033[1;35m___\033[1;34m___\033[1;32m___\033[1;36m___\033[1;37m___\033[1;34m"
 vers="version.Sc 3.09"
@@ -240,15 +232,15 @@ echo -e " ${z}│$NC •  ${W}SERVER ${NC}     : ${cyan}$ISP${NC}"
 echo -e " ${z}│$NC •  ${W}IP VPS ${NC}     : ${cyan}$MYIP${NC}"
 echo -e " ${z}│$NC •  ${W}DOMAIN ${NC}     : ${cyan}$domain${NC}"
 echo -e " ${z}└──────────────────────────────────────────────────────────┘${NC}"
-echo -e " ${z}┌──────────────────────────────────────────────────────────┐${NC}"
-echo -e " ${k}│ SSH $status_ssh NGINX $status_nginx  XRAY $status_xray DROP $status_dropbear"
-echo -e " ${z}└──────────────────────────────────────────────────────────┘${NC}"
-echo -e "       ───────────────────────────────────────────────${NC}"
-echo -e "               SSH/OPENVPN/UDP :$NC $ssh1" "$a"
-echo -e "               VMESS/WS/GRPC   :$NC $vma" "$a"
-echo -e "               VLESS/WS/GRPC   :$NC $vla" "$a"
-echo -e "               TROJAN/WS/GRPC  :$NC $trb" "$a"               
-echo -e "       ───────────────────────────────────────────────${NC}" 
+echo -e "${z}┌──────────────── • STATUS SERVICE • ─────────────┐${NC}"
+echo -e "${z}│$NC ${WH}[ SSH WS : ${status_ws} ${WH}]  ${WH}[ XRAY : ${status_xray} ${WH}]   ${WH}[ NGINX : ${status_nginx} ${WH}] $COLOR1│$NC"
+echo -e "${z}└─────────────────────────────────────────────────┘${NC}"
+echo -e "       ${z}───────────────────────────────────────────────${NC}"
+echo -e "               SSH Account     :${COLOR1}$total_ssh${WH}"
+echo -e "               VMESS Account   :${COLOR1}$vmess${WH}"
+echo -e "               VLESS Account   :$NC $vla" "$a"
+echo -e "               TROJAN Account  :${COLOR1}$vless${WH}"               
+echo -e "      ${z}───────────────────────────────────────────────${NC}" 
 echo -e "         ${z}┌─────────────────────────────────────────┐${NC}"
 echo -e "         ${z}│$NC Status  : $sts"
 echo -e "         ${z}│$NC Client  : $username "
@@ -259,22 +251,22 @@ echo -e " ${z}│$NC ${G}01.)${NC} SSH VPN ${NC}           ${NC} ${z}│${NC}   
 echo -e " ${z}│$NC ${G}02.)${NC} VMESS ${NC}             ${NC} ${z}│${NC}     ${G}07.)${NC} Reboot            ${NC} ${z}│${NC}"    
 echo -e " ${z}│$NC ${G}03.)${NC} VLESS ${NC}             ${NC} ${z}│${NC}     ${G}08.)${NC} Update            ${NC} ${z}│${NC}"   
 echo -e " ${z}│$NC ${G}04.)${NC} TROJAN ${NC}            ${NC} ${z}│${NC}     ${G}09.)${NC} Setting           ${NC} ${z}│${NC}" 
-echo -e " ${z}│$NC ${G}05.)${NC} RUNNING ${NC}           ${NC} ${z}│${NC}     ${G}10.)${NC} Backup            ${NC} ${z}│${NC}" 
+echo -e " ${z}│$NC ${G}05.)${NC} BOT TELE ${NC}          ${NC} ${z}│${NC}     ${G}10.)${NC} Backup            ${NC} ${z}│${NC}" 
 echo -e " ${z}└────────────────────────────────────────────────────────┘${NC}"
-echo -e "${z}╔═══════════╗╔════════════════════════════════════╗${NC}"
-echo -e "${z}║   Total   ║║   Today     Yesterday      Month         ${NC}"
-echo -e "${z}║ Bantwidth ║║ ${WH}$today_tx $today_txv   ${WH}$yesterday_tx $yesterday_txv   ${WH}$month_tx $month_txv$COLOR1${NC}"
-echo -e "${z}╚═══════════╝╚════════════════════════════════════╝${NC}"
+echo -e "    ${z}┌───────────┐┌────────────────────────────────────┐${NC}"
+echo -e "    ${z}│   Total   ││   Today     Yesterday      Month         ${NC}"
+echo -e "    ${z}│ Bantwidth ││ ${WH}$today_tx $today_txv   ${WH}$yesterday_tx $yesterday_txv   ${WH}$month_tx $month_txv$COLOR1${NC}"
+echo -e "    ${z}└───────────┘└────────────────────────────────────┘${NC}"
 echo -e " "
 read -p " options [ 1 / 12 ] >  " opt
 echo -e ""
 case $opt in
 01 | 1) clear ; m-sshovpn ;;
-02 | 2) clear ; running ;;
+02 | 2) clear ; m-vmess ;;
 03 | 3) clear ; m-vless ;;
 04 | 4) clear ; m-trojan ;;
-05 | 5) clear ; m-allxray ;;
-06 | 2) clear ; m-vmess ;;
+05 | 5) clear ; m-bot ;;
+06 | 6) clear ; running ;;
 07 | 7) clear ; reboot ;;
 08 | 8) clear ; m-update ;;
 19 | 9) clear ; m-system ;;
