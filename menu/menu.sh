@@ -80,7 +80,7 @@ mai="datediff "$Exp" "$DATE""
 
 # // AKTIVATED & EXPIRED
 Info="${green}Activated${NC}"
-Error="${RED}Expired ${NC}"
+Error="${green}Expired ${NC}"
 #//
 today=`date -d "0 days" +"%Y-%m-%d"`
 Exp1=$(curl -sS https://raw.githubusercontent.com/RMBL-VPN/permission/main/ipmini | grep $MYIP | awk '{print $3}')
@@ -124,14 +124,14 @@ clear
 # // RUNNING SSH
 ssh_ws=$( systemctl status ws-stunnel | grep Active | awk '{print $3}' | sed 's/(//g' | sed 's/)//g' )
 if [[ $ssh_ws == "running" ]]; then
-    status_ws="${COLOR1}ON${NC}"
+    status_ws="${green}ON${NC}"
 else
     status_ws="${RED}OFF${NC}"
 fi
 # // RUNNING WEBSOCKET
 ssh_ws=$( systemctl status ws-stunnel | grep Active | awk '{print $3}' | sed 's/(//g' | sed 's/)//g' )
 if [[ $ssh_ws == "running" ]]; then
-    status_ws="${COLOR1}ON${NC}"
+    status_ws="${green}ON${NC}"
 else
     status_ws="${RED}OFF${NC}"
 fi
