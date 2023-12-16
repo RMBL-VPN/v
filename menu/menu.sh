@@ -263,7 +263,7 @@ echo -e "    $COLOR1└───────────┘└──────
 echo -e "         $COLOR1┌─────────────────────────────────────────┐${NC}"
 echo -e "         $COLOR1│$NC ${WH}Status${NC} : $sts"
 echo -e "         $COLOR1│$NC ${WH}Client${NC} : $username "
-echo -e "         $COLOR1│$NC ${WH}Expiry${NC} : $exp ${NC} / $green $certifacate ${NC}Days"
+echo -e "         $COLOR1│$NC ${WH}Expiry${NC} : $green $certifacate ${NC}Days"
 echo -e "         $COLOR1└─────────────────────────────────────────┘${NC}"
 echo -e " "
 read -p " options [ 1 / 12 ] >  " opt
