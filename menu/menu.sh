@@ -232,7 +232,7 @@ yesterday_txv=NULL
 fi
 clear
 echo -e " $COLOR1┌──────────────────────────────────────────────────────────┐${NC}"
-echo -e " $COLOR1│${NC}${COLBG1}                 ${WH} • RMBL VPN TUNNELING •                  ${NC}$COLOR1│ $NC"
+echo -e " $COLOR1│${NC}$COLOR1                 ${WH} • RMBL VPN TUNNELING •                  ${NC}$COLOR1│ $NC"
 echo -e " $COLOR1└──────────────────────────────────────────────────────────┘${NC}"
 echo -e " $COLOR1┌──────────────────────────────────────────────────────────┐${NC}"
 echo -e " $COLOR1│$NC${WH}• OS            ${COLOR1}: ${WH}$MODEL${NC}"
@@ -269,7 +269,7 @@ echo -e "         $COLOR1│$NC ${WH}Client${NC} : $username "
 echo -e "         $COLOR1│$NC ${WH}Expiry${NC} : $green$certifacate ${NC}Days"
 echo -e "         $COLOR1└─────────────────────────────────────────┘${NC}"
 echo -e " "
-read -p " options [ 1 / 12 ] >  " opt
+read -p " ${WH}options [ 1 / 10 ] >${NC}  " opt
 echo -e ""
 case $opt in
 01 | 1) clear ; m-sshovpn ;;
