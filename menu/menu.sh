@@ -1,6 +1,13 @@
 #!/bin/bash
 # COLOR VALIDATION
 clear
+colornow=$(cat /etc/rmbl/theme/color.conf)
+export NC="\e[0m"
+export yl='\033[0;33m';
+export RED="\033[0;31m"
+export COLOR1="$(cat /etc/rmbl/theme/$colornow | grep -w "TEXT" | cut -d: -f2|sed 's/ //g')"
+export COLBG1="$(cat /etc/rmbl/theme/$colornow | grep -w "BG" | cut -d: -f2|sed 's/ //g')"
+WH='\033[1;37m'
 y='\033[1;33m' #yellow
 l='\033[0;37m'
 BGX="\033[42m"
@@ -94,7 +101,7 @@ WKT=$(curl -s ipinfo.io/timezone )
 DAY=$(date +%A)
 DATE=$(date +%m/%d/%Y)
 DATE2=$(date -R | cut -d " " -f -5)
-
+author=$(cat /etc/profil)
 #IPVPS=$(curl -s ipinfo.io/ip )
 IPVPS=$(curl -sS ipv4.icanhazip.com)
 
@@ -181,6 +188,7 @@ cpu_usage="$((${cpu_usage1/\.*} / ${corediilik:-1}))"
 cpu_usage+=" %"
 vnstat_profile=$(vnstat | sed -n '3p' | awk '{print $1}' | grep -o '[^:]*')
 vnstat -i ${vnstat_profile} >/etc/t1
+ba=$(curl -s https://pastebin.com/raw/0gWiX6hE)
 bulan=$(date +%b)
 tahun=$(date +%y)
 today=$(vnstat -i ${vnstat_profile} | grep today | awk '{print $8}')
@@ -229,12 +237,14 @@ echo -e " ${z}│$NC •  ${W}RAM ${NC}        : $tram / $uram MB $NC"
 echo -e " ${z}│$NC •  ${W}DATE ${NC}       : $DATEVPS${NC}"
 echo -e " ${z}│$NC •  ${W}TIME ${NC}       : $TIMEZONE${NC}"
 echo -e " ${z}│$NC •  ${W}SERVER ${NC}     : ${cyan}$ISP${NC}"
+echo -e " ${z}│$NC •  ${W}City ${NC}       : ${cyan}$CITY${NC}"
 echo -e " ${z}│$NC •  ${W}IP VPS ${NC}     : ${cyan}$MYIP${NC}"
 echo -e " ${z}│$NC •  ${W}DOMAIN ${NC}     : ${cyan}$domain${NC}"
+echo -e " ${z}│$NC •  ${W}NAMA AUTHOR ${NC}: ${cyan}$author${NC}"
 echo -e " ${z}└──────────────────────────────────────────────────────────┘${NC}"
-echo -e "${z}┌──────────────── • STATUS SERVICE • ─────────────┐${NC}"
-echo -e "${z}│$NC ${WH}[ SSH WS : ${status_ws} ${WH}]  ${WH}[ XRAY : ${status_xray} ${WH}]   ${WH}[ NGINX : ${status_nginx} ${WH}] $COLOR1│$NC"
-echo -e "${z}└─────────────────────────────────────────────────┘${NC}"
+echo -e "      ${z}┌──────────────── • STATUS SERVICE • ─────────────┐${NC}"
+echo -e "      ${z}│$NC ${WH}[ SSH WS : ${status_ws} ${WH}]  ${WH}[ XRAY : ${status_xray} ${WH}]   ${WH}[ NGINX : ${status_nginx} ${WH}] $COLOR1│$NC"
+echo -e "      ${z}└─────────────────────────────────────────────────┘${NC}"
 echo -e "       ${z}───────────────────────────────────────────────${NC}"
 echo -e "               SSH Account     :${COLOR1}$total_ssh${WH}"
 echo -e "               VMESS Account   :${COLOR1}$vmess${WH}"
