@@ -117,23 +117,23 @@ dropbear_service=$(/etc/init.d/dropbear status | grep Active | awk '{print $3}' 
 haproxy_service=$(systemctl status haproxy | grep Active | awk '{print $3}' | cut -d "(" -f2 | cut -d ")" -f1)
 xray_service=$(systemctl status xray | grep Active | awk '{print $3}' | cut -d "(" -f2 | cut -d ")" -f1)
 nginx_service=$(systemctl status nginx | grep Active | awk '{print $3}' | cut -d "(" -f2 | cut -d ")" -f1)
-#Status | Geo Project
+#Status | rmbl Project
 clear
 
 
 # // RUNNING SSH
-if [[ $ssh_service == "running" ]]; then 
-   status_ssh="${green}[ON]${NC}"
-else
-   status_ssh="${z}[OFF]${NC} "
-fi
-
-# // RUNNING WEBSOCKET
-ssh_ws=$( systemctl status ws | grep Active | awk '{print $3}' | sed 's/(//g' | sed 's/)//g' )
+ssh_ws=$( systemctl status ws-stunnel | grep Active | awk '{print $3}' | sed 's/(//g' | sed 's/)//g' )
 if [[ $ssh_ws == "running" ]]; then
-    status_ws_epro="${green}[ON]${NC}"
+    status_ws="${COLOR1}ON${NC}"
 else
-    status_ws_epro="${z}[OFF]${NC} "
+    status_ws="${RED}OFF${NC}"
+fi
+# // RUNNING WEBSOCKET
+ssh_ws=$( systemctl status ws-stunnel | grep Active | awk '{print $3}' | sed 's/(//g' | sed 's/)//g' )
+if [[ $ssh_ws == "running" ]]; then
+    status_ws="${COLOR1}ON${NC}"
+else
+    status_ws="${RED}OFF${NC}"
 fi
 
 # RUNNING HAPROXY
