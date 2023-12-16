@@ -231,6 +231,9 @@ yesterday_tx=NULL
 yesterday_txv=NULL
 fi
 clear
+echo -e "$COLOR1┌──────────────────────────────────────────────────────────┐${NC}"
+echo -e "$COLOR1│${NC}${COLBG1}              ${WH} • RMBL VPN TUNNELING •            ${NC}$COLOR1│ $NC"
+echo -e "$COLOR1└──────────────────────────────────────────────────────────┘${NC}"
 echo -e " $COLOR1┌──────────────────────────────────────────────────────────┐${NC}"
 echo -e " $COLOR1│$NC${WH}• OS            ${COLOR1}: ${WH}$MODEL${NC}"
 echo -e " $COLOR1│$NC${WH}• RAM           ${COLOR1}: ${WH}$tram / $uram MB${NC}"
@@ -242,9 +245,9 @@ echo -e " $COLOR1│$NC${WH}• IP VPS        ${COLOR1}: ${WH}$MYIP${NC}"
 echo -e " $COLOR1│$NC${WH}• DOMAIN        ${COLOR1}: ${WH}$domain${NC}"
 echo -e " $COLOR1│$NC${WH}• NAMA AUTHOR   ${COLOR1}: ${WH}$author${NC}"
 echo -e " $COLOR1└──────────────────────────────────────────────────────────┘${NC}"
-echo -e "     $COLOR1┌──────────────── • STATUS SERVICE • ─────────────┐${NC}"
-echo -e "     $COLOR1│$NC ${WH}[ SSH WS : ${status_ws} ${WH}] ${WH}[ XRAY : ${status_xray} ${WH}] ${WH}[ NGINX : ${status_nginx} ${WH}]$COLOR1│$NC"
-echo -e "     $COLOR1└─────────────────────────────────────────────────┘${NC}"
+echo -e "    $COLOR1┌──────────────── • STATUS SERVICE • ─────────────┐${NC}"
+echo -e "    $COLOR1│$NC ${WH}[ SSH WS : ${status_ws} ${WH}] ${WH}[ XRAY : ${status_xray} ${WH}] ${WH}[ NGINX : ${status_nginx} ${WH}]$COLOR1│$NC"
+echo -e "    $COLOR1└─────────────────────────────────────────────────┘${NC}"
 echo -e "    $COLOR1┌─────────────────────────────────────────────────┐${NC}"
 echo -e "    $COLOR1│ ${WH} ${WH}SSH     VMESS       VLESS      TROJAN        $NC  $COLOR1│ $NC"
 echo -e "    $COLOR1│ ${WH} ${WH} ${COLOR1}$total_ssh${WH}        ${COLOR1}$vmess${WH}           ${COLOR1}$vless${WH}          ${COLOR1}${trtls}${WH}        $NC     $COLOR1│ $NC"
