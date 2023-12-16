@@ -231,9 +231,9 @@ yesterday_tx=NULL
 yesterday_txv=NULL
 fi
 clear
-echo -e "$COLOR1┌──────────────────────────────────────────────────────────┐${NC}"
-echo -e "$COLOR1│${NC}${COLBG1}              ${WH} • RMBL VPN TUNNELING •            ${NC}$COLOR1│ $NC"
-echo -e "$COLOR1└──────────────────────────────────────────────────────────┘${NC}"
+echo -e " $COLOR1┌──────────────────────────────────────────────────────────┐${NC}"
+echo -e " $COLOR1│${NC}${COLBG1}              ${WH} • RMBL VPN TUNNELING •                 ${NC}$COLOR1│ $NC"
+echo -e " $COLOR1└──────────────────────────────────────────────────────────┘${NC}"
 echo -e " $COLOR1┌──────────────────────────────────────────────────────────┐${NC}"
 echo -e " $COLOR1│$NC${WH}• OS            ${COLOR1}: ${WH}$MODEL${NC}"
 echo -e " $COLOR1│$NC${WH}• RAM           ${COLOR1}: ${WH}$tram / $uram MB${NC}"
