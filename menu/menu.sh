@@ -269,7 +269,7 @@ echo -e "         $COLOR1│$NC ${WH}Client${NC} : $username "
 echo -e "         $COLOR1│$NC ${WH}Expiry${NC} : $green$certifacate ${NC}Days"
 echo -e "         $COLOR1└─────────────────────────────────────────┘${NC}"
 echo -e " "
-read -p " ${WH}options${NC} ${WH}[ 1 / 10 ] >${NC}  " opt
+echo -ne " ${WH}Select menu ${COLOR1}: ${WH}"; read opt
 echo -e ""
 case $opt in
 01 | 1) clear ; m-sshovpn ;;
