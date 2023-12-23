@@ -265,7 +265,7 @@ echo -e "      $COLOR1║$NC ${WH}[${COLOR1}04${WH}]${NC} ${COLOR1}• ${WH}TROJ
 echo -e "      $COLOR1║$NC ${WH}[${COLOR1}05${WH}]${NC} ${COLOR1}• ${WH}BOT TELE ${WH}[${COLOR1}Menu${WH}]   ${NC} $COLOR1║${NC}  ${WH}[${COLOR1}10${WH}]${NC} ${COLOR1}• ${WH}BACKUP    ${WH}  $COLOR1║${NC}" 
 echo -e "      $COLOR1╚═════════════════════════════════════════════╝${NC}"
 echo -e "       $COLOR1╔═══════════════════════════════════════════╗${NC}"
-echo -e "       $COLOR1║$NC ${WH}Versi Script${NC} : ${WH}$(cat /opt/.ver) Version                    ${NC}"
+echo -e "       $COLOR1║$NC ${WH}Versi ${NC}  : ${WH}$(cat /opt/.ver) Version                    ${NC}"
 echo -e "       $COLOR1║$NC ${WH}Client${NC}  : $username "
 echo -e "       $COLOR1║$NC ${WH}Expiry${NC}  : $green$certifacate ${NC}Days"
 echo -e "       $COLOR1╚═══════════════════════════════════════════╝${NC}"
