@@ -248,7 +248,7 @@ echo -e " $COLOR1╚════════════════════
 echo -e "$COLOR1╔══════════════════════════════════════════════════════════╗${NC}"
 echo -e "$COLOR1║ $NC ${WH}[ SSH WS : ${status_ws} ${WH}]           ${WH}[ Today     : ${WH}$today_tx $today_txv]$NC"
 echo -e "$COLOR1║ $NC ${WH}[ XRAY   : ${status_xray} ${WH}]           ${WH}[ Yesterday : ${WH}$yesterday_tx $yesterday_txv]$NC"
-echo -e "$COLOR1║ $NC ${WH}[ NGINX  : ${status_nginx} ${WH}]           ${WH}[ Month     : ${WH}$month_tx $month_txv$COLOR1]$NC"
+echo -e "$COLOR1║ $NC ${WH}[ NGINX  : ${status_nginx} ${WH}]           ${WH}[ Month     : ${WH}$month_tx $month_txv]$NC"
 echo -e "$COLOR1╚══════════════════════════════════════════════════════════╝${NC}"
 echo -e "    $COLOR1╔═════════════════════════════════════════════════╗${NC}"
 echo -e "    $COLOR1║ ${WH} ${WH}SSH       VMESS         VLESS        TROJAN   $NC $COLOR1║ $NC"
