@@ -124,16 +124,16 @@ clear
 # // RUNNING SSH
 ssh_ws=$( systemctl status ws-stunnel | grep Active | awk '{print $3}' | sed 's/(//g' | sed 's/)//g' )
 if [[ $ssh_ws == "running" ]]; then
-    status_ws="${green}ON${NC}"
+    status_ws="${green}[ON]${NC}"
 else
-    status_ws="${RED}OFF${NC}"
+    status_ws="${RED}[OFF]${NC}"
 fi
 # // RUNNING WEBSOCKET
 ssh_ws=$( systemctl status ws-stunnel | grep Active | awk '{print $3}' | sed 's/(//g' | sed 's/)//g' )
 if [[ $ssh_ws == "running" ]]; then
-    status_ws="${green}ON${NC}"
+    status_ws="${green}[ON]${NC}"
 else
-    status_ws="${RED}OFF${NC}"
+    status_ws="${RED}[OFF]${NC}"
 fi
 
 # RUNNING HAPROXY
@@ -264,12 +264,12 @@ echo -e " $COLOR1║$NC ${WH}[${COLOR1}03${WH}]${NC} ${COLOR1}• ${WH}VLESS    
 echo -e " $COLOR1║$NC ${WH}[${COLOR1}04${WH}]${NC} ${COLOR1}• ${WH}TROJAN   ${WH}[${COLOR1}Menu${WH}]      ${NC} $COLOR1║${NC}     ${WH}[${COLOR1}09${WH}]${NC} ${COLOR1}• ${WH}SETTING   ${WH}   $COLOR1║${NC}" 
 echo -e " $COLOR1║$NC ${WH}[${COLOR1}05${WH}]${NC} ${COLOR1}• ${WH}BOT TELE ${WH}[${COLOR1}Menu${WH}]      ${NC} $COLOR1║${NC}     ${WH}[${COLOR1}10${WH}]${NC} ${COLOR1}• ${WH}BACKUP    ${WH}   $COLOR1║${NC}" 
 echo -e " $COLOR1╚════════════════════════════════════════════════════════╝${NC}"
-echo -e "$COLOR1╔══════════════════════════════════════════════════════════╗${NC}"
-echo -e "$COLOR1║       $NC ${WH}Versi Script  ${COLOR1}: ${WH}$(cat /opt/.ver) Version                    ${NC}"
-echo -e "$COLOR1║       $NC ${WH}Nama Client   ${COLOR1}: ${WH}$Name${NC}                           "
-echo -e "$COLOR1║       $NC ${WH}Durasi Script ${COLOR1}: ${WH}$certificate hari                        ${NC}"                    
-echo -e "$COLOR1║       $NC ${WH}Exp Script    ${COLOR1}: ${WH}$Exp2 $sts        ${NC}"
-echo -e "$COLOR1╚══════════════════════════════════════════════════════════╝${NC}"
+echo -e "     $COLOR1╔════════════════════════════════════════════════╗${NC}"
+echo -e "     $COLOR1║ $NC ${WH}Versi Script  ${COLOR1}: ${WH}$(cat /opt/.ver) Version                    ${NC}"
+echo -e "     $COLOR1║ $NC ${WH}Nama Client   ${COLOR1}: ${WH}$Name${NC}                           "
+echo -e "     $COLOR1║ $NC ${WH}Durasi Script ${COLOR1}: ${WH}$certificate hari                        ${NC}"                    
+echo -e "     $COLOR1║ $NC ${WH}Exp Script    ${COLOR1}: ${WH}$Exp2 $sts        ${NC}"
+echo -e "     $COLOR1╚════════════════════════════════════════════════╝${NC}"
 echo -e " "
 echo -ne " ${WH}Select menu ${COLOR1}: ${WH}"; read opt
 echo -e ""
