@@ -262,7 +262,7 @@ echo -e "      $COLOR1║$NC ${WH}[${COLOR1}05${WH}]${NC} ${COLOR1}• ${WH}BOT 
 echo -e "      $COLOR1╚═════════════════════════════════════════════╝${NC}"
 echo -e " $COLOR1╔══════════════════════════════════════════════════════════╗${NC}"
 echo -e " $COLOR1║ ${WH} ${WH}SSH          VMESS            VLESS           TROJAN   $NC $COLOR1║ $NC"
-echo -e " $COLOR1║ ${WH} ${WH} ${COLOR1}$total_ssh${WH}            ${COLOR1}$vmess${WH}                 ${COLOR1}$vless${WH}                ${COLOR1}${trtls}${WH}       $NC $COLOR1║ $NC"
+echo -e " $COLOR1║ ${WH} ${WH} ${COLOR1}$total_ssh${WH}             ${COLOR1}$vmess${WH}                ${COLOR1}$vless${WH}               ${COLOR1}${trtls}${WH}      $NC $COLOR1║ $NC"
 echo -e " $COLOR1╚══════════════════════════════════════════════════════════╝${NC}"
 echo -e "       $COLOR1╔═══════════════════════════════════════════╗${NC}"
 echo -e "       $COLOR1║$NC       ${WH}Versi ${NC}  : ${WH}$(cat /opt/.ver) Version                    ${NC}"
