@@ -266,7 +266,7 @@ echo -e " $COLOR1║ ${WH} ${WH} ${COLOR1}$total_ssh${WH}             ${COLOR1}$
 echo -e " $COLOR1╚══════════════════════════════════════════════════════════╝${NC}"
 echo -e "       $COLOR1╔═══════════════════════════════════════════╗${NC}"
 echo -e "       $COLOR1║$NC       ${WH}Versi ${NC}  : ${WH}$(cat /opt/.ver) Version                    ${NC}"
-echo -e "       $COLOR1║$NC       ${WH}Status ${NC}  : ${WH}$sts ${NC}"
+echo -e "       $COLOR1║$NC       ${WH}Status ${NC} : ${WH}$sts ${NC}"
 echo -e "       $COLOR1║$NC       ${WH}Client${NC}  : $username "
 echo -e "       $COLOR1║$NC       ${WH}Expiry${NC}  : $green$certifacate ${NC}Days"
 echo -e "       $COLOR1╚═══════════════════════════════════════════╝${NC}"
