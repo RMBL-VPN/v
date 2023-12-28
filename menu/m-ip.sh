@@ -38,12 +38,12 @@ URL="https://api.telegram.org/bot$KEY/sendMessage"
 
 
     today=`date -d "0 days" +"%Y-%m-%d"`
-    git clone ${REPO} /root/ipvps/ &> /dev/null
+    git clone ${REPO} /root/permission/ &> /dev/null
     clear
     echo -e ""
     echo -e ""
     read -p "  Input IP Address : " ip
-    CLIENT_EXISTS=$(grep -w $ip /root/ipvps/ip | wc -l)
+    CLIENT_EXISTS=$(grep -w $ip /root/permission/ipmini | wc -l)
     if [[ ${CLIENT_EXISTS} == '1' ]]; then
     echo "IP Already Exist !"
     exit 0
@@ -66,20 +66,20 @@ URL="https://api.telegram.org/bot$KEY/sendMessage"
     
     if [[ ${exp} == '1' ]]; then
     exp2=`date -d "30 days" +"%Y-%m-%d"`
-    echo "### ${name} ${exp2} ${ip}" >> /root/ipvps/ip
+    echo "### ${name} ${exp2} ${ip}" >> /root/permission/ipmini
     elif [[ ${exp} == '2' ]]; then
     exp2=`date -d "60 days" +"%Y-%m-%d"`
-    echo "### ${name} ${exp2} ${ip}" >> /root/ipvps/ip
+    echo "### ${name} ${exp2} ${ip}" >> /root/permission/ipmini
     elif [[ ${exp} == '3' ]]; then
     exp2=`date -d "90 days" +"%Y-%m-%d"`
-    echo "### ${name} ${exp2} ${ip}" >> /root/ipvps/ip
+    echo "### ${name} ${exp2} ${ip}" >> /root/permission/ipmini
     elif [[ ${exp} == '4' ]]; then
     exp2="Lifetime"
-    echo "### ${name} ${exp2} ${ip}" >> /root/ipvps/ip
+    echo "### ${name} ${exp2} ${ip}" >> /root/permission/ipmini
     elif [[ ${exp} == '5' ]]; then
     read -p "Input Expired Days : " exp11
     exp2=`date -d "$exp11 days" +"%Y-%m-%d"`
-    echo "### ${name} ${exp2} ${ip}" >> /root/ipvps/ip
+    echo "### ${name} ${exp2} ${ip}" >> /root/permission/ipmini
     fi
     cd /root/ipvps
     git config --global user.email "${EMAIL}" &> /dev/null
@@ -135,7 +135,7 @@ KEY="6840713111:AAEdvaqNwa0HF4Gypbg6WPMGjwD9_bnERKI"
 URL="https://api.telegram.org/bot$KEY/sendMessage"
 
     rm -rf /root/ipvps
-    git clone ${REPO} /root/ipvps/ &> /dev/null
+    git clone ${REPO} /root/permission/ &> /dev/null
     clear
     echo ""
     echo -e "\033[96m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━${NC}"
@@ -148,12 +148,12 @@ URL="https://api.telegram.org/bot$KEY/sendMessage"
     echo -e "\033[96m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━${NC}"
 
     read -p "   Input IP Address To Delete : " ipdel
-    name=$(cat /root/ipvps/ip | grep $ipdel | awk '{print $2}')
-    exp=$(cat /root/ipvps/ip | grep $ipdel | awk '{print $3}')
+    name=$(cat /root/permission/ipmini | grep $ipdel | awk '{print $2}')
+    exp=$(cat /root/permission/ipmini | grep $ipdel | awk '{print $3}')
     if [[ ${exp} == 'Lifetime' ]]; then
-    sed -i "/^#&   $name   $exp $ipdel/,/^},{/d" /root/ipvps/ip
+    sed -i "/^#&   $name   $exp $ipdel/,/^},{/d" /root/permission/ipmini
     else
-    sed -i "/^### $name $exp $ipdel/,/^},{/d" /root/ipvps/ip
+    sed -i "/^### $name $exp $ipdel/,/^},{/d" /root/permission/ipmini
     fi
     cd /root/ipvps
     git config --global user.email "${EMAIL}" &> /dev/null
@@ -165,7 +165,7 @@ URL="https://api.telegram.org/bot$KEY/sendMessage"
     git branch -M main &> /dev/null
     git remote add origin https://github.com/RMBL-VPN/permission/main/ipmini
     git push -f https://${TOKEN}@github.com/RMBL-VPN/permission/main/ipmini.git &> /dev/null
-    rm -rf /root/ipvps
+    rm -rf /root/permission
     clear
     sleep 1
     echo "  Delete IP Address..."
@@ -206,7 +206,7 @@ KEY="6840713111:AAEdvaqNwa0HF4Gypbg6WPMGjwD9_bnERKI"
 URL="https://api.telegram.org/bot$KEY/sendMessage"
 
     rm -rf /root/ipvps
-    git clone ${REPO} /root/ipvps/ &> /dev/null
+    git clone ${REPO} /root/permission/ &> /dev/null
     clear
     echo -e "\033[96m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━${NC}"
     echo -e "          \e[1;97mList IP Address Have Been Registered${NC}"
@@ -218,16 +218,16 @@ URL="https://api.telegram.org/bot$KEY/sendMessage"
     echo ""
     read -p "  Input IP Address To Renew : " ipdel
     read -p "  Input Days  : " days
-    name=$(cat /root/ipvps/ip | grep $ipdel | awk '{print $2}')
-    exp=$(cat /root/ipvps/ip | grep $ipdel | awk '{print $3}')
+    name=$(cat /root/permission/ipmini | grep $ipdel | awk '{print $2}')
+    exp=$(cat /root/permission/ipmini | grep $ipdel | awk '{print $3}')
     now=$(date +%Y-%m-%d)
     d1=$(date -d "$exp" +%s)
     d2=$(date -d "$now" +%s)
     exp2=$(( (d1 - d2) / 86400 ))
     exp3=$(($exp2 + $days))
     exp4=`date -d "$exp3 days" +"%Y-%m-%d"`
-    sed -i "s/### $name $exp $ipdel/### $name $exp4 $ipdel/g" /root/ipvps/ip
-    cd /root/ipvps
+    sed -i "s/### $name $exp $ipdel/### $name $exp4 $ipdel/g" /root/permission/ipmini
+    cd /root/permission
     git config --global user.email "${EMAIL}" &> /dev/null
     git config --global user.name "${USER}" &> /dev/null
     rm -rf .git &> /dev/null
@@ -237,7 +237,7 @@ URL="https://api.telegram.org/bot$KEY/sendMessage"
     git branch -M main &> /dev/null
     git remote add origin https://RMBL-VPN/permission/main/ipmini
     git push -f https://${TOKEN}@github.com/RMBL-VPN/permission/main/ipmini.git &> /dev/null
-    rm -rf /root/ipvps
+    rm -rf /root/permission
     clear
     sleep 1
     echo "  Renew IP Address..."
