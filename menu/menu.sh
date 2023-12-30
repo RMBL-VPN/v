@@ -292,6 +292,7 @@ echo -e " $COLOR1╔════════════════════
 echo -e " $COLOR1║$NC${WH}• OS            ${COLOR1}: ${WH}$MODEL${NC}"
 echo -e " $COLOR1║$NC${WH}• RAM           ${COLOR1}: ${WH}$tram / $uram MB${NC}"
 echo -e " $COLOR1║$NC${WH}• DATE          ${COLOR1}: ${WH}$DATEVPS${NC}"
+echo -e " $COLOR1║$NC${WH}• UPTIME        ${COLOR1}: ${WH}$uphours $upminutes $uptimecek"
 echo -e " $COLOR1║$NC${WH}• TIME          ${COLOR1}: ${WH}$TIMEZONE${NC}"
 echo -e " $COLOR1║$NC${WH}• ISP           ${COLOR1}: ${WH}$ISP${NC}"
 echo -e " $COLOR1║$NC${WH}• City          ${COLOR1}: ${WH}$CITY${NC}"
