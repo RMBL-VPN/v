@@ -230,6 +230,67 @@ yesterday_rxv=NULL
 yesterday_tx=NULL
 yesterday_txv=NULL
 fi
+function m-bot2(){
+clear
+echo -e "$COLOR1┌──────────────────────────────────────────┐${NC}"
+echo -e "$COLOR1  ${WH}Please select a Bot type below                 ${NC}"
+echo -e "$COLOR1└──────────────────────────────────────────┘${NC}"
+echo -e "$COLOR1┌──────────────────────────────────────────┐${NC}"
+echo -e "$COLOR1  [ 1 ] ${WH}Buat/Edit BOT INFO Multi Login SSH, XRAY & TRANSAKSI   ${NC}"
+echo -e ""
+echo -e "$COLOR1  [ 2 ] ${WH}Buat/Edit BOT INFO Create User & Lain Lain    ${NC}"
+echo -e ""
+echo -e "$COLOR1  [ 3 ] ${WH}Buat/Edit BOT INFO Backup Telegram    ${NC}"
+echo -e "$COLOR1└──────────────────────────────────────────┘${NC}"
+read -p "   Please select numbers 1-3 or Any Button(Random) to exit : " bot
+echo ""
+if [[ $bot == "1" ]]; then
+clear
+rm -rf /etc/perlogin
+mkdir -p /etc/perlogin
+cd /etc/perlogin
+touch token
+touch id
+echo -e ""
+echo -e "$COLOR1 [ INFO ] ${WH}Create for database Multi Login"
+read -rp "Enter Token (Creat on @BotFather) : " -e token2
+echo "$token2" > token
+read -rp "Enter Your Id (Creat on @userinfobot)  : " -e idat
+echo "$idat" > id
+sleep 1
+m-bot2
+fi
+if [[ $bot == "2" ]]; then
+clear
+rm -rf /etc/per
+mkdir -p /etc/per
+cd /etc/per
+touch token
+touch id
+echo -e ""
+echo -e "$COLOR1 [ INFO ] ${WH}Create for database Akun Dan Lain Lain"
+read -rp "Enter Token (Creat on @BotFather) : " -e token3
+echo "$token3" > token
+read -rp "Enter Your Id (Creat on @userinfobot)  : " -e idat2
+echo "$idat2" > id
+sleep 1
+m-bot2
+fi
+if [[ $bot == "3" ]]; then
+clear
+rm -rf /usr/bin/token
+rm -rf /usr/bin/idchat
+echo -e ""
+echo -e "$COLOR1 [ INFO ] ${WH}Create for database Backup Telegram"
+read -rp "Enter Token (Creat on @BotFather) : " -e token23
+echo "$token23" > /usr/bin/token
+read -rp "Enter Your Id (Creat on @userinfobot)  : " -e idchat
+echo "$idchat" > /usr/bin/idchat
+sleep 1
+m-bot2
+fi
+menu
+}
 clear
 echo -e " $COLOR1╔══════════════════════════════════════════════════════════╗${NC}"
 echo -e " $COLOR1║${NC}${COLBG1}                 ${WH} • RMBL VPN TUNNELING •                  ${NC}$COLOR1║ $NC"
