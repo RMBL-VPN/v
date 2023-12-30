@@ -313,12 +313,12 @@ echo -e "    $COLOR1║ ${WH} ${WH}SSH       VMESS         VLESS        TROJAN  
 echo -e "    $COLOR1║ ${WH} ${WH} ${COLOR1}$total_ssh${WH}          ${COLOR1}$vmess${WH}             ${COLOR1}$vless${WH}            ${COLOR1}${trtls}${WH}      $NC $COLOR1║ $NC"
 echo -e "    $COLOR1╚═════════════════════════════════════════════════╝${NC}"
 echo -e " $COLOR1╔════════════════════════════════════════════════════════╗${NC}"
-echo -e " $COLOR1║$NC ${WH}[${COLOR1}01${WH}]${NC} ${COLOR1}• ${WH}SSH-WS    ${WH}[${COLOR1}Menu${WH}]     ${NC} $COLOR1║${NC}     ${WH}[${COLOR1}06${WH}]${NC} ${COLOR1}• ${WH}BOT AKUN   ${WH}  $COLOR1║${NC}"
-echo -e " $COLOR1║$NC ${WH}[${COLOR1}02${WH}]${NC} ${COLOR1}• ${WH}VMESS     ${WH}[${COLOR1}Menu${WH}]     ${NC} $COLOR1║${NC}     ${WH}[${COLOR1}07${WH}]${NC} ${COLOR1}• ${WH}GANTI THEMES ${WH}$COLOR1║${NC}"    
-echo -e " $COLOR1║$NC ${WH}[${COLOR1}03${WH}]${NC} ${COLOR1}• ${WH}VLESS     ${WH}[${COLOR1}Menu${WH}]     ${NC} $COLOR1║${NC}     ${WH}[${COLOR1}08${WH}]${NC} ${COLOR1}• ${WH}UPDATE SC ${WH}   $COLOR1║${NC}"   
-echo -e " $COLOR1║$NC ${WH}[${COLOR1}04${WH}]${NC} ${COLOR1}• ${WH}TROJAN    ${WH}[${COLOR1}Menu${WH}]     ${NC} $COLOR1║${NC}     ${WH}[${COLOR1}09${WH}]${NC} ${COLOR1}• ${WH}SYSTEM    ${WH}   $COLOR1║${NC}" 
-echo -e " $COLOR1║$NC ${WH}[${COLOR1}05${WH}]${NC} ${COLOR1}• ${WH}RUNNING   ${WH}[${COLOR1}Menu${WH}]     ${NC} $COLOR1║${NC}     ${WH}[${COLOR1}10${WH}]${NC} ${COLOR1}• ${WH}BACKUP    ${WH}   $COLOR1║${NC}" 
-echo -e " $COLOR1║$NC ${WH}[${COLOR1}11${WH}]${NC} ${COLOR1}• ${WH}BOT NOTIF ${WH}[${COLOR1}Menu${WH}]     ${NC} $COLOR1║${NC}     ${WH}[${COLOR1}12${WH}]${NC} ${COLOR1}• ${WH}REBOOT    ${WH}   $COLOR1║${NC}" 
+echo -e " $COLOR1║$NC ${WH}[${COLOR1}01${WH}]${NC} ${COLOR1}• ${WH}SSH-WS    ${WH}[${COLOR1}Menu${WH}]     ${NC} $COLOR1║${NC}  ${WH}[${COLOR1}07${WH}]${NC} ${COLOR1}• ${WH}BOT NOTIF  ${WH}[${COLOR1}Menu${WH}] $COLOR1║${NC}"
+echo -e " $COLOR1║$NC ${WH}[${COLOR1}02${WH}]${NC} ${COLOR1}• ${WH}VMESS     ${WH}[${COLOR1}Menu${WH}]     ${NC} $COLOR1║${NC}  ${WH}[${COLOR1}08${WH}]${NC} ${COLOR1}• ${WH}THEMES     ${WH}[${COLOR1}Menu${WH}] $COLOR1║${NC}"    
+echo -e " $COLOR1║$NC ${WH}[${COLOR1}03${WH}]${NC} ${COLOR1}• ${WH}VLESS     ${WH}[${COLOR1}Menu${WH}]     ${NC} $COLOR1║${NC}  ${WH}[${COLOR1}09${WH}]${NC} ${COLOR1}• ${WH}UPDATE     ${WH}[${COLOR1}Menu${WH}] $COLOR1║${NC}"   
+echo -e " $COLOR1║$NC ${WH}[${COLOR1}04${WH}]${NC} ${COLOR1}• ${WH}TROJAN    ${WH}[${COLOR1}Menu${WH}]     ${NC} $COLOR1║${NC}  ${WH}[${COLOR1}10${WH}]${NC} ${COLOR1}• ${WH}SYSTEM     ${WH}[${COLOR1}Menu${WH}] $COLOR1║${NC}" 
+echo -e " $COLOR1║$NC ${WH}[${COLOR1}05${WH}]${NC} ${COLOR1}• ${WH}RUNNING   ${WH}[${COLOR1}Menu${WH}]     ${NC} $COLOR1║${NC}  ${WH}[${COLOR1}11${WH}]${NC} ${COLOR1}• ${WH}BACKUP     ${WH}[${COLOR1}Menu${WH}] $COLOR1║${NC}" 
+echo -e " $COLOR1║$NC ${WH}[${COLOR1}06${WH}]${NC} ${COLOR1}• ${WH}BOT AKUN  ${WH}[${COLOR1}Menu${WH}]     ${NC} $COLOR1║${NC}  ${WH}[${COLOR1}12${WH}]${NC} ${COLOR1}• ${WH}REBOOT     ${WH}[${COLOR1}Menu${WH}] $COLOR1║${NC}" 
 echo -e " $COLOR1╚════════════════════════════════════════════════════════╝${NC}"
 echo -e "    $COLOR1╔═════════════════════════════════════════════════╗${NC}"
 echo -e "    $COLOR1║$NC  ${WH}Total    $COLOR1║${NC}    ${WH}Today     ${WH}Yesterday     ${WH}Month         ${NC}"
@@ -340,11 +340,11 @@ case $opt in
 04 | 4) clear ; m-trojan ;;
 05 | 5) clear ; running ;;
 06 | 6) clear ; m-bot ;;
-07 | 7) clear ; m-theme ;;
-08 | 8) clear ; m-update ;;
-19 | 9) clear ; m-system ;;
-10 | 10) clear ; m-backup;;
-11 | 11) clear ; m-bot2  ;;
+07 | 7) clear ; m-bot2  ;;
+08 | 8) clear ; m-theme ;;
+09 | 9) clear ; m-update ;;
+10 | 10) clear ; m-system ;;
+11 | 11) clear ; m-backup;;
 12 | 12) clear ; reboot ;;
 89 | 89) clear ; bannner ;;
 88 | 88) clear ; new ;;
