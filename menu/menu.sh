@@ -257,7 +257,7 @@ echo -e " $COLOR1║$NC ${WH}[${COLOR1}02${WH}]${NC} ${COLOR1}• ${WH}VMESS    
 echo -e " $COLOR1║$NC ${WH}[${COLOR1}03${WH}]${NC} ${COLOR1}• ${WH}VLESS    ${WH}[${COLOR1}Menu${WH}]      ${NC} $COLOR1║${NC}     ${WH}[${COLOR1}08${WH}]${NC} ${COLOR1}• ${WH}UPDATE SC ${WH}   $COLOR1║${NC}"   
 echo -e " $COLOR1║$NC ${WH}[${COLOR1}04${WH}]${NC} ${COLOR1}• ${WH}TROJAN   ${WH}[${COLOR1}Menu${WH}]      ${NC} $COLOR1║${NC}     ${WH}[${COLOR1}09${WH}]${NC} ${COLOR1}• ${WH}SYSTEM    ${WH}   $COLOR1║${NC}" 
 echo -e " $COLOR1║$NC ${WH}[${COLOR1}05${WH}]${NC} ${COLOR1}• ${WH}RUNNING  ${WH}[${COLOR1}Menu${WH}]      ${NC} $COLOR1║${NC}     ${WH}[${COLOR1}10${WH}]${NC} ${COLOR1}• ${WH}BACKUP    ${WH}   $COLOR1║${NC}" 
-echo -e " $COLOR1║$NC ${WH}[${COLOR1}11${WH}]${NC} ${COLOR1}• ${WH}CLEAR RAM                               ${NC} $COLOR1║${NC}     ${WH}[${COLOR1}12${WH}]${NC} ${COLOR1}• ${WH}REBOOT    ${WH}   $COLOR1║${NC}" 
+echo -e " $COLOR1║$NC ${WH}[${COLOR1}11${WH}]${NC} ${COLOR1}• ${WH}CLEAR RAM      ${NC} $COLOR1║${NC}     ${WH}[${COLOR1}12${WH}]${NC} ${COLOR1}• ${WH}REBOOT    ${WH}   $COLOR1║${NC}" 
 echo -e " $COLOR1╚════════════════════════════════════════════════════════╝${NC}"
 echo -e "    $COLOR1╔═════════════════════════════════════════════════╗${NC}"
 echo -e "    $COLOR1║$NC  ${WH}Total    $COLOR1║${NC}    ${WH}Today     ${WH}Yesterday     ${WH}Month         ${NC}"
