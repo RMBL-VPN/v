@@ -102,6 +102,10 @@ DAY=$(date +%A)
 DATE=$(date +%m/%d/%Y)
 DATE2=$(date -R | cut -d " " -f -5)
 author=$(cat /etc/profil)
+uphours=`uptime -p | awk '{print $2,$3}' | cut -d , -f1`
+upminutes=`uptime -p | awk '{print $4,$5}' | cut -d , -f1`
+uptimecek=`uptime -p | awk '{print $6,$7}' | cut -d , -f1`
+cekup=`uptime -p | grep -ow "day"`
 #IPVPS=$(curl -s ipinfo.io/ip )
 IPVPS=$(curl -sS ipv4.icanhazip.com)
 
